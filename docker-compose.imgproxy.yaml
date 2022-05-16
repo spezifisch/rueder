@@ -1,0 +1,12 @@
+services:
+    imgproxy:
+        image: darthsim/imgproxy:v3.5.0
+        env_file:
+            - ./config/imgproxy.env
+        volumes:
+            - type: bind
+              source: ./frontend/public/dummy.png
+              target: /dummy.png
+              read_only: true
+        ports:
+            - "127.0.0.1:8086:8080"

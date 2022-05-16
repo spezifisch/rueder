@@ -1,0 +1,1061 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~files/feed-premium.xsl"?>
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:psc="http://podlove.org/simple-chapters" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:fh="http://purl.org/syndication/history/1.0" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:feedpress="https://feed.press/xmlns" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+  <channel>
+    <feedpress:locale>en</feedpress:locale>
+    <title>Raumzeit</title>
+    <link>https://raumzeit-podcast.de</link>
+    <description><![CDATA[Der Podcast mit Tim Pritlove über Raumfahrt und andere kosmische Angelegenheiten]]></description>
+    <lastBuildDate>Fri, 04 Dec 2020 08:21:12 +0000</lastBuildDate>
+    <image>
+      <url>https://media.metaebene.me/media/raumzeit/raumzeit-icon-1400x1400.jpg</url>
+      <title>Raumzeit</title>
+      <link>https://raumzeit-podcast.de</link>
+    </image>
+    <atom:link rel="self" type="application/rss+xml" title="Raumzeit (Ogg Vorbis Audio)" href="https://feeds.metaebene.me/raumzeit/oga"/>
+    <atom:link rel="alternate" type="application/rss+xml" title="Raumzeit (MPEG4 Audio AAC)" href="https://raumzeit-podcast.de/feed/m4a/"/>
+    <atom:link rel="alternate" type="application/rss+xml" title="Raumzeit (MP3 Audio)" href="https://raumzeit-podcast.de/feed/mp3/"/>
+    <atom:link rel="next" href="https://raumzeit-podcast.de/feed/oga/?paged=2"/>
+    <atom:link rel="first" href="https://raumzeit-podcast.de/feed/oga/"/>
+    <atom:link rel="last" href="https://raumzeit-podcast.de/feed/oga/?paged=2"/>
+    <language>de-DE</language>
+    <fyyd:verify xmlns:fyyd="https://fyyd.de/fyyd-ns/">efg4e29yNic2ldlf4tBX6936g2cy12r46y13ztqo</fyyd:verify>
+    <atom:link rel="hub" href="http://metaebene.superfeedr.com"/>
+    <atom:contributor>
+      <atom:name>Tim Pritlove</atom:name>
+    </atom:contributor>
+    <podcast:person img="https://raumzeit-podcast.de/files/2020/11/IMG_4799.jpeg">Tim Pritlove</podcast:person>
+    <generator>Podlove Podcast Publisher v3.5.5-beta5</generator>
+    <copyright>Metaebene Personal Media</copyright>
+    <itunes:author>Metaebene Personal Media - Tim Pritlove</itunes:author>
+    <itunes:type>episodic</itunes:type>
+    <itunes:summary><![CDATA[Raumzeit ist eine Serie von Gesprächen mit Wissenschaftlern, Ingenieuren, Astronauten und Projektleitern über Raumfahrt. Jede Episode rückt einen Themenbereich in den Fokus und diskutiert ausführlich alle Aspekte und Details.]]></itunes:summary>
+    <itunes:category text="Science"/>
+    <itunes:owner>
+      <itunes:name>Tim Pritlove</itunes:name>
+      <itunes:email>raumzeit@metaebene.me</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://media.metaebene.me/media/raumzeit/raumzeit-icon-1400x1400.jpg"/>
+    <itunes:subtitle>Der Podcast mit Tim Pritlove über Raumfahrt und andere kosmische Angelegenheiten</itunes:subtitle>
+    <itunes:block>yes</itunes:block>
+    <itunes:explicit>no</itunes:explicit>
+    <item>
+      <title>RZ092 Weltraumschrott-Bekämpfung</title>
+      <link>https://raumzeit-podcast.de/2020/11/17/rz092-weltraumschrott-bekaempfung/</link>
+      <pubDate>Tue, 17 Nov 2020 10:00:00 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-11-03t12:38:01+00:00-ce461b2fcc0b190</guid>
+      <description><![CDATA[Weltraumschrott und auch der deutlich erhöhte Verkehr im Erdorbit stellen in zunehmenden Maße die Raumfahrt vor Probleme. Besonders die spürbar erhöhte Anzahl von Objekte durch viele neue Kleinsatelliten und Mega-Konstellationen wie Iridium, Starlink, OneWeb oder Kuiper vergrößern die Wahrscheinlichkeiten von neuen Kollisionen laufend.
+
+Die ESA hat ihre Aktivitäten im Bereich der Bekämpfung des Schrotts ausgeweitet und verfolgt ein Space Safety Programm, dass mit neuen Radarsystemen die Erfassung der Objekte im Orbit deutlich verbessern soll und mit Lasertechnologie ggf. sogar die Bahnen von störenden Elementen vom Boden aus ändern kann. Projekte wie Clearspace One versuchen wiederum neue Missionen zu entwickeln, die aktiv besonders gefährliche Strukturen aus dem All zu fischen und zu einem kontrollierten Wiedereintritt zu bewegen.]]></description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://raumzeit-podcast.de/2020/11/17/rz092-weltraumschrott-bekaempfung/#"/>
+      <enclosure url="https://raumzeit-podcast.de/podlove/file/2983/s/feed/c/oga/rz092-weltraumschrott-bekaempfung.oga" length="32940918" type="audio/ogg"/>
+      <itunes:duration>01:29:25</itunes:duration>
+      <itunes:author>Metaebene Personal Media - Tim Pritlove</itunes:author>
+      <itunes:subtitle>Die Bekämpung des Weltraumschrotts im Erdorbit geht in seine nächste Phase</itunes:subtitle>
+      <itunes:episode>92</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary><![CDATA[Weltraumschrott und auch der deutlich erhöhte Verkehr im Erdorbit stellen in zunehmenden Maße die Raumfahrt vor Probleme. Besonders die spürbar erhöhte Anzahl von Objekte durch viele neue Kleinsatelliten und Mega-Konstellationen wie Iridium, Starlink, OneWeb oder Kuiper vergrößern die Wahrscheinlichkeiten von neuen Kollisionen laufend.
+
+Die ESA hat ihre Aktivitäten im Bereich der Bekämpfung des Schrotts ausgeweitet und verfolgt ein Space Safety Programm, dass mit neuen Radarsystemen die Erfassung der Objekte im Orbit deutlich verbessern soll und mit Lasertechnologie ggf. sogar die Bahnen von störenden Elementen vom Boden aus ändern kann. Projekte wie Clearspace One versuchen wiederum neue Missionen zu entwickeln, die aktiv besonders gefährliche Strukturen aus dem All zu fischen und zu einem kontrollierten Wiedereintritt zu bewegen.]]></itunes:summary>
+      <itunes:image href="https://media.metaebene.me/media/raumzeit/rz092-weltraumschrott-bekaempfung.jpg"/>
+      <content:encoded><![CDATA[
+
+<p><strong>Die Bekämpung des Weltraumschrotts im Erdorbit geht in seine nächste Phase</strong></p>
+
+<div style="clear: both">
+    <p>
+        <a href="https://raumzeit-podcast.de/2020/11/17/rz092-weltraumschrott-bekaempfung/">
+
+<img class="episode_image_cover" title="RZ092 Weltraumschrott-Bek&#xE4;mpfung" width="200" src="https://raumzeit-podcast.de/wp-content/cache/podlove/b4/4332307117ff9d3386b445208b54d9/rz092-weltraumschrott-bekaempfung_200x.jpg" srcset="https://raumzeit-podcast.de/wp-content/cache/podlove/b4/4332307117ff9d3386b445208b54d9/rz092-weltraumschrott-bekaempfung_200x.jpg 1x, https://raumzeit-podcast.de/wp-content/cache/podlove/b4/4332307117ff9d3386b445208b54d9/rz092-weltraumschrott-bekaempfung_400x.jpg 2x, https://raumzeit-podcast.de/wp-content/cache/podlove/b4/4332307117ff9d3386b445208b54d9/rz092-weltraumschrott-bekaempfung_600x.jpg 3x"/>
+
+    </a>
+    Weltraumschrott und auch der deutlich erhöhte Verkehr im Erdorbit stellen in zunehmenden Maße die Raumfahrt vor Probleme. Besonders die spürbar erhöhte Anzahl von Objekte durch viele neue Kleinsatelliten und Mega-Konstellationen wie Iridium, Starlink, OneWeb oder Kuiper vergrößern die Wahrscheinlichkeiten von neuen Kollisionen laufend.<br />
+<br />
+Die ESA hat ihre Aktivitäten im Bereich der Bekämpfung des Schrotts ausgeweitet und verfolgt ein Space Safety Programm, dass mit neuen Radarsystemen die Erfassung der Objekte im Orbit deutlich verbessern soll und mit Lasertechnologie ggf. sogar die Bahnen von störenden Elementen vom Boden aus ändern kann. Projekte wie Clearspace One versuchen wiederum neue Missionen zu entwickeln, die aktiv besonders gefährliche Strukturen aus dem All zu fischen und zu einem kontrollierten Wiedereintritt zu bewegen.</p>
+</div>
+
+<p><strong>Dauer:</strong>
+
+    <span class="show__meta-data show__meta-data--duration">
+1 Stunde
+
+
+29 Minuten
+
+    </span>
+
+<br/>
+<strong>Aufnahme:</strong>
+
+    <span class="show__meta-data show__meta-data--date">
+    26.10.2020
+</span>
+
+</p>
+
+
+<div></div>
+
+<div>
+
+<div style="float:right; margin-left: 10px;">
+<table>
+<colgroup>
+    <col width="128px" />
+        </colgroup>
+<tr>
+    <td style="vertical-align: top; width: 128px">
+
+
+<img alt="Holger Krag" title="Holger Krag" width="128" src="https://raumzeit-podcast.de/wp-content/cache/podlove/d7/28848a1519139fabb207193ddfb60e/holger-krag_128x.jpg" srcset="https://raumzeit-podcast.de/wp-content/cache/podlove/d7/28848a1519139fabb207193ddfb60e/holger-krag_128x.jpg 1x, https://raumzeit-podcast.de/wp-content/cache/podlove/d7/28848a1519139fabb207193ddfb60e/holger-krag_256x.jpg 2x, https://raumzeit-podcast.de/wp-content/cache/podlove/d7/28848a1519139fabb207193ddfb60e/holger-krag_384x.jpg 3x"/>
+
+
+<br/>
+<strong>Holger Krag</strong>
+                            </td>
+            </tr>
+    </table>
+</div>
+</div>
+
+
+<p>Wir sprechen mit Holger Krag vom Weltraumkontrollzentrum ESOC der ESA in Darmstadt. Holger war bereits vor gut zehn Jahren zu Gast bei Raumzeit und hat in der siebten Ausgabe dieser Gesprächsreihe von den spezifischen Problemen des Weltraumschrotts und ihrer möglichen Bekämpfung berichtet. Eine Dekade später blicken wir auf die damaligen Aussagen zurück und vergleichen, wie sich Raumfahrt und Problematik entwickelt haben und welche Hoffnung es gibt, dieser immer größer werdenden Gefahr Herr zu werden.</p>
+    <h3>Verwandte Episoden</h3>
+    <ul>
+            <li>
+            <a href="https://raumzeit-podcast.de/2011/01/21/rz007-weltraumschrott/">Weltraumschrott</a>
+        </li>
+        </ul>
+
+    <div class='osfx-shownote-block'>
+
+
+
+
+
+
+
+<div class='glossary'>
+            <h2>Glossar</h2>
+    <ul>
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://raumzeit-podcast.de/2011/01/21/rz007-weltraumschrott/" alt="RZ007 Weltraumschrott | Raumzeit" title="RZ007 Weltraumschrott | Raumzeit" /> <a href="https://raumzeit-podcast.de/2011/01/21/rz007-weltraumschrott/">RZ007 Weltraumschrott | Raumzeit</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://en.wikipedia.org/wiki/Mission_Shakti" alt="Mission Shakti - Wikipedia" title="Mission Shakti - Wikipedia" /> <a href="https://en.wikipedia.org/wiki/Mission_Shakti">Mission Shakti - Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Antisatellitenwaffe" alt="Antisatellitenwaffe – Wikipedia" title="Antisatellitenwaffe – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Antisatellitenwaffe">Antisatellitenwaffe – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://www.esa.int/Safety_Security/Space_Debris" alt="ESA - Space Debris" title="ESA - Space Debris" /> <a href="https://www.esa.int/Safety_Security/Space_Debris">ESA - Space Debris</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/German_Experimental_Space_Surveillance_and_Tracking_Radar" alt="German Experimental Space Surveillance and Tracking Radar – Wikipedia" title="German Experimental Space Surveillance and Tracking Radar – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/German_Experimental_Space_Surveillance_and_Tracking_Radar">German Experimental Space Surveillance and Tracking Radar – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://raumzeit-podcast.de/2012/03/30/rz034-space-situational-awareness/" alt="RZ034 Space Situational Awareness | Raumzeit" title="RZ034 Space Situational Awareness | Raumzeit" /> <a href="https://raumzeit-podcast.de/2012/03/30/rz034-space-situational-awareness/">RZ034 Space Situational Awareness | Raumzeit</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Strahlungsdruck" alt="Strahlungsdruck – Wikipedia" title="Strahlungsdruck – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Strahlungsdruck">Strahlungsdruck – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Voyager-Sonden" alt="Voyager-Sonden – Wikipedia" title="Voyager-Sonden – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Voyager-Sonden">Voyager-Sonden – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Starlink" alt="Starlink – Wikipedia" title="Starlink – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Starlink">Starlink – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/OneWeb" alt="OneWeb – Wikipedia" title="OneWeb – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/OneWeb">OneWeb – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Projekt_Kuiper" alt="Projekt Kuiper – Wikipedia" title="Projekt Kuiper – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Projekt_Kuiper">Projekt Kuiper – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Cubesat" alt="Cubesat – Wikipedia" title="Cubesat – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Cubesat">Cubesat – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Satellitenorbit" alt="Satellitenorbit – Wikipedia" title="Satellitenorbit – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Satellitenorbit">Satellitenorbit – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Envisat" alt="Envisat – Wikipedia" title="Envisat – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Envisat">Envisat – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://www.esa.int/Safety_Security/Clean_Space" alt="ESA - Clean Space" title="ESA - Clean Space" /> <a href="https://www.esa.int/Safety_Security/Clean_Space">ESA - Clean Space</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://en.wikipedia.org/wiki/ClearSpace_One" alt="ClearSpace One - Wikipedia" title="ClearSpace One - Wikipedia" /> <a href="https://en.wikipedia.org/wiki/ClearSpace_One">ClearSpace One - Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Internationale_Fernmeldeunion" alt="Internationale Fernmeldeunion – Wikipedia" title="Internationale Fernmeldeunion – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Internationale_Fernmeldeunion">Internationale Fernmeldeunion – Wikipedia</a></li>
+
+    </ul>
+</div>
+
+
+
+</div>
+]]></content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Intro"/>
+        <psc:chapter start="00:00:36.540" title="Begrüßung"/>
+        <psc:chapter start="00:02:09.547" title="Rückblick"/>
+        <psc:chapter start="00:04:25.484" title="Aktuelle Situation im All"/>
+        <psc:chapter start="00:11:19.609" title="Explosionen im Orbit"/>
+        <psc:chapter start="00:16:28.178" title="Orbitales Verkehrswesen"/>
+        <psc:chapter start="00:18:22.567" title="Space Safety Technologie"/>
+        <psc:chapter start="00:42:30.079" title="Satellitenregistrierung"/>
+        <psc:chapter start="00:52:55.058" title="CubeSats und Kleinsatelliten"/>
+        <psc:chapter start="00:55:35.288" title="Geostationäre Satelliten"/>
+        <psc:chapter start="00:57:54.994" title="Orbitale Müllabfuhr"/>
+        <psc:chapter start="01:16:12.997" title="Rückholsysteme und In-Orbit Recycling"/>
+        <psc:chapter start="01:23:44.640" title="Raumklimawandel"/>
+        <psc:chapter start="01:27:24.905" title="Ausklang"/>
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Tim Pritlove</atom:name>
+      </atom:contributor>
+      <atom:contributor>
+        <atom:name>Karl Urban</atom:name>
+      </atom:contributor>
+      <atom:contributor>
+        <atom:name>Holger Krag</atom:name>
+      </atom:contributor>
+      <podcast:person img="https://raumzeit-podcast.de/files/2020/11/IMG_4799.jpeg">Tim Pritlove</podcast:person>
+      <podcast:person img="https://raumzeit-podcast.de/files/2019/03/karl-urban-300x300.jpg">Karl Urban</podcast:person>
+      <podcast:person img="http://meta.metaebene.me/media/raumzeit/contributors/holger-krag.jpg" role="guest">Holger Krag</podcast:person>
+      <itunes:season>2</itunes:season>
+    </item>
+    <item>
+      <title>RZ091 Philosophie und das Universum</title>
+      <link>https://raumzeit-podcast.de/2020/10/27/rz091-philosophie-und-das-universum/</link>
+      <pubDate>Tue, 27 Oct 2020 09:00:35 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-10-05t20:23:41+00:00-f8276bc4bbf3546</guid>
+      <description><![CDATA[Philosophische Fragen scheinen nur auf den ersten Blick wenig vereinbar mit der Naturwissenschaft zu sein. Tatsächlich bietet die deutende und ordnende Kraft philosophischer Erklärungsmuster eine Menge Potential, auch in der Astrophysik und Astronomie bestimmte Fragestellungen neu zu formulieren oder zu vermitteln.]]></description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://raumzeit-podcast.de/2020/10/27/rz091-philosophie-und-das-universum/#"/>
+      <enclosure url="https://raumzeit-podcast.de/podlove/file/2978/s/feed/c/oga/rz091-philosophie-und-das-universum.oga" length="46412721" type="audio/ogg"/>
+      <itunes:duration>01:59:34</itunes:duration>
+      <itunes:author>Metaebene Personal Media - Tim Pritlove</itunes:author>
+      <itunes:subtitle>Philosophie als ordnende und Kraft der Naturwissenschaften</itunes:subtitle>
+      <itunes:episode>91</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary><![CDATA[Philosophische Fragen scheinen nur auf den ersten Blick wenig vereinbar mit der Naturwissenschaft zu sein. Tatsächlich bietet die deutende und ordnende Kraft philosophischer Erklärungsmuster eine Menge Potential, auch in der Astrophysik und Astronomie bestimmte Fragestellungen neu zu formulieren oder zu vermitteln.]]></itunes:summary>
+      <itunes:image href="https://media.metaebene.me/media/raumzeit/rz091-philosophie-und-das-universum.jpg"/>
+      <content:encoded><![CDATA[
+
+<p><strong>Philosophie als ordnende und Kraft der Naturwissenschaften</strong></p>
+
+<div style="clear: both">
+    <p>
+        <a href="https://raumzeit-podcast.de/2020/10/27/rz091-philosophie-und-das-universum/">
+
+<img class="episode_image_cover" title="RZ091 Philosophie und das Universum" width="200" src="https://raumzeit-podcast.de/wp-content/cache/podlove/35/9743513ec538868d1089bf330c1428/rz091-philosophie-und-das-universum_200x.jpg" srcset="https://raumzeit-podcast.de/wp-content/cache/podlove/35/9743513ec538868d1089bf330c1428/rz091-philosophie-und-das-universum_200x.jpg 1x, https://raumzeit-podcast.de/wp-content/cache/podlove/35/9743513ec538868d1089bf330c1428/rz091-philosophie-und-das-universum_400x.jpg 2x, https://raumzeit-podcast.de/wp-content/cache/podlove/35/9743513ec538868d1089bf330c1428/rz091-philosophie-und-das-universum_600x.jpg 3x"/>
+
+    </a>
+    Philosophische Fragen scheinen nur auf den ersten Blick wenig vereinbar mit der Naturwissenschaft zu sein. Tatsächlich bietet die deutende und ordnende Kraft philosophischer Erklärungsmuster eine Menge Potential, auch in der Astrophysik und Astronomie bestimmte Fragestellungen neu zu formulieren oder zu vermitteln.</p>
+</div>
+
+<p><strong>Dauer:</strong>
+
+    <span class="show__meta-data show__meta-data--duration">
+1 Stunde
+
+
+59 Minuten
+
+    </span>
+
+<br/>
+<strong>Aufnahme:</strong>
+
+    <span class="show__meta-data show__meta-data--date">
+    25.09.2020
+</span>
+
+</p>
+
+
+<div></div>
+
+<div>
+
+<div style="float:right; margin-left: 10px;">
+<table>
+<colgroup>
+    <col width="128px" />
+        </colgroup>
+<tr>
+    <td style="vertical-align: top; width: 128px">
+
+
+<img alt="Sibylle Anderl" title="Sibylle Anderl" width="128" src="https://raumzeit-podcast.de/wp-content/cache/podlove/60/3af6717d1578af6cec1e829074c890/sibylle-anderl_128x.jpg" srcset="https://raumzeit-podcast.de/wp-content/cache/podlove/60/3af6717d1578af6cec1e829074c890/sibylle-anderl_128x.jpg 1x, https://raumzeit-podcast.de/wp-content/cache/podlove/60/3af6717d1578af6cec1e829074c890/sibylle-anderl_256x.jpg 2x, https://raumzeit-podcast.de/wp-content/cache/podlove/60/3af6717d1578af6cec1e829074c890/sibylle-anderl_384x.jpg 3x"/>
+
+
+<br/>
+<strong>Sibylle Anderl</strong>
+                            </td>
+            </tr>
+    </table>
+</div>
+</div>
+
+
+<p>Sibylle Anderl hat sowohl Astrophysik als auch Philosophie studiert und ist heute als Wissenschaftsjournalistin tätig. In ihrer wissenschaftlichen Tätigkeit als Astrophysikerin als auch in ihrer journalistischen Arbeit hat sie dabei die Prinzipien und die Methoden der Erkenntnisgewinnung aus der Philosophie in Einklang zu bringen und erläutert im Gespräch den potentiellen Nutzen eines wissenschaftstheoretischen Ansatzes für die Arbeit. Während die moderne Naturwissenschaft viele alte Vorstellungen der Welt durch die Philosophie abgelöst hat könnte umgekehrt die ordnende Kraft der Philosophie neue Ansätze für die Astrophysik liefern, wo die Erkenntnisse für Erklärungen noch nicht ausreichen.</p>
+
+    <div class='osfx-shownote-block'>
+
+
+
+
+
+
+
+<div class='glossary'>
+            <h2>Glossar</h2>
+    <ul>
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Per_Anhalter_durch_die_Galaxis" alt="Per Anhalter durch die Galaxis – Wikipedia" title="Per Anhalter durch die Galaxis – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Per_Anhalter_durch_die_Galaxis">Per Anhalter durch die Galaxis – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Technische_Universit%C3%A4t_Berlin" alt="Technische Universität Berlin – Wikipedia" title="Technische Universität Berlin – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Technische_Universit%C3%A4t_Berlin">Technische Universität Berlin – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Europ%C3%A4ische_S%C3%BCdsternwarte" alt="Europäische Südsternwarte – Wikipedia" title="Europäische Südsternwarte – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Europ%C3%A4ische_S%C3%BCdsternwarte">Europäische Südsternwarte – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Atacama_Large_Millimeter/submillimeter_Array" alt="Atacama Large Millimeter/submillimeter Array – Wikipedia" title="Atacama Large Millimeter/submillimeter Array – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Atacama_Large_Millimeter/submillimeter_Array">Atacama Large Millimeter/submillimeter Array – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://raumzeit-podcast.de/2017/11/18/rz068-bodengestuetzte-astronomie/" alt="RZ068 Bodengestützte Astronomie | Raumzeit" title="RZ068 Bodengestützte Astronomie | Raumzeit" /> <a href="https://raumzeit-podcast.de/2017/11/18/rz068-bodengestuetzte-astronomie/">RZ068 Bodengestützte Astronomie | Raumzeit</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://en.wikipedia.org/wiki/Northern_Extended_Millimeter_Array" alt="Northern Extended Millimeter Array - Wikipedia" title="Northern Extended Millimeter Array - Wikipedia" /> <a href="https://en.wikipedia.org/wiki/Northern_Extended_Millimeter_Array">Northern Extended Millimeter Array - Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Heliosph%C3%A4re" alt="Heliosphäre – Wikipedia" title="Heliosphäre – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Heliosph%C3%A4re">Heliosphäre – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Sherlock_Holmes" alt="Sherlock Holmes – Wikipedia" title="Sherlock Holmes – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Sherlock_Holmes">Sherlock Holmes – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Aristoteles" alt="Aristoteles – Wikipedia" title="Aristoteles – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Aristoteles">Aristoteles – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Mark_Aurel" alt="Mark Aurel – Wikipedia" title="Mark Aurel – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Mark_Aurel">Mark Aurel – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Pulsar" alt="Pulsar – Wikipedia" title="Pulsar – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Pulsar">Pulsar – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Jocelyn_Bell_Burnell" alt="Jocelyn Bell Burnell – Wikipedia" title="Jocelyn Bell Burnell – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Jocelyn_Bell_Burnell">Jocelyn Bell Burnell – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Thomas_S._Kuhn" alt="Thomas S. Kuhn – Wikipedia" title="Thomas S. Kuhn – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Thomas_S._Kuhn">Thomas S. Kuhn – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions" alt="The Structure of Scientific Revolutions – Wikipedia" title="The Structure of Scientific Revolutions – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions">The Structure of Scientific Revolutions – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Astrobiologie" alt="Astrobiologie – Wikipedia" title="Astrobiologie – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Astrobiologie">Astrobiologie – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Ontologie" alt="Ontologie – Wikipedia" title="Ontologie – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Ontologie">Ontologie – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Physikalismus_(Ontologie)" alt="Physikalismus (Ontologie) – Wikipedia" title="Physikalismus (Ontologie) – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Physikalismus_(Ontologie)">Physikalismus (Ontologie) – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Urknall" alt="Urknall – Wikipedia" title="Urknall – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Urknall">Urknall – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Dunkle_Energie" alt="Dunkle Energie – Wikipedia" title="Dunkle Energie – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Dunkle_Energie">Dunkle Energie – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Feld_(Physik)" alt="Feld (Physik) – Wikipedia" title="Feld (Physik) – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Feld_(Physik)">Feld (Physik) – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Dunkle_Materie" alt="Dunkle Materie – Wikipedia" title="Dunkle Materie – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Dunkle_Materie">Dunkle Materie – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Dunkle_Materie" alt="Dunkle Materie – Wikipedia" title="Dunkle Materie – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Dunkle_Materie">Dunkle Materie – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Vera_Rubin" alt="Vera Rubin – Wikipedia" title="Vera Rubin – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Vera_Rubin">Vera Rubin – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Struktur_des_Kosmos" alt="Struktur des Kosmos – Wikipedia" title="Struktur des Kosmos – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Struktur_des_Kosmos">Struktur des Kosmos – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Gravitation" alt="Gravitation – Wikipedia" title="Gravitation – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Gravitation">Gravitation – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Allgemeine_Relativit%C3%A4tstheorie" alt="Allgemeine Relativitätstheorie – Wikipedia" title="Allgemeine Relativitätstheorie – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Allgemeine_Relativit%C3%A4tstheorie">Allgemeine Relativitätstheorie – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Quantenphysik" alt="Quantenphysik – Wikipedia" title="Quantenphysik – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Quantenphysik">Quantenphysik – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Hawking-Strahlung" alt="Hawking-Strahlung – Wikipedia" title="Hawking-Strahlung – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Hawking-Strahlung">Hawking-Strahlung – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Isaac_Newton" alt="Isaac Newton – Wikipedia" title="Isaac Newton – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Isaac_Newton">Isaac Newton – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Trajektorie_(Mathematik)" alt="Trajektorie (Mathematik) – Wikipedia" title="Trajektorie (Mathematik) – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Trajektorie_(Mathematik)">Trajektorie (Mathematik) – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Raumzeit" alt="Raumzeit – Wikipedia" title="Raumzeit – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Raumzeit">Raumzeit – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Karl_Popper" alt="Karl Popper – Wikipedia" title="Karl Popper – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Karl_Popper">Karl Popper – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Kurt_G%C3%B6del" alt="Kurt Gödel – Wikipedia" title="Kurt Gödel – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Kurt_G%C3%B6del">Kurt Gödel – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Georg_Wilhelm_Friedrich_Hegel" alt="Georg Wilhelm Friedrich Hegel – Wikipedia" title="Georg Wilhelm Friedrich Hegel – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Georg_Wilhelm_Friedrich_Hegel">Georg Wilhelm Friedrich Hegel – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Stringtheorie" alt="Stringtheorie – Wikipedia" title="Stringtheorie – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Stringtheorie">Stringtheorie – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Stephen_Hawking" alt="Stephen Hawking – Wikipedia" title="Stephen Hawking – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Stephen_Hawking">Stephen Hawking – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Richard_Feynman" alt="Richard Feynman – Wikipedia" title="Richard Feynman – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Richard_Feynman">Richard Feynman – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://blogs.faz.net/planckton/" alt="Planckton - Blogs der FAZ" title="Planckton - Blogs der FAZ" /> <a href="https://blogs.faz.net/planckton/">Planckton - Blogs der FAZ</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/COVID-19-Pandemie" alt="COVID-19-Pandemie – Wikipedia" title="COVID-19-Pandemie – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/COVID-19-Pandemie">COVID-19-Pandemie – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Modell" alt="Modell – Wikipedia" title="Modell – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Modell">Modell – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Interferometrie" alt="Interferometrie – Wikipedia" title="Interferometrie – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Interferometrie">Interferometrie – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Mikrokosmos" alt="Mikrokosmos – Wikipedia" title="Mikrokosmos – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Mikrokosmos">Mikrokosmos – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Elektron" alt="Elektron – Wikipedia" title="Elektron – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Elektron">Elektron – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://de.wikipedia.org/wiki/Quark_(Physik)" alt="Quark (Physik) – Wikipedia" title="Quark (Physik) – Wikipedia" /> <a href="https://de.wikipedia.org/wiki/Quark_(Physik)">Quark (Physik) – Wikipedia</a></li>
+
+
+
+
+<li><span style="display: inline-block" class="glossary"><img src="https://www.google.com/s2/favicons?domain=https://www.hanser-literaturverlage.de/buch/das-universum-und-ich/978-3-446-25663-7/" alt="Das Universum und ich - Bücher - Hanser Literaturverlage" title="Das Universum und ich - Bücher - Hanser Literaturverlage" /> <a href="https://www.hanser-literaturverlage.de/buch/das-universum-und-ich/978-3-446-25663-7/">Das Universum und ich - Bücher - Hanser Literaturverlage</a></li>
+
+    </ul>
+</div>
+
+
+
+</div>
+]]></content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Intro"/>
+        <psc:chapter start="00:00:33.555" title="Begrüßung"/>
+        <psc:chapter start="00:01:28.424" title="Persönliche Entwicklung"/>
+        <psc:chapter start="00:03:45.677" title="Mathematik und Philosophie"/>
+        <psc:chapter start="00:06:42.015" title="Einstieg in die Astronomie"/>
+        <psc:chapter start="00:08:42.483" title="Beobachtungen mit Teleskopen"/>
+        <psc:chapter start="00:13:43.113" title="Spurensuche im Universum"/>
+        <psc:chapter start="00:20:21.447" title="Interdisziplinäres Forschen"/>
+        <psc:chapter start="00:27:55.998" title="Geschichte der Wissenschaftsphilosophie"/>
+        <psc:chapter start="00:50:11.803" title="Ontologie und Semantik"/>
+        <psc:chapter start="00:52:44.561" title="Das kosmologische Standardmodell"/>
+        <psc:chapter start="01:07:51.481" title="Vereinigung der Theorien"/>
+        <psc:chapter start="01:21:47.179" title="Philosophie als wissenschaftliche Disziplin"/>
+        <psc:chapter start="01:27:49.490" title="Philosophische Bescheidenheit"/>
+        <psc:chapter start="01:34:50.976" title="Philosophie als Kommunikationshilfe"/>
+        <psc:chapter start="01:41:46.500" title="Wissenschaftsjournalismus"/>
+        <psc:chapter start="01:46:59.778" title="Ein schwarzes Loch erklären"/>
+        <psc:chapter start="01:53:23.546" title="Ausklang"/>
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Tim Pritlove</atom:name>
+      </atom:contributor>
+      <atom:contributor>
+        <atom:name>Karl Urban</atom:name>
+      </atom:contributor>
+      <atom:contributor>
+        <atom:name>Sibylle Anderl</atom:name>
+      </atom:contributor>
+      <podcast:person img="https://raumzeit-podcast.de/files/2020/11/IMG_4799.jpeg">Tim Pritlove</podcast:person>
+      <podcast:person img="https://raumzeit-podcast.de/files/2019/03/karl-urban-300x300.jpg">Karl Urban</podcast:person>
+      <podcast:person img="https://raumzeit-podcast.de/files/2020/10/sybille-anderl.jpg" role="guest">Sibylle Anderl</podcast:person>
+      <itunes:season>2</itunes:season>
+    </item>
+    <!-- cut -->
+    <item>
+      <title>RZ036 Deutsches Raumfahrt-Kontrollzentrum</title>
+      <link>https://raumzeit-podcast.de/2012/04/27/rz036-deutsches-raumfahrt-kontrollzentrum/</link>
+      <pubDate>Fri, 27 Apr 2012 08:00:55 +0000</pubDate>
+      <guid isPermaLink="false">http://www.raumzeit-podcast.de/?p=886</guid>
+      <description><![CDATA[Das Deutsche Raumfahrt-Kontrollzentrum (GSOC) mit seinem Hauptsitz in Oberpfaffenhofen ist für die Steuerung von Raumfahrzeugen aller Art zuständig und begleitet unter anderem die Columbus-Mission an Bord der ISS sowie zahlreiche Erdbeobachtungssatelliten und andere Missionen.
+
+Das GSOC betreibt außerdem die Bodenstation des DLR in Weilheim und ist für die Steuerung der Lander-Mission der Rosetta-Raumsonde zuständig.]]></description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://raumzeit-podcast.de/2012/04/27/rz036-deutsches-raumfahrt-kontrollzentrum/#"/>
+      <enclosure url="https://raumzeit-podcast.de/podlove/file/338/s/feed/c/oga/rz036-deutsches-raumfahrt-kontrollzentrum.oga" length="39279500" type="audio/ogg"/>
+      <itunes:duration>01:40:23</itunes:duration>
+      <itunes:author>Metaebene Personal Media - Tim Pritlove</itunes:author>
+      <itunes:subtitle>Das GSOC in Oberpfaffenhoffen übernimmt viele wichtige Aufgaben der internationalen Raumfahrt</itunes:subtitle>
+      <itunes:title>Deutsches Raumfahrt-Kontrollzentrum</itunes:title>
+      <itunes:episode>36</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary><![CDATA[Das Deutsche Raumfahrt-Kontrollzentrum (GSOC) mit seinem Hauptsitz in Oberpfaffenhofen ist für die Steuerung von Raumfahrzeugen aller Art zuständig und begleitet unter anderem die Columbus-Mission an Bord der ISS sowie zahlreiche Erdbeobachtungssatelliten und andere Missionen.
+
+Das GSOC betreibt außerdem die Bodenstation des DLR in Weilheim und ist für die Steuerung der Lander-Mission der Rosetta-Raumsonde zuständig.]]></itunes:summary>
+      <itunes:image href="https://media.metaebene.me/media/raumzeit/rz036-deutsches-raumfahrt-kontrollzentrum.jpg"/>
+      <content:encoded><![CDATA[<p>
+
+<p><strong>Das GSOC in Oberpfaffenhoffen übernimmt viele wichtige Aufgaben der internationalen Raumfahrt</strong></p>
+
+<div style="clear: both">
+    <p>
+        <a href="https://raumzeit-podcast.de/2012/04/27/rz036-deutsches-raumfahrt-kontrollzentrum/">
+
+<img class="episode_image_cover" title="Deutsches Raumfahrt-Kontrollzentrum" width="200" src="https://raumzeit-podcast.de/wp-content/cache/podlove/22/4d42de9f6dbd44741e365d72aee99b/deutsches-raumfahrt-kontrollzentrum_200x.jpg" srcset="https://raumzeit-podcast.de/wp-content/cache/podlove/22/4d42de9f6dbd44741e365d72aee99b/deutsches-raumfahrt-kontrollzentrum_200x.jpg 1x, https://raumzeit-podcast.de/wp-content/cache/podlove/22/4d42de9f6dbd44741e365d72aee99b/deutsches-raumfahrt-kontrollzentrum_400x.jpg 2x, https://raumzeit-podcast.de/podlove/image/68747470733a2f2f6d656469612e6d6574616562656e652e6d652f6d656469612f7261756d7a6569742f727a3033362d6465757473636865732d7261756d66616872742d6b6f6e74726f6c6c7a656e7472756d2e6a7067/600/0/0/deutsches-raumfahrt-kontrollzentrum 3x"/>
+
+    </a>
+    Das Deutsche Raumfahrt-Kontrollzentrum (GSOC) mit seinem Hauptsitz in Oberpfaffenhofen ist für die Steuerung von Raumfahrzeugen aller Art zuständig und begleitet unter anderem die Columbus-Mission an Bord der ISS sowie zahlreiche Erdbeobachtungssatelliten und andere Missionen.<br />
+<br />
+Das GSOC betreibt außerdem die Bodenstation des DLR in Weilheim und ist für die Steuerung der Lander-Mission der Rosetta-Raumsonde zuständig.</p>
+</div>
+
+<p><strong>Dauer:</strong>
+
+    <span class="show__meta-data show__meta-data--duration">
+1 Stunde
+
+
+40 Minuten
+
+    </span>
+
+<br/>
+<strong>Aufnahme:</strong>
+
+    <span class="show__meta-data show__meta-data--date">
+    03.04.2012
+</span>
+
+</p>
+
+
+<div></div>
+
+<div>
+
+<div style="float:right; margin-left: 10px;">
+<table>
+<colgroup>
+    <col width="128px" />
+        </colgroup>
+<tr>
+    <td style="vertical-align: top; width: 128px">
+
+
+<img alt="Florian Sellmaier" title="Florian Sellmaier" width="128" src="https://raumzeit-podcast.de/wp-content/cache/podlove/06/45f4f6f0f87c11ec3c09f78fb66b49/florian-sellmaier_128x.jpg" srcset="https://raumzeit-podcast.de/wp-content/cache/podlove/06/45f4f6f0f87c11ec3c09f78fb66b49/florian-sellmaier_128x.jpg 1x, https://raumzeit-podcast.de/wp-content/cache/podlove/06/45f4f6f0f87c11ec3c09f78fb66b49/florian-sellmaier_256x.jpg 2x, https://raumzeit-podcast.de/podlove/image/687474703a2f2f6d6574612e6d6574616562656e652e6d652f6d656469612f7261756d7a6569742f636f6e7472696275746f72732f666c6f7269616e2d73656c6c6d616965722e6a7067/384/0/0/florian-sellmaier 3x"/>
+
+
+<br/>
+<strong>Florian Sellmaier</strong>
+                                <br/>
+                <em>Wissenschaftlicher Mitarbeiter, GSOC</em>
+                            </td>
+            </tr>
+    </table>
+</div>
+</div>
+
+Im Gespräch mit Tim Pritlove erläutert Florian Sellmaier, wissenschaftlicher Mitarbeiter beim GSOC, Aufgaben und Struktur des Deutschen Raumfahrtkontrollzentrums und erläutert, mit welchem fein abgestimmten Personaleinsatz rund um die Uhr zahlreiche Raumfahrtmissionen begleitet werden.</p>
+<p><strong>Themen: </strong>Überblick GSOC; Aufgabenfelder des GSOC; die Columbus-Mission; Arbeitsteilung und Kommunikation; Multimissionsbetrieb; Ausbildung und Teamstruktur; Zeitplanung für Astronauten; Zukünftige Aufgaben; Herausforderung Weltraumschrott; European Proximity Operations Simulator; Robotische Exploration.</p>
+<p><strong>Links:</strong></p>
+<ul>
+<li><a href="http://www.dlr.de/iss/de/desktopdefault.aspx/tabid-1412/2072_read-3536/">DLR: GSOC</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Deutsches_Raumfahrt-Kontrollzentrum">Deutsches_Raumfahrt-Kontrollzentrum</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/11/18/rz028-estrack/">RZ028 ESTRACK Bodenstations-Netzwerk</a></li>
+<li><a href="http://www.dlr.de/dlr/desktopdefault.aspx/tabid-10263/">DLR: Standort Weilheim</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Europ%C3%A4isches_Raumflugkontrollzentrum">WP: Europäisches Raumflugkontrollzentrum (ESOC)</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Centre_national_d%E2%80%99%C3%A9tudes_spatiales">WP: Centre national d’études spatiales (CNES)</a></li>
+<li><a href="http://www.dlr.de/dlr/en/desktopdefault.aspx/tabid-10261">DLR: Standort Oberpfaffenhofen</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Launch_and_Early_Orbit_Phase">WP: Launch and Early Orbit Phase (LEOP)</a></li>
+<li><a href="http://www.dlr.de/dlr/desktopdefault.aspx/tabid-10258/">DLR: Standort Köln</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Rosetta_(Sonde)">WP: Rosetta</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/07/25/rz020-giotto-und-rosetta/">RZ020 Giotto und Rosetta</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Ludwig-Maximilians-Universit%C3%A4t_M%C3%BCnchen">WP: Ludwig-Maximilians-Universität München (LMU)</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Internationale_Raumstation">Internationale Raumstation (ISS)</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Columbus_(ISS)">WP: Columbus</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Erdbeobachtung">Erdbeobachtung</a></li>
+<li><a href="http://de.wikipedia.org/wiki/TerraSAR-X">WP: TerraSAR-X</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Galileo_(Satellitennavigation)">WP: Galileo</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Satellitenorbit">WP: Satellitenorbit</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Geosynchrone_Umlaufbahn">Geosynchroner Orbit</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/10/28/rz026-forschen-in-schwerelosigkeit/">RZ026 Forschen in Schwerelosigkeit</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/03/11/rz010-raumstationen/">RZ010 Raumstationen</a></li>
+<li><a href="http://www.nasa.gov/multimedia/nasatv/index.html">NASA TV</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/06/17/rz017-automated-transfer-vehicle/">RZ017 Automated Transfer Vehicle (ATV)</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/03/25/rz011-astronautenausbildung/">RZ011 Astronautenausbildung</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Europ%C3%A4isches_Astronautenzentrum">WP: Europäisches Astronautenzentrum</a></li>
+<li><a href="http://www.dlr.de/rm/en/desktopdefault.aspx/tabid-3825/5963_read-8759/">DLR: DEOS</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/05/06/rz014-robotik-in-der-raumfahrt/">RZ014 Robotik in der Raumfahrt</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/01/21/rz007-weltraumschrott/">RZ007 Weltraumschrott</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Philae_(Sonde)">WP: Philae</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Hayabusa_2">WP: Hayabusa 2</a></li>
+<li><a href="http://b612.jspec.jaxa.jp/hayabusa2/e/index_e.html">JAXA: Hayabusa 2 Project</a></li>
+</ul>
+<p>
+
+</p>
+]]></content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Einführung"/>
+        <psc:chapter start="00:01:39.000" title="Überblick GSOC"/>
+        <psc:chapter start="00:10:00.875" title="Persönlicher Werdegang"/>
+        <psc:chapter start="00:14:38.500" title="Aufgabenfelder des GSOC"/>
+        <psc:chapter start="00:25:13.531" title="Columbus-Mission"/>
+        <psc:chapter start="00:39:03.375" title="Arbeitsteilung und Kommunikation"/>
+        <psc:chapter start="00:51:14.000" title="Multimissionsbetrieb"/>
+        <psc:chapter start="00:57:11.500" title="Ausbildung und Teamstruktur"/>
+        <psc:chapter start="01:02:14.250" title="Zeitplanung für Astronauten"/>
+        <psc:chapter start="01:07:48.625" title="Zukünftige Aufgaben"/>
+        <psc:chapter start="01:14:40.125" title="Herausforderung Weltraumschrott"/>
+        <psc:chapter start="01:25:38.750" title="European Proximity Operations Simulator"/>
+        <psc:chapter start="01:35:07.125" title="Robotische Exploration"/>
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Florian Sellmaier</atom:name>
+      </atom:contributor>
+      <atom:contributor>
+        <atom:name>Tim Pritlove</atom:name>
+      </atom:contributor>
+      <podcast:person img="http://meta.metaebene.me/media/raumzeit/contributors/florian-sellmaier.jpg" role="guest">Florian Sellmaier</podcast:person>
+      <podcast:person img="https://raumzeit-podcast.de/files/2020/11/IMG_4799.jpeg">Tim Pritlove</podcast:person>
+      <itunes:season>1</itunes:season>
+    </item>
+    <item>
+      <title>RZ035 Technology Transfer Program</title>
+      <link>https://raumzeit-podcast.de/2012/04/13/rz035-technology-transfer-program/</link>
+      <pubDate>Fri, 13 Apr 2012 08:00:07 +0000</pubDate>
+      <guid isPermaLink="false">http://www.raumzeit-podcast.de/?p=872</guid>
+      <description><![CDATA[Technologietransfer verbindet Raumfahrtforschung und Wirtschaft indem es eine bidirektionale Brücke zwischen diesen Entitäten baut. Der Transfer von Wissen und Forschungsergebnissen in die Wirtschaft verspricht in der Zukunft eine ökonomischere Nutzung der Anwendung in der Raumfahrt. Neugegründete Firmen könnenwiederum ihre Startphase auf Basis solider, sonst selten profitabler Forschung aufbauen.
+
+Das Technology Transfer Program der ESA versucht genau diese Wechselwirkung anzustossen, die für beide Seiten außerordentlich hilfreich ist. Dazu kommen wertvolle Erkenntnisse der Raumfahrt so schneller in die wirtschaftliche und damit auch gesellschaftliche Nutzung.]]></description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://raumzeit-podcast.de/2012/04/13/rz035-technology-transfer-program/#"/>
+      <enclosure url="https://raumzeit-podcast.de/podlove/file/339/s/feed/c/oga/rz035-technology-transfer-program.oga" length="26634914" type="audio/ogg"/>
+      <itunes:duration>01:09:21</itunes:duration>
+      <itunes:author>Metaebene Personal Media - Tim Pritlove</itunes:author>
+      <itunes:subtitle>Wie der Technologietransfer zwischen Raumfahrt und der Wirtschaft organisiert wird</itunes:subtitle>
+      <itunes:title>Technology Transfer Program</itunes:title>
+      <itunes:episode>35</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary><![CDATA[Technologietransfer verbindet Raumfahrtforschung und Wirtschaft indem es eine bidirektionale Brücke zwischen diesen Entitäten baut. Der Transfer von Wissen und Forschungsergebnissen in die Wirtschaft verspricht in der Zukunft eine ökonomischere Nutzung der Anwendung in der Raumfahrt. Neugegründete Firmen könnenwiederum ihre Startphase auf Basis solider, sonst selten profitabler Forschung aufbauen.
+
+Das Technology Transfer Program der ESA versucht genau diese Wechselwirkung anzustossen, die für beide Seiten außerordentlich hilfreich ist. Dazu kommen wertvolle Erkenntnisse der Raumfahrt so schneller in die wirtschaftliche und damit auch gesellschaftliche Nutzung.]]></itunes:summary>
+      <itunes:image href="https://media.metaebene.me/media/raumzeit/rz035-technology-transfer-program.jpg"/>
+      <content:encoded><![CDATA[<p>
+
+<p><strong>Wie der Technologietransfer zwischen Raumfahrt und der Wirtschaft organisiert wird</strong></p>
+
+<div style="clear: both">
+    <p>
+        <a href="https://raumzeit-podcast.de/2012/04/13/rz035-technology-transfer-program/">
+
+<img class="episode_image_cover" title="Technology Transfer Program" width="200" src="https://raumzeit-podcast.de/wp-content/cache/podlove/04/f5567d7203efc7f9d43108e0cd57e4/technology-transfer-program_200x.jpg" srcset="https://raumzeit-podcast.de/wp-content/cache/podlove/04/f5567d7203efc7f9d43108e0cd57e4/technology-transfer-program_200x.jpg 1x, https://raumzeit-podcast.de/wp-content/cache/podlove/04/f5567d7203efc7f9d43108e0cd57e4/technology-transfer-program_400x.jpg 2x, https://raumzeit-podcast.de/podlove/image/68747470733a2f2f6d656469612e6d6574616562656e652e6d652f6d656469612f7261756d7a6569742f727a3033352d746563686e6f6c6f67792d7472616e736665722d70726f6772616d2e6a7067/600/0/0/technology-transfer-program 3x"/>
+
+    </a>
+    Technologietransfer verbindet Raumfahrtforschung und Wirtschaft indem es eine bidirektionale Brücke zwischen diesen Entitäten baut. Der Transfer von Wissen und Forschungsergebnissen in die Wirtschaft verspricht in der Zukunft eine ökonomischere Nutzung der Anwendung in der Raumfahrt. Neugegründete Firmen könnenwiederum ihre Startphase auf Basis solider, sonst selten profitabler Forschung aufbauen.<br />
+<br />
+Das Technology Transfer Program der ESA versucht genau diese Wechselwirkung anzustossen, die für beide Seiten außerordentlich hilfreich ist. Dazu kommen wertvolle Erkenntnisse der Raumfahrt so schneller in die wirtschaftliche und damit auch gesellschaftliche Nutzung.</p>
+</div>
+
+<p><strong>Dauer:</strong>
+
+    <span class="show__meta-data show__meta-data--duration">
+1 Stunde
+
+
+9 Minuten
+
+    </span>
+
+<br/>
+<strong>Aufnahme:</strong>
+
+    <span class="show__meta-data show__meta-data--date">
+    22.03.2012
+</span>
+
+</p>
+
+
+<div></div>
+
+<div>
+
+<div style="float:right; margin-left: 10px;">
+<table>
+<colgroup>
+    <col width="128px" />
+        </colgroup>
+<tr>
+    <td style="vertical-align: top; width: 128px">
+
+
+<img alt="Frank Salzgeber" title="Frank Salzgeber" width="128" src="https://raumzeit-podcast.de/wp-content/cache/podlove/64/5fd9f797a72a0bcf67c03971dcb935/frank-salzgeber_128x.jpg" srcset="https://raumzeit-podcast.de/wp-content/cache/podlove/64/5fd9f797a72a0bcf67c03971dcb935/frank-salzgeber_128x.jpg 1x, https://raumzeit-podcast.de/wp-content/cache/podlove/64/5fd9f797a72a0bcf67c03971dcb935/frank-salzgeber_256x.jpg 2x, https://raumzeit-podcast.de/podlove/image/687474703a2f2f6d6574612e6d6574616562656e652e6d652f6d656469612f7261756d7a6569742f636f6e7472696275746f72732f6672616e6b2d73616c7a67656265722e6a7067/384/0/0/frank-salzgeber 3x"/>
+
+
+<br/>
+<strong>Frank Salzgeber</strong>
+                                <br/>
+                <em>Leiter Technology Transfer Program, ESA</em>
+                            </td>
+            </tr>
+    </table>
+</div>
+</div>
+
+Im Gespräch mit Tim Pritlove bietet Frank Salzgeber, Leiter des Technology Transfer Program, einen Einblick in die Aufgaben und Arbeit des Teams und liefert zahlreiche Beispiele von gelungenen Transfers sowie einen Ausblick auf die Technologietrends, die sich für solche Transfers künftig anbieten.</p>
+<p><strong>Themen: </strong>Bedarf für Technologie-Transfer; das Technology Transfer Program in der ESA; Projektentwicklung; Erfolg und Misserfolg von Projekten; Business-Inkubations-Zentren der ESA; Der Innovations-Kreislauf; Aufgabenprofil und Struktur des TTP-Teams; Trends im Technologiebereich.</p>
+<p><strong>Links:</strong></p>
+<ul>
+<li><a href="http://www.esa.int/Our_Activities/Technology/TTP2" target="_blank">ESA: Technology Transfer Program</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Willy_Messerschmitt" target="_blank">WP: Willy Messerschmitt</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Hermes_(Raumf%C3%A4hre)" target="_blank">WP: Raumgleiter Hermes</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Deepwater_Horizon" target="_blank">WP: Deepwater Horizon</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Mixed_Pickles" target="_blank">WP: Mixed Pickles</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Hitzeschild" target="_blank">WP: Hitzeschild</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Betriebsblindheit" target="_blank">WP: Betriebsblindheit</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Rettungsdecke" target="_blank">WP: Rettungsdecke</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Magnetresonanztomographie" target="_blank">WP: Magnetresonanztomographie</a></li>
+<li><a href="http://www.esa.int/Our_Activities/Technology/TTP2/Centre_Locations2" target="_blank">ESA: ESA Business Incubation Centre Locations</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Rabobank" target="_blank">WP: Rabobank</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Spirit_(Raumsonde)" target="_blank">WP: Spirit</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Opportunity" target="_blank">WP: Opportunity</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Cassini-Huygens" target="_blank">WP: Cassini-Huygens</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/06/17/rz017-automated-transfer-vehicle/" target="_blank">RZ017 Automated Transfer Vehicle</a></li>
+<li><a href="http://www.galileo-masters.eu/" target="_blank">European Satellite Navigation Competition</a></li>
+<li><a href="http://www.gmes-masters.com/" target="_blank">GMES Masters</a></li>
+</ul>
+<p>
+
+</p>
+]]></content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Themenvorstellung"/>
+        <psc:chapter start="00:04:46.818" title="Bedarf für Technologie-Transfer"/>
+        <psc:chapter start="00:10:15.583" title="Technology Transfer Program in der ESA"/>
+        <psc:chapter start="00:15:01.203" title="Projektentwicklung"/>
+        <psc:chapter start="00:23:12.943" title="Erfolg und Mißerfolg"/>
+        <psc:chapter start="00:31:51.766" title="Business Incubations Centres"/>
+        <psc:chapter start="00:38:52.833" title="Der Innovations-Kreislauf"/>
+        <psc:chapter start="00:46:43.901" title="Aufgabenprofil des TTP-Teams"/>
+        <psc:chapter start="00:54:15.719" title="Trends im Technologiebereich"/>
+        <psc:chapter start="01:03:14.026" title="Struktur des TTP-Teams"/>
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Frank Salzgeber</atom:name>
+      </atom:contributor>
+      <atom:contributor>
+        <atom:name>Tim Pritlove</atom:name>
+      </atom:contributor>
+      <podcast:person img="http://meta.metaebene.me/media/raumzeit/contributors/frank-salzgeber.jpg" role="guest">Frank Salzgeber</podcast:person>
+      <podcast:person img="https://raumzeit-podcast.de/files/2020/11/IMG_4799.jpeg">Tim Pritlove</podcast:person>
+      <itunes:season>1</itunes:season>
+    </item>
+    <item>
+      <title>RZ034 Space Situational Awareness</title>
+      <link>https://raumzeit-podcast.de/2012/03/30/rz034-space-situational-awareness/</link>
+      <pubDate>Fri, 30 Mar 2012 08:20:45 +0000</pubDate>
+      <guid isPermaLink="false">http://www.raumzeit-podcast.de/?p=809</guid>
+      <description><![CDATA[Der Bedarf an einer umfassenden Beobachtung und Katalogisierung der unmittelbaren Umgebung der Erde im Weltraum wird täglich größer.  Zunehmender Satellitenverkehr und Weltraumschrott aber auch wechselnde Sonnenaktivität und erdnahe Asteroiden erfordern unsere Aufmerksamkeit, um Raumfahrtmissionen und kritische Infrastrukturen auf der Erde zu schützen.
+
+Seit ein paar Jahren baut die ESA daher eines umfassendes System zur Beobachtung des Erdumfelds auf. Das Space Situational Awareness Program (SSA) fasst eine Vielzahl an Beobachtungsmethoden und -systemen in einem gemeinsamen Konzept zusammen, um in Echtzeit Entscheidungen über mögliche Objekt-Kollisionen im Orbit, mögliche Eintritte von Asteroiden in die Erdatmosphäre und den Einfluss des Weltraumwetters auf Missionen und Infrastrukturen treffen zu können.]]></description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://raumzeit-podcast.de/2012/03/30/rz034-space-situational-awareness/#"/>
+      <enclosure url="https://raumzeit-podcast.de/podlove/file/340/s/feed/c/oga/rz034-space-situational-awareness.oga" length="28575596" type="audio/ogg"/>
+      <itunes:duration>01:14:32</itunes:duration>
+      <itunes:author>Metaebene Personal Media - Tim Pritlove</itunes:author>
+      <itunes:subtitle>Die permanente Beobachtung der Erdumgebung sichert die Zukunft der Raumfahrt</itunes:subtitle>
+      <itunes:title>Space Situational Awareness</itunes:title>
+      <itunes:episode>34</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary><![CDATA[Der Bedarf an einer umfassenden Beobachtung und Katalogisierung der unmittelbaren Umgebung der Erde im Weltraum wird täglich größer.  Zunehmender Satellitenverkehr und Weltraumschrott aber auch wechselnde Sonnenaktivität und erdnahe Asteroiden erfordern unsere Aufmerksamkeit, um Raumfahrtmissionen und kritische Infrastrukturen auf der Erde zu schützen.
+
+Seit ein paar Jahren baut die ESA daher eines umfassendes System zur Beobachtung des Erdumfelds auf. Das Space Situational Awareness Program (SSA) fasst eine Vielzahl an Beobachtungsmethoden und -systemen in einem gemeinsamen Konzept zusammen, um in Echtzeit Entscheidungen über mögliche Objekt-Kollisionen im Orbit, mögliche Eintritte von Asteroiden in die Erdatmosphäre und den Einfluss des Weltraumwetters auf Missionen und Infrastrukturen treffen zu können.]]></itunes:summary>
+      <itunes:image href="https://media.metaebene.me/media/raumzeit/rz034-space-situational-awareness.jpg"/>
+      <content:encoded><![CDATA[<p>
+
+<p><strong>Die permanente Beobachtung der Erdumgebung sichert die Zukunft der Raumfahrt</strong></p>
+
+<div style="clear: both">
+    <p>
+        <a href="https://raumzeit-podcast.de/2012/03/30/rz034-space-situational-awareness/">
+
+<img class="episode_image_cover" title="Space Situational Awareness" width="200" src="https://raumzeit-podcast.de/wp-content/cache/podlove/44/fca7fd16bf29cb3f7c23d94c9961c6/space-situational-awareness_200x.jpg" srcset="https://raumzeit-podcast.de/wp-content/cache/podlove/44/fca7fd16bf29cb3f7c23d94c9961c6/space-situational-awareness_200x.jpg 1x, https://raumzeit-podcast.de/wp-content/cache/podlove/44/fca7fd16bf29cb3f7c23d94c9961c6/space-situational-awareness_400x.jpg 2x, https://raumzeit-podcast.de/podlove/image/68747470733a2f2f6d656469612e6d6574616562656e652e6d652f6d656469612f7261756d7a6569742f727a3033342d73706163652d736974756174696f6e616c2d61776172656e6573732e6a7067/600/0/0/space-situational-awareness 3x"/>
+
+    </a>
+    Der Bedarf an einer umfassenden Beobachtung und Katalogisierung der unmittelbaren Umgebung der Erde im Weltraum wird täglich größer.  Zunehmender Satellitenverkehr und Weltraumschrott aber auch wechselnde Sonnenaktivität und erdnahe Asteroiden erfordern unsere Aufmerksamkeit, um Raumfahrtmissionen und kritische Infrastrukturen auf der Erde zu schützen.<br />
+<br />
+Seit ein paar Jahren baut die ESA daher eines umfassendes System zur Beobachtung des Erdumfelds auf. Das Space Situational Awareness Program (SSA) fasst eine Vielzahl an Beobachtungsmethoden und -systemen in einem gemeinsamen Konzept zusammen, um in Echtzeit Entscheidungen über mögliche Objekt-Kollisionen im Orbit, mögliche Eintritte von Asteroiden in die Erdatmosphäre und den Einfluss des Weltraumwetters auf Missionen und Infrastrukturen treffen zu können.</p>
+</div>
+
+<p><strong>Dauer:</strong>
+
+    <span class="show__meta-data show__meta-data--duration">
+1 Stunde
+
+
+14 Minuten
+
+    </span>
+
+<br/>
+<strong>Aufnahme:</strong>
+
+    <span class="show__meta-data show__meta-data--date">
+    22.03.2012
+</span>
+
+</p>
+
+
+<div></div>
+
+<div>
+
+<div style="float:right; margin-left: 10px;">
+<table>
+<colgroup>
+    <col width="128px" />
+        </colgroup>
+<tr>
+    <td style="vertical-align: top; width: 128px">
+
+
+<img alt="Detlef Koschny" title="Detlef Koschny" width="128" src="https://raumzeit-podcast.de/podlove/image/687474703a2f2f6d6574612e6d6574616562656e652e6d652f6d656469612f7261756d7a6569742f636f6e7472696275746f72732f6465746c65662d6b6f7363686e792e6a7067/128/0/0/detlef-koschny" srcset="https://raumzeit-podcast.de/podlove/image/687474703a2f2f6d6574612e6d6574616562656e652e6d652f6d656469612f7261756d7a6569742f636f6e7472696275746f72732f6465746c65662d6b6f7363686e792e6a7067/128/0/0/detlef-koschny 1x, https://raumzeit-podcast.de/wp-content/cache/podlove/8e/053dc6a4b4c16c3010e21118e11fd4/detlef-koschny_256x.jpg 2x"/>
+
+
+<br/>
+<strong>Detlef Koschny</strong>
+                                <br/>
+                <em>SSA-Programm, ESA</em>
+                            </td>
+            </tr>
+    </table>
+</div>
+</div>
+
+Im Gespräch mit Tim Pritlove erläutert Detlef Koschny Notwendigkeiten, Anforderungen und konkrete Umsetzung des SSA-Programms der ESA.</p>
+<p><strong>Themen:</strong> Persönlicher Hintergrund; Weltraumwetter; Weltraumschrott; Erdnahe Objekte; Aufbau und Struktur SSA; Beteiligte Standorte; Datenformate; Bedrohung durch Asteroideneinschläge; Weltraumwetter; Gefahren auf der Erde durch Sonnenwind; Bedeutung von SSA für die Raumfahrt; internationale Kooperationen und alternative Beobachtungssysteme.</p>
+<p><strong>Links:</strong></p>
+<ul>
+<li><a href="http://www.esa.int/About_Us/ESTEC">ESA: Standort ESTEC</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/01/21/rz007-weltraumschrott/">RZ007 Weltraumschrott</a></li>
+<li><a href="http://www.esa.int/Our_Activities/Operations/Space_Situational_Awareness">ESA: Space Situational Awareness</a></li>
+<li><a href="http://www.mps.mpg.de/">Max-Planck-Institut für Sonnenforschung</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Rosetta_(Sonde)">WP: Rosetta</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/07/25/rz020-giotto-und-rosetta/">RZ020 Giotto und Rosetta</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Komet">WP: Komet</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Asteroid">WP: Asteroid</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Meteor">WP: Meteor</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Weltraumwetter">WP: Weltraumwetter</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Protuberanz">WP: Protuberanz</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Erdnahes_Objekt">WP: Erdnahes Objekt</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Chicxulub-Krater">WP: Chicxulub-Krater</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Weltraumteleskop">WP: Weltraumteleskop</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Radar">WP: Radar</a></li>
+<li><a href="http://www.esa.int/About_Us/ESRIN">ESA: ESRIN</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Europ%C3%A4isches_Weltraumforschungsinstitut">WP: Europäisches Weltraumforschungsinstitut</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Europ%C3%A4isches_Weltraumastronomiezentrum">WP: Europäisches Weltraumastronomiezentrum (ESAC)</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Europ%C3%A4isches_Raumflugkontrollzentrum">WP: Europäisches Raumflugkontrollzentrum Darmstadt (ESOC)</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Graves_(system)">WP: GRAVES (Grand Réseau Adapté à la Veille Spatiale)</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Tunguska-Ereignis">WP: Tunguska-Ereignis</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Wolfram_Alpha">WP: Wolfram Alpha</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/02/21/rz009-asteroiden-und-kometen/">RZ009 Asteroiden und Kometen</a></li>
+<li><a href="http://de.wikipedia.org/wiki/2008_TC3">WP: Asteroideneinschlag im Sudan 2008 (2008 TC3, Sudan-Event)</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Carancas_(Meteorit)">WP: Asteroideneinschlag in Peru 2007</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Meteosat">WP: Meteosat</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Polarlicht">WP: Polarlicht (Aurora Borealis)</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Proba-2">WP: Proba-2</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Sonnenrotation">WP: Sonnenrotation</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Sonnenfleck">WP: Sonnenfleck</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Kernspeicher">WP: Kernspeicher</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Helios_(Sonde)">WP: Helios Raumsonde</a></li>
+<li><a href="http://raumzeit-podcast.de/2011/05/06/rz014-robotik-in-der-raumfahrt/">RZ014 Robotik in der Raumfahrt</a></li>
+<li><a href="http://www.iadc-online.org/">Inter-Agency Debris Coordination Committee (IADC)</a></li>
+<li><a href="http://www.oosa.unvienna.org/oosa/COPUOS/copuos.html">United Nations Committee on the Peaceful Uses of Outer Space (COPOUS)</a></li>
+</ul>
+<p>    <h3>Verwandte Episoden</h3>
+    <ul>
+            <li>
+            <a href="https://raumzeit-podcast.de/2011/01/21/rz007-weltraumschrott/">Weltraumschrott</a>
+        </li>
+            <li>
+            <a href="https://raumzeit-podcast.de/2018/01/20/rz069-copernicus-open-data-strategy/">Copernicus Open Data Strategy</a>
+        </li>
+            <li>
+            <a href="https://raumzeit-podcast.de/2018/02/14/rz070-weltraumrecht/">Weltraumrecht</a>
+        </li>
+        </ul>
+
+
+</p>
+]]></content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Intro"/>
+        <psc:chapter start="00:00:41.969" title="Themenvorstellung"/>
+        <psc:chapter start="00:01:35.328" title="Detlev Koschny"/>
+        <psc:chapter start="00:04:37.859" title="Definition SSA"/>
+        <psc:chapter start="00:11:05.969" title="Aufgaben und Struktur SSA"/>
+        <psc:chapter start="00:17:02.953" title="Kooperationen und Eigenständigkeit"/>
+        <psc:chapter start="00:19:30.880" title="Planungsphase"/>
+        <psc:chapter start="00:21:51.693" title="Implementierungsphase"/>
+        <psc:chapter start="00:23:40.307" title="Internationale Koordination"/>
+        <psc:chapter start="00:28:26.661" title="Reichweite der Allabtastung"/>
+        <psc:chapter start="00:32:51.844" title="Bedrohung durch Asteroide"/>
+        <psc:chapter start="00:40:24.969" title="Benachrichtungssysteme und Reaktionszeiten"/>
+        <psc:chapter start="00:42:52.609" title="Weltraumwetter"/>
+        <psc:chapter start="00:47:06.719" title="Auswirkungen der Sonnenaktivität"/>
+        <psc:chapter start="00:59:48.453" title="Bedeutung von SSA für die Raumfahrt"/>
+        <psc:chapter start="01:07:59.313" title="Andere SSA-ähnliche Projekte"/>
+        <psc:chapter start="01:12:54.500" title="Resumée"/>
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Detlef Koschny</atom:name>
+      </atom:contributor>
+      <atom:contributor>
+        <atom:name>Tim Pritlove</atom:name>
+      </atom:contributor>
+      <podcast:person img="http://meta.metaebene.me/media/raumzeit/contributors/detlef-koschny.jpg" role="guest">Detlef Koschny</podcast:person>
+      <podcast:person img="https://raumzeit-podcast.de/files/2020/11/IMG_4799.jpeg">Tim Pritlove</podcast:person>
+      <itunes:season>1</itunes:season>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet href="http://www.w3.org/2000/08/w3c-synd/style.css" type="text/css"?>
+<!-- generator="FeedCreator 1.6" -->
+<rdf:RDF
+    xmlns="http://purl.org/rss/1.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel rdf:about="https://rss.golem.de/rss.php?feed=RSS1.0">
+        <title>Golem.de</title>
+        <description>IT-News fuer Profis</description>
+        <link>https://www.golem.de/</link>
+        <atom:link rel="self" href="https://rss.golem.de/rss.php?feed=RSS1.0" />
+        <image rdf:resource="https://www.golem.de/staticrl/images/golem-rss.png" />
+        <dc:date>2021-05-21T14:05:01+02:00</dc:date>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="https://www.golem.de/news/fujifilm-gfx-100s-im-test-kein-mittelformat-fuer-die-masse-2105-156619-rss.html"/>
+                <rdf:li rdf:resource="https://www.golem.de/news/scoober-lieferando-ueberwacht-seine-fahrer-sekundengenau-2105-156688-rss.html"/>
+                <rdf:li rdf:resource="https://www.golem.de/news/bilanzskandal-insolvenzverwalter-fordert-wirecard-dividenden-zurueck-2105-156683-rss.html"/>
+            </rdf:Seq>
+        </items>
+    </channel>
+    <image rdf:about="https://www.golem.de/staticrl/images/golem-rss.png">
+        <title>Golem.de</title>
+        <link>https://www.golem.de/</link>
+        <url>https://www.golem.de/staticrl/images/golem-rss.png</url>
+    </image>
+        <item rdf:about="https://www.golem.de/news/fujifilm-gfx-100s-im-test-kein-mittelformat-fuer-die-masse-2105-156619-rss.html">
+        <dc:format>text/html</dc:format>
+        <dc:date>2021-05-21T12:01:00+02:00</dc:date>
+        <dc:source>https://www.golem.de</dc:source>
+        <dc:creator>Martin Wolf</dc:creator>
+        <title>Fujifilm GFX 100S im Test: Kein Mittelformat für die Masse</title>
+        <link>https://www.golem.de/news/fujifilm-gfx-100s-im-test-kein-mittelformat-fuer-die-masse-2105-156619-rss.html</link>
+        <description>Der Preis für die Kamera stimmt, Auflösung und Bildqualität überzeugen - die Mittelformatkamera GFX 100S von Fujifilm ist dennoch nichts für den Alltag. Ein Test von Martin Wolf (&lt;a href=&quot;https://www.golem.de/specials/mittelformatkamera/&quot;&gt;Mittelformatkamera&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/film/&quot;&gt;Film&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=156619&amp;amp;page=1&amp;amp;ts=1621591260&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+        <slash:comments>2</slash:comments>
+        <content:encoded><![CDATA[<img src="https://www.golem.de/2105/156619-274395-274394_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Der Preis für die Kamera stimmt, Auflösung und Bildqualität überzeugen - die Mittelformatkamera GFX 100S von Fujifilm ist dennoch nichts für den Alltag. Ein Test von Martin Wolf (<a href="https://www.golem.de/specials/mittelformatkamera/">Mittelformatkamera</a>, <a href="https://www.golem.de/specials/film/">Film</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=156619&amp;page=1&amp;ts=1621591260" alt="" width="1" height="1" />]]></content:encoded>
+    </item>
+    <item rdf:about="https://www.golem.de/news/scoober-lieferando-ueberwacht-seine-fahrer-sekundengenau-2105-156688-rss.html">
+        <dc:format>text/html</dc:format>
+        <dc:date>2021-05-21T11:41:00+02:00</dc:date>
+        <dc:source>https://www.golem.de</dc:source>
+        <dc:creator>Achim Sawall</dc:creator>
+        <title>Scoober: Lieferando überwacht seine Fahrer sekundengenau</title>
+        <link>https://www.golem.de/news/scoober-lieferando-ueberwacht-seine-fahrer-sekundengenau-2105-156688-rss.html</link>
+        <description>Fahrer können sich durch das DSGVO-Auskunftsrecht ihre Daten geben lassen. Alle 15 bis 20 Sekunden wird der genaue Standort an Lieferando gemeldet. (&lt;a href=&quot;https://www.golem.de/specials/lieferando/&quot;&gt;Lieferando&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/google/&quot;&gt;Google&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=156688&amp;amp;page=1&amp;amp;ts=1621590060&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+        <slash:comments>39</slash:comments>
+        <content:encoded><![CDATA[<img src="https://www.golem.de/2105/156688-274476-274475_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Fahrer können sich durch das DSGVO-Auskunftsrecht ihre Daten geben lassen. Alle 15 bis 20 Sekunden wird der genaue Standort an Lieferando gemeldet. (<a href="https://www.golem.de/specials/lieferando/">Lieferando</a>, <a href="https://www.golem.de/specials/google/">Google</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=156688&amp;page=1&amp;ts=1621590060" alt="" width="1" height="1" />]]></content:encoded>
+    </item>
+    <item rdf:about="https://www.golem.de/news/bilanzskandal-insolvenzverwalter-fordert-wirecard-dividenden-zurueck-2105-156683-rss.html">
+        <dc:format>text/html</dc:format>
+        <dc:date>2021-05-21T11:26:00+02:00</dc:date>
+        <dc:source>https://www.golem.de</dc:source>
+        <dc:creator>Sebastian Grüner</dc:creator>
+        <title>Bilanzskandal: Insolvenzverwalter fordert Wirecard-Dividenden zurück</title>
+        <link>https://www.golem.de/news/bilanzskandal-insolvenzverwalter-fordert-wirecard-dividenden-zurueck-2105-156683-rss.html</link>
+        <description>Im Insolvenzverfahren von Wirecard sollen Geschäftsberichte für nichtig erklärt werden. Die Dividenden hätten nie ausgezahlt werden dürfen. (&lt;a href=&quot;https://www.golem.de/specials/wirecard/&quot;&gt;Wirecard&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/boerse/&quot;&gt;Börse&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=156683&amp;amp;page=1&amp;amp;ts=1621589160&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+        <slash:comments>6</slash:comments>
+        <content:encoded><![CDATA[<img src="https://www.golem.de/2105/156683-274459-274455_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Im Insolvenzverfahren von Wirecard sollen Geschäftsberichte für nichtig erklärt werden. Die Dividenden hätten nie ausgezahlt werden dürfen. (<a href="https://www.golem.de/specials/wirecard/">Wirecard</a>, <a href="https://www.golem.de/specials/boerse/">Börse</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=156683&amp;page=1&amp;ts=1621589160" alt="" width="1" height="1" />]]></content:encoded>
+    </item>
+</rdf:RDF>

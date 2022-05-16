@@ -1,0 +1,7 @@
+create_table("user_feeds") {
+    t.Column("id", "serial", {})
+    t.DisableTimestamps()
+	t.Column("user_id", "uuid", {})
+    t.Column("feed_id", "uuid", {})
+    t.PrimaryKey("user_id", "feed_id")
+}

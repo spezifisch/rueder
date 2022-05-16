@@ -1,0 +1,11 @@
+create_table("feeds") {
+	t.Column("id", "uuid", {primary: true})
+	t.Timestamps()
+	t.Column("fetched_at", "timestamp", {})
+	t.Column("fetch_delay_s", "int", {})
+	t.Column("fetcher_state", "jsonb", {})
+	t.Column("feed_url", "string", {"size": 2048})
+	t.Column("site_url", "string", {"null": true, "size": 2048})
+	t.Column("title", "string", {"null": true, "size": 1024})
+	t.Column("icon", "string", {"null": true, "size": 2048})
+}

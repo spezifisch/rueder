@@ -1,0 +1,22 @@
+FROM golang:1.18.1-alpine3.15
+
+# set default timezone
+ARG TZ=Europe/Berlin
+ENV DEFAULT_TZ ${TZ}
+
+WORKDIR /app
+
+# add pg_dump for db migrations and timezone for logs
+RUN apk add --no-cache postgresql13-client=13.6-r0 tzdata=2022a-r0 && \
+    ln -snf /usr/share/zoneinfo/${DEFAULT_TZ} /etc/localtime && \
+    # Go Watch: https://github.com/mitranim/gow
+    go install github.com/mitranim/gow@v0.0.0-20220125090630-5348a1592279 && \
+    # Soda CLI: https://gobuffalo.io/en/docs/db/toolbox/
+    go install github.com/gobuffalo/pop/soda@v4.13.1+incompatible
+
+# cache go deps
+COPY go.mod go.sum ./
+RUN go mod download
+
+VOLUME /app
+CMD ["gow", "run", "./cmd/worker", "--log", "debug"]

@@ -1,0 +1,6 @@
+create_table("labels") {
+	t.Column("id", "uuid", {primary: true})
+	t.Timestamps()
+	t.Column("title", "string", {"null": true, "size": 1024})
+	t.Column("color", "string", {"null": true, "size": 16})
+}

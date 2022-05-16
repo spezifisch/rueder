@@ -1,0 +1,42 @@
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.2.0
+      hooks:
+          - id: trailing-whitespace
+          - id: check-added-large-files
+          - id: check-yaml
+            exclude: ^backend/config/database.yml
+          - id: end-of-file-fixer
+          - id: check-merge-conflict
+    # backend/frontend
+    - repo: https://github.com/markdownlint/markdownlint
+      rev: e31711c0db57df9b350fbaeaae6de745972f3e66
+      hooks:
+          - id: markdownlint_docker
+            args: ["-r", "~MD029"]
+    - repo: https://github.com/hadolint/hadolint
+      rev: v2.10.0
+      hooks:
+          - id: hadolint-docker
+            args: ["--ignore=DL3008"]
+    # backend
+    - repo: local
+      hooks:
+          - id: golangci-lint
+            # golangci-lint needs to be installed: https://golangci-lint.run/usage/install/
+            name: golangci-lint
+            language: system
+            # check only unstaged changes or untracked files
+            entry: bash -c 'cd backend && exec golangci-lint run --fix --new'
+            pass_filenames: false
+            types: [go]
+            files: ^backend/
+    # frontend
+    - repo: local
+      hooks:
+          - id: frontend-husky
+            # frontend dev dependencies need to be installed, see README.md
+            name: frontend-husky
+            language: system
+            entry: bash -c 'cd frontend && exec .husky/pre-commit'
+            files: ^frontend/

@@ -1,0 +1,16 @@
+services:
+    authbackend:
+        build:
+            context: ./backend
+            dockerfile: ./docker/authbackend/Dockerfile
+        image: rueder3-authbackend-prod
+        env_file:
+            - ./config/rueder.env
+        networks:
+            - rueder3_db
+        command:
+            - "./initdb.sh"
+
+networks:
+    rueder3_db:
+        external: true

@@ -1,0 +1,20 @@
+create_table("articles") {
+	t.Column("id", "uuid", {primary: true})
+	t.Timestamps()
+    t.Column("seq", "BIGSERIAL")
+	t.Column("feed_id", "uuid", {})
+	t.ForeignKey("feed_id", {"feeds": ["id"]}, {"on_delete": "cascade"})
+    t.Column("site_guid", "string", {"size": 2048})
+	t.Column("posted_at", "timestamp", {})
+	t.Column("link", "string", {"null": true, "size": 2048})
+	t.Column("thumbnail", "string", {"null": true, "size": 2048})
+	t.Column("image", "string", {"null": true, "size": 2048})
+	t.Column("image_title", "string", {"null": true, "size": 2048})
+    t.Column("title", "text", {"null": true})
+	t.Column("teaser", "text", {"null": true})
+	t.Column("content", "jsonb", {})
+
+    t.Index(["site_guid", "feed_id"], {"unique": true})
+    t.Index("seq", {"unique": true})
+    t.Index("feed_id")
+}

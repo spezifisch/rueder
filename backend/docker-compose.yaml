@@ -1,0 +1,92 @@
+services:
+    dev:
+        build:
+            context: .
+            dockerfile: ./docker/api/Dockerfile.dev
+        image: rueder3-api-dev
+        env_file:
+            - ./rueder-dev.env
+        volumes:
+            - type: bind
+              source: ./
+              target: /app/
+        ports:
+            - "127.0.0.1:8080:8080"
+        depends_on:
+            - db
+            - auth
+
+    worker:
+        build:
+            context: .
+            dockerfile: ./docker/worker/Dockerfile.dev
+        image: rueder3-worker-dev
+        env_file:
+            - ./rueder-dev.env
+        volumes:
+            - type: bind
+              source: ./
+              target: /app/
+        depends_on:
+            - db
+
+    db:
+        image: postgres:13
+        environment:
+            POSTGRES_DB: rueder_development
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+        ports:
+            - "127.0.0.1:5432:5432"
+        volumes:
+            - type: volume
+              source: rueder_dev_db
+              target: /var/lib/postgresql/data
+
+    auth:
+        # use the official image if you don't need CORS in your dev environment
+        # image: tarent/loginsrv
+        # use my branch of loginsrv if you need CORS: https://github.com/spezifisch/loginsrv/tree/cors
+        # (build and tag the docker image using `docker build -t custom-tarent-loginsrv .` in the loginsrv repository)
+        image: custom-tarent-loginsrv
+        env_file:
+            - ./rueder-dev.env
+        ports:
+            - "127.0.0.1:8082:8080"
+        depends_on:
+            - authbackend
+
+    authbackend:
+        build:
+            context: .
+            dockerfile: ./docker/authbackend/Dockerfile.dev
+        image: rueder3-authbackend-dev
+        env_file:
+            - ./rueder-dev.env
+        volumes:
+            - type: bind
+              source: ./
+              target: /app/
+        depends_on:
+            - db
+
+    feedfinder:
+        build:
+            context: .
+            dockerfile: ./docker/feedfinder/Dockerfile.dev
+        image: rueder3-feedfinder-dev
+        env_file:
+            - ./rueder-dev.env
+        ports:
+            - "127.0.0.1:8081:8080"
+        volumes:
+            - type: bind
+              source: ./
+              target: /app/
+            - type: volume
+              source: rueder_dev_feedfinder_docs
+              target: /app/docs
+
+volumes:
+    rueder_dev_db:
+    rueder_dev_feedfinder_docs:

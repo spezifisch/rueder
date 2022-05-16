@@ -1,0 +1,6 @@
+.git/
+.vscode/
+node_modules/
+public/build/
+Dockerfile*
+docker-compose.yaml

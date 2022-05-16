@@ -1,0 +1,119 @@
+services:
+    nginx:
+        image: nginxinc/nginx-unprivileged:1.21.6-alpine
+        ports:
+            - "8090:8080"
+        hostname: rueder
+        volumes:
+            - type: bind
+              source: ./config/nginx-conf.d-prod
+              target: /etc/nginx/conf.d
+              read_only: true
+        depends_on:
+            - frontend
+            - api
+            - auth
+        networks:
+            - default
+        restart: unless-stopped
+
+    frontend:
+        build:
+            context: ./frontend
+            args:
+                # always add the trailing slash!
+                VITE_RUEDER_BASE_URL_LOGIN: "/"
+                VITE_RUEDER_BASE_URL_API: "/api/v1/"
+                VITE_RUEDER_BASE_URL_IMGPROXY: "https://cdn.whuz.de/imgproxy/"
+        image: rueder3-frontend-prod
+        networks:
+            - default
+        restart: unless-stopped
+
+    api:
+        build:
+            context: ./backend
+            dockerfile: ./docker/api/Dockerfile
+        image: rueder3-api-prod
+        env_file:
+            - ./config/rueder-prod.env
+        depends_on:
+            - db
+            - auth
+        networks:
+            - default
+            - db
+        restart: unless-stopped
+
+    worker:
+        build:
+            context: ./backend
+            dockerfile: ./docker/worker/Dockerfile
+        image: rueder3-worker-prod
+        env_file:
+            - ./config/rueder-prod.env
+        depends_on:
+            - db
+        networks:
+            - db
+        restart: unless-stopped
+
+    db:
+        image: postgres:13.6-alpine
+        environment:
+            # this must be the same as in ./backend/config/database.yml.
+            # if you want to override it you should bind mount to /app/database.yml instead of changing it there!
+            POSTGRES_DB: rueder_production
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+        volumes:
+            - type: volume
+              source: db
+              target: /var/lib/postgresql/data
+        networks:
+            - db
+        restart: unless-stopped
+
+    auth:
+        image: tarent/loginsrv:1.3.0
+        env_file:
+            - ./config/rueder-prod.env
+        depends_on:
+            - authbackend
+        networks:
+            - default
+            - authbackend
+        restart: unless-stopped
+
+    authbackend:
+        build:
+            context: ./backend
+            dockerfile: ./docker/authbackend/Dockerfile
+        image: rueder3-authbackend-prod
+        env_file:
+            - ./config/rueder-prod.env
+        depends_on:
+            - db
+        networks:
+            - authbackend
+            - db
+        restart: unless-stopped
+
+    feedfinder:
+        build:
+            context: ./backend
+            dockerfile: ./docker/feedfinder/Dockerfile
+        image: rueder3-feedfinder-prod
+        env_file:
+            - ./config/rueder-prod.env
+        networks:
+            - default
+        restart: unless-stopped
+
+volumes:
+    db:
+
+networks:
+    default:
+    db:
+    authbackend:

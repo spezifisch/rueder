@@ -1,0 +1,6 @@
+.git
+docs
+Makefile
+rueder-dev.env
+utils/__pycache__
+utils/*.py

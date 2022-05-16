@@ -1,0 +1,565 @@
+basePath: /api/v1
+definitions:
+  controller.AddFeedRequest:
+    properties:
+      url:
+        type: string
+    type: object
+  controller.Article:
+    properties:
+      content:
+        $ref: '#/definitions/controller.ArticleContent'
+      feed_id:
+        type: string
+      feed_title:
+        type: string
+      feed_url:
+        type: string
+      id:
+        type: string
+      image:
+        type: string
+      image_title:
+        type: string
+      link:
+        type: string
+      link_comments:
+        type: string
+      teaser:
+        type: string
+      thumbnail:
+        type: string
+      time:
+        type: string
+      title:
+        type: string
+    type: object
+  controller.ArticleContent:
+    properties:
+      authors:
+        items:
+          type: string
+        type: array
+      enclosures:
+        items:
+          $ref: '#/definitions/controller.ArticleEnclosure'
+        type: array
+      tags:
+        items:
+          type: string
+        type: array
+      text:
+        type: string
+    type: object
+  controller.ArticleEnclosure:
+    properties:
+      length:
+        type: string
+      type:
+        type: string
+      url:
+        type: string
+    type: object
+  controller.ArticlePreview:
+    properties:
+      feed_icon:
+        type: string
+      feed_seq:
+        type: integer
+      feed_title:
+        type: string
+      id:
+        type: string
+      seq:
+        type: integer
+      teaser:
+        type: string
+      time:
+        type: string
+      title:
+        type: string
+    type: object
+  controller.ChangeFoldersRequest:
+    properties:
+      folders:
+        items:
+          $ref: '#/definitions/controller.Folder'
+        type: array
+    type: object
+  controller.ClaimsResponse:
+    properties:
+      origin:
+        type: string
+      sub:
+        description: JWT standard fields
+        type: string
+      uid:
+        description: extra fields
+        type: string
+    type: object
+  controller.FeedFinderResponse:
+    properties:
+      error_message:
+        type: string
+      feeds:
+        items:
+          $ref: '#/definitions/pkg_feedfinder_controller.Feed'
+        type: array
+      ok:
+        type: boolean
+      url:
+        type: string
+    type: object
+  controller.FetcherState:
+    properties:
+      last_error:
+        type: string
+      last_success:
+        type: string
+      message:
+        type: string
+      working:
+        type: boolean
+    type: object
+  controller.Folder:
+    properties:
+      feeds:
+        items:
+          $ref: '#/definitions/pkg_api_controller.Feed'
+        type: array
+      id:
+        type: string
+      title:
+        type: string
+    type: object
+  controller.Label:
+    properties:
+      articles:
+        items:
+          $ref: '#/definitions/controller.ArticlePreview'
+        type: array
+      color:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+    type: object
+  httputil.HTTPError:
+    properties:
+      code:
+        example: 400
+        type: integer
+      message:
+        example: status bad request
+        type: string
+    type: object
+  httputil.HTTPStatus:
+    properties:
+      feed_id:
+        type: string
+      message:
+        type: string
+      status:
+        example: success
+        type: string
+    type: object
+  pkg_api_controller.Feed:
+    properties:
+      article_count:
+        type: integer
+      articles:
+        items:
+          $ref: '#/definitions/controller.ArticlePreview'
+        type: array
+      fetcher_state:
+        $ref: '#/definitions/controller.FetcherState'
+      icon:
+        type: string
+      id:
+        type: string
+      site_url:
+        type: string
+      title:
+        type: string
+      url:
+        type: string
+    type: object
+  pkg_feedfinder_controller.Feed:
+    properties:
+      title:
+        type: string
+      url:
+        type: string
+    type: object
+info:
+  contact:
+    email: spezifisch-go@below.fr
+    name: spezifisch
+    url: https://github.com/spezifisch
+  description: Feed Reader API
+  license:
+    name: GPLv3
+    url: https://www.gnu.org/licenses/gpl-3.0.en.html
+  title: rueder3 API
+  version: "1.0"
+paths:
+  /article/{id}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Article ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.Article'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get article
+      tags:
+      - feed
+  /articles/{feed_id}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Feed ID
+        in: path
+        name: feed_id
+        required: true
+        type: string
+      - description: Start Token
+        in: query
+        name: start
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/controller.ArticlePreview'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get article list
+      tags:
+      - feed
+  /claims:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Authentication origin (eg. simple, github, google)
+        in: query
+        name: origin
+        required: true
+        type: string
+      - description: Authentication subject (eg. the username)
+        in: query
+        name: subject
+        required: true
+        type: string
+      - description: Email address (OAuth2 only)
+        in: query
+        name: email
+        type: string
+      - description: Domain (Google only)
+        in: query
+        name: domain
+        type: string
+      - description: User groups (Gitlab only)
+        in: query
+        name: groups
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.ClaimsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      summary: An http endpoint which provides additional information on an authenticated
+        user.
+      tags:
+      - loginsrv
+  /feed:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Add Feed Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.AddFeedRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httputil.HTTPStatus'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      security:
+      - ApiKeyAuth: []
+      summary: Add feed
+      tags:
+      - feed
+  /feed/{feed_id}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Feed ID
+        in: path
+        name: feed_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pkg_api_controller.Feed'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get feed info for a single feed
+      tags:
+      - feed
+  /feedfinder:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.FeedFinderResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get list of feeds from given URL that points to a HTML site
+      tags:
+      - feed
+  /feeds:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/pkg_api_controller.Feed'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all feeds
+      tags:
+      - feed
+  /folders:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/controller.Folder'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get folder list
+      tags:
+      - feed
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Change Folders
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.ChangeFoldersRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httputil.HTTPStatus'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      security:
+      - ApiKeyAuth: []
+      summary: Change folder list, titles, feeds
+      tags:
+      - feed
+  /labels:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/controller.Label'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      security:
+      - ApiKeyAuth: []
+      summary: Get label list
+      tags:
+      - feed
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

@@ -1,0 +1,7 @@
+# reference: https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml
+
+linters:
+    enable:
+        - gofmt
+        - unconvert
+        - whitespace

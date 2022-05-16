@@ -1,0 +1,18 @@
+{
+    "extends": "@tsconfig/svelte/tsconfig.json",
+
+    "compilerOptions": {
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "resolveJsonModule": true,
+        "target": "es2021",
+        "isolatedModules": true,
+        "allowJs": true
+    },
+
+    "include": ["src/**/*", "global.d.ts"],
+    "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
+
+    "typeRoots": ["./node_modules/@types"]
+}

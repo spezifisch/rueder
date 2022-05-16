@@ -1,0 +1,9 @@
+create_table("users") {
+	t.Column("id", "uuid", {primary: true})
+	t.Timestamps()
+	t.Column("auth_origin", "string", {})
+	t.Column("auth_subject", "string", {})
+	t.Column("folders", "jsonb", {})
+
+    t.Index(["auth_origin", "auth_subject"], {"unique": true})
+}

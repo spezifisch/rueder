@@ -1,0 +1,36 @@
+services:
+    dev:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        image: rueder3-frontend-dev
+        volumes:
+            - type: bind
+              source: ./
+              target: /usr/src/app/
+            - type: volume
+              source: rueder_dev_node_modules
+              target: /usr/src/app/node_modules
+        ports:
+            - "127.0.0.1:3000:3000"
+        restart: on-failure
+
+    imgproxy:
+        image: darthsim/imgproxy:latest
+        environment:
+            IMGPROXY_NETWORK: tcp4
+            IMGPROXY_MAX_SRC_FILE_SIZE: 50000000
+            IMGPROXY_MAX_SRC_RESOLUTION: 30
+            IMGPROXY_PRESETS: "default=resizing_type:auto/enlarge:0,pr=resizing_type:auto/enlarge:0,icon=resizing_type:fit/width:256/height:256/gravity:sm/enlarge:0,thumbnail=resizing_type:fit/width:800/height:800/gravity:sm/enlarge:0,image=resizing_type:auto/enlarge:0"
+            IMGPROXY_ONLY_PRESETS: "true"
+            IMGPROXY_FALLBACK_IMAGE_PATH: /dummy.png
+        volumes:
+            - type: bind
+              source: ./public/dummy.png
+              target: /dummy.png
+              read_only: true
+        ports:
+            - "127.0.0.1:8086:8080"
+
+volumes:
+    rueder_dev_node_modules:
