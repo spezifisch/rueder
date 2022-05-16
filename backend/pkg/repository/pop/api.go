@@ -283,8 +283,13 @@ func (r *APIPopRepository) GetFeedByURL(url string) (ret controller.Feed, err er
 
 // ChangeFolders does nothing
 func (r *APIPopRepository) ChangeFolders(claims *helpers.AuthClaims, folders []controller.Folder) (err error) {
+	if r == nil || r.pop == nil {
+		err = errors.New("invalid repository")
+		return
+	}
+
 	// check login
-	if claims == nil {
+	if claims == nil || !claims.IsValid() {
 		err = errors.New("invalid claims")
 		return
 	}

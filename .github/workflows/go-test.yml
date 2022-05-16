@@ -1,21 +1,22 @@
 name: backend tests
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    push:
+        branches: [main]
+    pull_request:
+
+    workflow_dispatch:
 
 jobs:
-  backend_tests:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
 
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      with:
-        go-version: 1.18
+            - name: Set up Go
+              uses: actions/setup-go@v3
+              with:
+                  go-version: 1.18
 
-    - name: Run tests
-      run: cd backend && go test -v ./...
+            - name: Run tests
+              run: cd backend && go test -v ./...

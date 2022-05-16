@@ -29,7 +29,7 @@ func GetAuthClaims(c *gin.Context) *AuthClaims {
 		Name:       name,
 		OriginName: originName,
 	}
-	if !ret.isValid() {
+	if !ret.IsValid() {
 		return nil
 	}
 	return ret
@@ -43,7 +43,7 @@ type AuthClaims struct {
 	OriginName string
 }
 
-func (a AuthClaims) isValid() bool {
+func (a AuthClaims) IsValid() bool {
 	if a.Origin == "" || a.Name == "" || a.OriginName == "" || a.OriginName == ":" {
 		return false
 	}
