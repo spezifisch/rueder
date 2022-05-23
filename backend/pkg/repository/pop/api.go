@@ -6,7 +6,7 @@ import (
 
 	"github.com/apex/log"
 	mapset "github.com/deckarep/golang-set"
-	"github.com/gobuffalo/pop"
+	"github.com/gobuffalo/pop/v6"
 	"github.com/gofrs/uuid"
 	"github.com/spezifisch/rueder3/backend/pkg/api/controller"
 	"github.com/spezifisch/rueder3/backend/pkg/helpers"
@@ -281,7 +281,7 @@ func (r *APIPopRepository) GetFeedByURL(url string) (ret controller.Feed, err er
 	return
 }
 
-// ChangeFolders does nothing
+// ChangeFolders does stuff
 func (r *APIPopRepository) ChangeFolders(claims *helpers.AuthClaims, folders []controller.Folder) (err error) {
 	if r == nil || r.pop == nil {
 		err = errors.New("invalid repository")
@@ -297,6 +297,7 @@ func (r *APIPopRepository) ChangeFolders(claims *helpers.AuthClaims, folders []c
 	user := models.User{}
 	err = r.pop.Find(&user, claims.ID)
 	if err != nil {
+		err = errors.New("user doesn't exist")
 		return
 	}
 	if len(folders) > r.folderCountLimit {

@@ -1,0 +1,33 @@
+1=DriverOpen	1:nil
+2=ConnExec	2:"DROP DATABASE \"rueder_test\""	1:nil
+3=ConnExec	2:"CREATE DATABASE \"rueder_test\""	1:nil
+4=ConnExec	2:"select * from schema_migration"	100:"SERROR\x00C42P01\x00Mrelation \"schema_migration\" does not exist\x00P15\x00Fparse_relation.c\x00L1373\x00RparserOpenTable\x00\x00"
+5=ConnBegin	1:nil
+6=ConnExec	2:"CREATE TABLE \"schema_migration\" (\n\"version\" VARCHAR (14) NOT NULL\n);\nCREATE UNIQUE INDEX \"schema_migration_version_idx\" ON \"schema_migration\" (version);"	1:nil
+7=TxCommit	1:nil
+8=ConnQuery	2:"SELECT EXISTS (SELECT schema_migration.* FROM schema_migration AS schema_migration WHERE version = $1)"	1:nil
+9=RowsColumns	9:["exists"]
+10=RowsNext	11:[6:false]	1:nil
+11=ConnExec	2:"CREATE TABLE \"feeds\" (\n\"id\" UUID NOT NULL,\nPRIMARY KEY(\"id\"),\n\"created_at\" timestamp NOT NULL,\n\"updated_at\" timestamp NOT NULL,\n\"fetched_at\" timestamp NOT NULL,\n\"fetch_delay_s\" int NOT NULL,\n\"fetcher_state\" jsonb NOT NULL,\n\"feed_url\" VARCHAR (2048) NOT NULL,\n\"site_url\" VARCHAR (2048),\n\"title\" VARCHAR (1024),\n\"icon\" VARCHAR (2048)\n);"	1:nil
+12=ConnExec	2:"insert into schema_migration (version) values ('20210404133209')"	1:nil
+13=ConnExec	2:"CREATE TABLE \"articles\" (\n\"id\" UUID NOT NULL,\nPRIMARY KEY(\"id\"),\n\"created_at\" timestamp NOT NULL,\n\"updated_at\" timestamp NOT NULL,\n\"seq\" BIGSERIAL NOT NULL,\n\"feed_id\" UUID NOT NULL,\n\"site_guid\" VARCHAR (2048) NOT NULL,\n\"posted_at\" timestamp NOT NULL,\n\"link\" VARCHAR (2048),\n\"thumbnail\" VARCHAR (2048),\n\"image\" VARCHAR (2048),\n\"image_title\" VARCHAR (2048),\n\"title\" text,\n\"teaser\" text,\n\"content\" jsonb NOT NULL,\nFOREIGN KEY (\"feed_id\") REFERENCES \"feeds\" (\"id\") ON DELETE cascade\n);\nCREATE UNIQUE INDEX \"articles_site_guid_feed_id_idx\" ON \"articles\" (site_guid, feed_id);\nCREATE UNIQUE INDEX \"articles_seq_idx\" ON \"articles\" (seq);\nCREATE INDEX \"articles_feed_id_idx\" ON \"articles\" (feed_id);"	1:nil
+14=ConnExec	2:"insert into schema_migration (version) values ('20210404133416')"	1:nil
+15=ConnExec	2:"CREATE TABLE \"labels\" (\n\"id\" UUID NOT NULL,\nPRIMARY KEY(\"id\"),\n\"created_at\" timestamp NOT NULL,\n\"updated_at\" timestamp NOT NULL,\n\"title\" VARCHAR (1024),\n\"color\" VARCHAR (16)\n);"	1:nil
+16=ConnExec	2:"insert into schema_migration (version) values ('20210404133617')"	1:nil
+17=ConnExec	2:"CREATE TABLE \"users\" (\n\"id\" UUID NOT NULL,\nPRIMARY KEY(\"id\"),\n\"created_at\" timestamp NOT NULL,\n\"updated_at\" timestamp NOT NULL,\n\"auth_origin\" VARCHAR (255) NOT NULL,\n\"auth_subject\" VARCHAR (255) NOT NULL,\n\"folders\" jsonb NOT NULL\n);\nCREATE UNIQUE INDEX \"users_auth_origin_auth_subject_idx\" ON \"users\" (auth_origin, auth_subject);"	1:nil
+18=ConnExec	2:"insert into schema_migration (version) values ('20210418233953')"	1:nil
+19=ConnExec	2:"CREATE TABLE \"user_feeds\" (\n\"id\" serial NOT NULL,\n\"user_id\" UUID NOT NULL,\n\"feed_id\" UUID NOT NULL,\nPRIMARY KEY(\"user_id\", \"feed_id\")\n);"	1:nil
+20=ConnExec	2:"insert into schema_migration (version) values ('20210531195619')"	1:nil
+21=ConnPrepare	2:"INSERT INTO \"users\" (\"auth_origin\", \"auth_subject\", \"created_at\", \"folders\", \"id\", \"updated_at\") VALUES ($1, $2, $3, $4, $5, $6)"	1:nil
+22=StmtNumInput	3:6
+23=StmtExec	1:nil
+24=ConnQuery	2:"SELECT users.auth_origin, users.auth_subject, users.created_at, users.folders, users.id, users.updated_at FROM users AS users WHERE users.id = $1 LIMIT 1"	1:nil
+25=RowsColumns	9:["auth_origin","auth_subject","created_at","folders","id","updated_at"]
+26=RowsNext	11:[2:"",2:"",8:2022-01-31T00:00:00+00:00,10:bnVsbA,10:NmZmMGI4OTgtZTc5YS00OGY4LWJjMTQtNGJiNDgwMTgzNjBm,8:2022-01-31T00:00:00+00:00]	1:nil
+27=ConnExec	2:"UPDATE \"users\" AS users SET \"folders\" = $1 WHERE users.id = $2"	1:nil
+28=ConnQuery	2:"SELECT user_feeds.feed_id, user_feeds.user_id FROM user_feeds AS user_feeds WHERE user_id = $1"	1:nil
+29=RowsColumns	9:["feed_id","user_id"]
+30=RowsNext	11:[]	7:"EOF"
+
+"TestSetup"=1,2,3,1,4,1,5,6,7,1,8,9,9,10,1,5,11,12,7,1,8,9,9,10,1,5,13,14,7,1,8,9,9,10,1,5,15,16,7,1,8,9,9,10,1,5,17,18,7,1,8,9,9,10,1,5,19,20,7
+"TestAPIPopRepository_ChangeFolders"=1,21,21,22,23,24,25,25,26,27,28,29,29,30

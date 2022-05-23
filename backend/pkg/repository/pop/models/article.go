@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/gobuffalo/nulls"
-	"github.com/gobuffalo/pop"
+	"github.com/gobuffalo/pop/v6"
 	"github.com/gobuffalo/validate"
 	"github.com/gofrs/uuid"
 )

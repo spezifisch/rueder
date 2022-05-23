@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/apex/log"
-	"github.com/gobuffalo/pop"
+	"github.com/gobuffalo/pop/v6"
 	"github.com/gofrs/uuid"
 	"github.com/jackc/pgx/v4"
 

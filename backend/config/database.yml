@@ -2,16 +2,18 @@
 # this file is NOT secret as it is included in the docker images.
 # if you want to override the production db you should bind mount a changed copy of this file to /app/database.yml instead of changing it here!
 development:
-  dialect: postgres
-  database: rueder_development
-  user: postgres
-  password: postgres
-  host: db
-  options:
-    application_name: "rueder3-dev"
+    dialect: postgres
+    database: rueder_development
+    user: postgres
+    password: postgres
+    host: db
+    options:
+        application_name: "rueder3-dev"
 
 test:
-  url: {{envOr "TEST_DATABASE_URL" "postgres://postgres:postgres@db:5432/rueder_test?sslmode=disable"}}
+    # use copyist for testing: https://github.com/cockroachdb/copyist
+    driver: copyist_postgres
+    url: {{envOr "TEST_DATABASE_URL" "postgres://postgres:postgres@localhost:5432/rueder_test?sslmode=disable"}}
 
 production:
-  url: {{envOr "DATABASE_URL" "postgres://postgres:postgres@db:5432/rueder_production?sslmode=disable&application_name=rueder3"}}
+    url: {{envOr "DATABASE_URL" "postgres://postgres:postgres@db:5432/rueder_production?sslmode=disable&application_name=rueder3"}}

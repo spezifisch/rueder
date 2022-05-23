@@ -5,10 +5,11 @@ FROM golang:1.18.1-alpine3.15 as build
 
 # cache go deps
 WORKDIR /build
+
 COPY go.mod go.sum ./
 RUN go mod download && \
     # Soda CLI: https://gobuffalo.io/en/docs/db/toolbox/
-    go install github.com/gobuffalo/pop/soda@v4.13.1+incompatible
+    go install github.com/gobuffalo/pop/v6/soda@v6.0.3
 
 # compile
 COPY . .

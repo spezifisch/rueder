@@ -1,4 +1,4 @@
-name: backend tests
+name: backend lint and tests
 
 on:
     push:
@@ -8,7 +8,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    test:
+    ci:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
@@ -18,5 +18,8 @@ jobs:
               with:
                   go-version: 1.18
 
+            - name: Run linter
+              run: cd backend && make lint
+
             - name: Run tests
-              run: cd backend && go test -v ./...
+              run: cd backend && make test

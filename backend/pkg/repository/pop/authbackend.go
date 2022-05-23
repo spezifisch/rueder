@@ -4,7 +4,7 @@ import (
 	"errors"
 
 	"github.com/apex/log"
-	"github.com/gobuffalo/pop"
+	"github.com/gobuffalo/pop/v6"
 
 	"github.com/spezifisch/rueder3/backend/pkg/authbackend/controller"
 	"github.com/spezifisch/rueder3/backend/pkg/repository/pop/models"
