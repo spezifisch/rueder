@@ -19,7 +19,10 @@ jobs:
                   go-version: 1.18
 
             - name: Run linter
-              run: cd backend && make lint
+              uses: golangci/golangci-lint-action@v3
+              with:
+                  version: v1.29
+                  working-directory: backend
 
             - name: Run tests
               run: cd backend && make test
