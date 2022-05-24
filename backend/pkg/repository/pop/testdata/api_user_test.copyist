@@ -1,0 +1,15 @@
+1=DriverOpen	1:nil
+2=ConnExec	2:"DO\n$func$\nDECLARE\n   _tbl text;\n   _sch text;\nBEGIN\n   FOR _sch, _tbl IN\n      SELECT schemaname, tablename\n      FROM   pg_tables\n      WHERE  tablename <> 'schema_migration' AND schemaname NOT IN ('pg_catalog', 'information_schema') AND tableowner = current_user\n   LOOP\n      --RAISE ERROR '%',\n      EXECUTE  -- dangerous, test before you execute!\n         format('TRUNCATE TABLE %I.%I CASCADE', _sch, _tbl);\n   END LOOP;\nEND\n$func$;"	1:nil
+3=ConnPrepare	2:"INSERT INTO \"users\" (\"auth_origin\", \"auth_subject\", \"created_at\", \"folders\", \"id\", \"updated_at\") VALUES ($1, $2, $3, $4, $5, $6)"	1:nil
+4=StmtNumInput	3:6
+5=StmtExec	1:nil
+6=ConnQuery	2:"SELECT users.auth_origin, users.auth_subject, users.created_at, users.folders, users.id, users.updated_at FROM users AS users WHERE users.id = $1 LIMIT 1"	1:nil
+7=RowsColumns	9:["auth_origin","auth_subject","created_at","folders","id","updated_at"]
+8=RowsNext	11:[]	7:"EOF"
+9=RowsNext	11:[2:"",2:"",8:2022-01-31T00:00:00+00:00,10:bnVsbA,10:NmZmMGI4OTgtZTc5YS00OGY4LWJjMTQtNGJiNDgwMTgzNjBm,8:2022-01-31T00:00:00+00:00]	1:nil
+10=ConnExec	2:"UPDATE \"users\" AS users SET \"folders\" = $1 WHERE users.id = $2"	1:nil
+11=ConnQuery	2:"SELECT user_feeds.feed_id, user_feeds.user_id FROM user_feeds AS user_feeds WHERE user_id = $1"	1:nil
+12=RowsColumns	9:["feed_id","user_id"]
+
+"TestAPIPopRepository_Folders"=1,2,3,3,4,5,6,7,7,8,6,7,7,9
+"TestAPIUser_ChangeFolders"=1,2,3,3,4,5,6,7,7,8,6,7,7,9,10,11,12,12,8

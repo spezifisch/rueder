@@ -1,6 +1,10 @@
 .PHONY: all
 all: docs
 
+.PHONY: download
+download:
+	go mod download
+
 .PHONY: test
 test:
 	go test ./... -parallel=8 -count=1

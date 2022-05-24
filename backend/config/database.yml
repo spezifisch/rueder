@@ -15,5 +15,8 @@ test:
     driver: copyist_postgres
     url: {{envOr "TEST_DATABASE_URL" "postgres://postgres:postgres@localhost:5432/rueder_test?sslmode=disable"}}
 
+test_nocopyist:
+    url: {{envOr "TEST_DATABASE_URL" "postgres://postgres:postgres@localhost:5432/rueder_test?sslmode=disable"}}
+
 production:
     url: {{envOr "DATABASE_URL" "postgres://postgres:postgres@db:5432/rueder_production?sslmode=disable&application_name=rueder3"}}
