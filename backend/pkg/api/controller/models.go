@@ -85,12 +85,3 @@ type Folder struct {
 	Title string `json:"title,omitempty"`
 	Feeds []Feed `json:"feeds,omitempty"`
 }
-
-// Label groups together articles
-type Label struct {
-	ID uuid.UUID `json:"id"`
-
-	Title    string           `json:"title,omitempty"`
-	Color    string           `json:"color,omitempty"`
-	Articles []ArticlePreview `json:"articles,omitempty"`
-}

@@ -40,16 +40,6 @@ func (r *Repository) Folders(claims *helpers.AuthClaims) ([]controller.Folder, e
 	return folders, nil
 }
 
-// Labels returns mock labels
-func (r *Repository) Labels() ([]controller.Label, error) {
-	count := 4
-	labels := make([]controller.Label, count)
-	for i := 0; i < count; i++ {
-		labels[i], _ = r.GetLabel(1 + i)
-	}
-	return labels, nil
-}
-
 // GetArticle returns a mock article with the given id
 func (r *Repository) GetArticle(id uuid.UUID) (controller.Article, error) {
 	return controller.Article{
@@ -143,17 +133,6 @@ func (r *Repository) GetFolder(id int) (controller.Folder, error) {
 		ID:    getMockUUID(),
 		Title: fmt.Sprintf("Folder %d", id),
 		Feeds: feeds,
-	}, nil
-}
-
-// GetLabel returns a single mock label
-func (*Repository) GetLabel(id int) (controller.Label, error) {
-	title := fmt.Sprintf("Label %d", id)
-	color := []string{"red", "green", "blue"}[id%3]
-	return controller.Label{
-		ID:    getMockUUID(),
-		Title: title,
-		Color: color,
 	}, nil
 }
 

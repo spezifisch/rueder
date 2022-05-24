@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/viper"
 
 	"github.com/spezifisch/rueder3/backend/internal/common"
-	popRepository "github.com/spezifisch/rueder3/backend/pkg/repository/pop"
+	schedulerPopRepository "github.com/spezifisch/rueder3/backend/pkg/repository/pop/scheduler"
 	"github.com/spezifisch/rueder3/backend/pkg/worker"
 	"github.com/spezifisch/rueder3/backend/pkg/worker/scheduler"
 )
@@ -27,7 +27,7 @@ func main() {
 				workerCount = 1024
 			}
 
-			repository := popRepository.NewSchedulerPopRepository(db)
+			repository := schedulerPopRepository.NewSchedulerPopRepository(db)
 			if repository == nil {
 				return
 			}

@@ -100,16 +100,23 @@ pre-commit run --all-files
 ### Linting/Formatting
 
 For backend use `gofmt` for formatting and the linters configured in `golangci-lint`.
-Use `golangci-lint run` inside `./backend` directory to lint all files.
+Use `make lint` inside `./backend` directory to lint all files.
 
 For frontend use (inside `./frontend` directory) `npm run format` for formatting
 and as linters use `npm run lint` and `npm run validate`.
 
 ### Testing
 
+Look at the GitHub Workflows in `.github` if anything is unclear.
+
 #### Backend
 
-Use `go test ./...` to run tests using the included `_test.go` files.
+Use `make test` inside `./backend` to run tests using the included `_test.go` files.
+
+When you change something which affects test execution in `APIPopRepository`
+you need to start the test database service with `docker-compose up db` in `./backend`
+and then run `make test_record` to update copyist's logfiles. The updated files
+need to be committed, too.
 
 #### Frontend
 

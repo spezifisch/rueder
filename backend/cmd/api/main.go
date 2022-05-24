@@ -9,7 +9,7 @@ import (
 	"github.com/spezifisch/rueder3/backend/pkg/api/controller"
 	ruederHTTP "github.com/spezifisch/rueder3/backend/pkg/api/http"
 	mockRepository "github.com/spezifisch/rueder3/backend/pkg/repository/mock"
-	popRepository "github.com/spezifisch/rueder3/backend/pkg/repository/pop"
+	apiPopRepository "github.com/spezifisch/rueder3/backend/pkg/repository/pop/api"
 )
 
 func main() {
@@ -32,7 +32,7 @@ func main() {
 
 			var c *controller.Controller
 			if db != "mock" {
-				r := popRepository.NewAPIPopRepository(db)
+				r := apiPopRepository.NewAPIPopRepository(db)
 				if r == nil {
 					return
 				}

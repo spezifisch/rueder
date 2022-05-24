@@ -8,7 +8,7 @@ import (
 	"github.com/spezifisch/rueder3/backend/internal/common"
 	"github.com/spezifisch/rueder3/backend/pkg/authbackend/controller"
 	authBackendHTTP "github.com/spezifisch/rueder3/backend/pkg/authbackend/http"
-	popRepository "github.com/spezifisch/rueder3/backend/pkg/repository/pop"
+	authBackendPopRepository "github.com/spezifisch/rueder3/backend/pkg/repository/pop/authbackend"
 )
 
 func main() {
@@ -22,7 +22,7 @@ func main() {
 
 			isDevelopmentMode := viper.GetBool("dev")
 
-			r := popRepository.NewAuthBackendPopRepository(db)
+			r := authBackendPopRepository.NewAuthBackendPopRepository(db)
 			if r == nil {
 				return
 			}

@@ -1,4 +1,4 @@
-package pop
+package api
 
 import (
 	"reflect"
@@ -17,7 +17,7 @@ func TestAPIUser_First(t *testing.T) {
 	firstRunTest(t)
 }
 
-func TestAPIPopRepository_Folders(t *testing.T) {
+func TestAPIUser_Folders(t *testing.T) {
 	defer copyist.Open(t).Close()
 	beforeEachTest(t)
 

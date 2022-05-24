@@ -1,4 +1,4 @@
-package pop
+package api
 
 import (
 	"os"
@@ -22,7 +22,7 @@ func TestMain(m *testing.M) {
 	// pop is configured to use it in our included database.yml
 	copyist.Register("postgres")
 
-	configPath := "../../../config"
+	configPath := "../../../../config"
 	_ = pop.AddLookupPaths(configPath)
 
 	// override CreatedAt and UpdatedAt timestamps to be reproducible
@@ -45,7 +45,7 @@ func assertNoError(err error, msg string) {
 
 // setupTestDB is called from TestMain only in recording mode
 func setupTestDB() {
-	migrationPath := "../../../migrations"
+	migrationPath := "../../../../migrations"
 
 	// called from TestMain before copyist sessions can be opened,
 	// therefore we need to connect directly to the db
@@ -56,7 +56,7 @@ func setupTestDB() {
 	// recreate db
 	_ = pop.DropDB(conn) // we don't care whether it exists
 	err = pop.CreateDB(conn)
-	assertNoError(err, "create")
+	assertNoError(err, "create db failed. did you forget to do 'docker-compose up db'?")
 
 	// create tables
 	mig, err := pop.NewFileMigrator(migrationPath, conn)

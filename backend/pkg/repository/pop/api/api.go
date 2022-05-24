@@ -1,4 +1,4 @@
-package pop
+package api
 
 import (
 	"github.com/apex/log"
@@ -29,25 +29,6 @@ func NewAPIPopRepository(db string) *APIPopRepository {
 		folderCountLimit:     100,
 		folderFeedCountLimit: 1000,
 	}
-}
-
-// Labels returns labels
-// TODO wth is this?? not tied to a user?
-func (r *APIPopRepository) Labels() (ret []controller.Label, err error) {
-	labels := []models.Label{}
-	err = r.pop.All(&labels)
-	if err != nil {
-		log.WithError(err).Error("failed fetching labels")
-		return
-	}
-
-	ret = make([]controller.Label, len(labels))
-	for i := 0; i < len(labels); i++ {
-		ret[i].ID = labels[i].ID
-		ret[i].Color = labels[i].Color
-		ret[i].Title = labels[i].Title
-	}
-	return
 }
 
 // Feeds returns all feeds

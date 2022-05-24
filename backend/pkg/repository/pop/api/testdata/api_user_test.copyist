@@ -11,5 +11,5 @@
 11=ConnQuery	2:"SELECT user_feeds.feed_id, user_feeds.user_id FROM user_feeds AS user_feeds WHERE user_id = $1"	1:nil
 12=RowsColumns	9:["feed_id","user_id"]
 
-"TestAPIPopRepository_Folders"=1,2,3,3,4,5,6,7,7,8,6,7,7,9
+"TestAPIUser_Folders"=1,2,3,3,4,5,6,7,7,8,6,7,7,9
 "TestAPIUser_ChangeFolders"=1,2,3,3,4,5,6,7,7,8,6,7,7,9,10,11,12,12,8

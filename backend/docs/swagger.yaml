@@ -132,19 +132,6 @@ definitions:
       title:
         type: string
     type: object
-  controller.Label:
-    properties:
-      articles:
-        items:
-          $ref: '#/definitions/controller.ArticlePreview'
-        type: array
-      color:
-        type: string
-      id:
-        type: string
-      title:
-        type: string
-    type: object
   httputil.HTTPError:
     properties:
       code:
@@ -525,36 +512,6 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Change folder list, titles, feeds
-      tags:
-      - feed
-  /labels:
-    get:
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            items:
-              $ref: '#/definitions/controller.Label'
-            type: array
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/httputil.HTTPError'
-        "401":
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/httputil.HTTPError'
-        "403":
-          description: Forbidden
-          schema:
-            $ref: '#/definitions/httputil.HTTPError'
-      security:
-      - ApiKeyAuth: []
-      summary: Get label list
       tags:
       - feed
 securityDefinitions:

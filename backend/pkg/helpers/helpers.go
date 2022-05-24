@@ -11,21 +11,30 @@ import (
 // source: https://stackoverflow.com/a/55551215
 func IsURL(str string) bool {
 	u, err := url.Parse(str)
+	if err != nil {
+		return false
+	}
 	scheme := strings.ToLower(u.Scheme)
-	return err == nil && (scheme == "http" || scheme == "https") && u.Host != ""
+	return (scheme == "http" || scheme == "https") && u.Host != ""
 }
 
 // IsHTTPURL returns true if it's a valid HTTP URL (no SSL)
 func IsHTTPURL(str string) bool {
 	u, err := url.Parse(str)
+	if err != nil {
+		return false
+	}
 	scheme := strings.ToLower(u.Scheme)
-	return err == nil && scheme == "http" && u.Host != ""
+	return scheme == "http" && u.Host != ""
 }
 
 // RewriteToHTTPS replaces the protocol with https in a URL
 func RewriteToHTTPS(str string) string {
+	if str == "" {
+		return str
+	}
 	u, err := url.Parse(str)
-	if err != nil {
+	if err != nil || u.Host == "" {
 		return str
 	}
 	u.Scheme = "https"

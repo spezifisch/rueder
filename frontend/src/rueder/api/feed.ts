@@ -27,14 +27,6 @@ export class FeedAPI {
         return new apiGet<ArticlePreview[]>(this.baseURL, "articles").getPromise(feed_id, start)
     }
 
-    GetFolders(): Promise<Folder[]> {
-        return new apiGet<Folder[]>(this.baseURL, "folders").getPromise()
-    }
-
-    GetLabels(): LabelStore {
-        return new apiGet<Label[]>(this.baseURL, "labels").getStore()
-    }
-
     GetFeeds(): Promise<Feed[]> {
         return new apiGet<Feed[]>(this.baseURL, "feeds").getPromise()
     }
@@ -46,6 +38,10 @@ export class FeedAPI {
 
     AddFeed(url: string): Promise<AddFeedResponse> {
         return new apiAddFeed(this.baseURL, "feed").add(url)
+    }
+
+    GetFolders(): Promise<Folder[]> {
+        return new apiGet<Folder[]>(this.baseURL, "folders").getPromise()
     }
 
     ChangeFolders(folders: Folder[]): Promise<ChangeFoldersResponse> {

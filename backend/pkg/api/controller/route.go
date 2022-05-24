@@ -97,26 +97,6 @@ func (c *Controller) Folders(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, folders)
 }
 
-// Labels godoc
-// @Summary Get label list
-// @Tags feed
-// @Accept json
-// @Produce json
-// @Success 200 {object} []Label
-// @Failure 400 {object} httputil.HTTPError
-// @Failure 401 {object} httputil.HTTPError
-// @Failure 403 {object} httputil.HTTPError
-// @Security ApiKeyAuth
-// @Router /labels [get]
-func (c *Controller) Labels(ctx *gin.Context) {
-	labels, err := c.repository.Labels()
-	if err != nil {
-		httputil.NewError(ctx, http.StatusNotFound, errors.New("labels not found"))
-		return
-	}
-	ctx.JSON(http.StatusOK, labels)
-}
-
 // GetFeed godoc
 // @Summary Get feed info for a single feed
 // @Tags feed

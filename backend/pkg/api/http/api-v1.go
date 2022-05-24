@@ -32,13 +32,14 @@ func (s *Server) initAPIv1() {
 
 	v1 := s.engine.Group("/api/v1", authMiddleware.MiddlewareFunc()) /* <- this is the important part with the auth */
 	{
+		// not tied so the user:
 		v1.GET("/article/:id", s.controller.Article)
 		v1.GET("/articles/:feed_id", s.controller.Articles)
-		v1.GET("/folders", s.controller.Folders)
-		v1.POST("/folders", s.controller.ChangeFolders)
-		v1.GET("/labels", s.controller.Labels)
 		v1.GET("/feeds", s.controller.Feeds)
 		v1.GET("/feed/:feed_id", s.controller.GetFeed)
 		v1.POST("/feed", s.controller.AddFeed)
+		// tied to the user:
+		v1.GET("/folders", s.controller.Folders)
+		v1.POST("/folders", s.controller.ChangeFolders)
 	}
 }

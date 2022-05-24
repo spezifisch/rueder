@@ -7,9 +7,6 @@ import (
 
 // Repository stores everything for the frontend API
 type Repository interface {
-	Folders(*helpers.AuthClaims) ([]Folder, error)
-	Labels() ([]Label, error)
-
 	GetArticle(id uuid.UUID) (Article, error)
 	GetArticles(feedID uuid.UUID, limit int, offset int) ([]ArticlePreview, error)
 
@@ -18,5 +15,7 @@ type Repository interface {
 	GetFeedByURL(url string) (Feed, error)
 	AddFeed(url string) (feedID uuid.UUID, err error)
 
+	// tied to the user:
+	Folders(*helpers.AuthClaims) ([]Folder, error)
 	ChangeFolders(*helpers.AuthClaims, []Folder) error
 }

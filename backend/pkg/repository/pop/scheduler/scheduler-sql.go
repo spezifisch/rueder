@@ -1,4 +1,4 @@
-package pop
+package scheduler
 
 import "github.com/gofrs/uuid"
 
