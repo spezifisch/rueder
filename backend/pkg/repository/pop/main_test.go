@@ -80,7 +80,8 @@ func beforeEachTest(t *testing.T) {
 	assert.NoError(t, err, "beforeEachTest connect")
 
 	// delete content
-	conn.TruncateAll()
+	err = conn.TruncateAll()
+	assert.NoError(t, err, "beforeEachTest truncate")
 
 	// create user
 	createUser(t, conn, testUserID)
