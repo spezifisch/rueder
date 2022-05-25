@@ -13,7 +13,6 @@ repos:
       rev: e31711c0db57df9b350fbaeaae6de745972f3e66
       hooks:
           - id: markdownlint_docker
-            args: ["-r", "~MD029"]
     - repo: https://github.com/hadolint/hadolint
       rev: v2.10.0
       hooks:
