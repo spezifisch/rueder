@@ -1,8 +1,6 @@
 # rueder
 
-Third time's the charm.
-
-![rueder3 logo: a gopher with glasses reading a newspaper](docs/images/rueder3gopher_s.png)
+![rueder logo: a gopher with glasses reading a newspaper](docs/images/rueder3gopher_s.png)
 
 ## Dependencies
 
@@ -26,6 +24,9 @@ Docker or podman. Everything is contained in docker images.
 
 While the `docker-compose.*` files in the main directory are for production use
 the ones inside `backend/` and `frontend/` are intended for development purposes.
+The Dockerfiles for production and development are named `Dockerfile` and
+`Dockerfile.dev` respectively and are located next to each other in the `docker`
+sub-directories inside the backend and frontend directories.
 
 To start a local instance of `rueder3` with hot-reload on code changes, simply do:
 
@@ -63,12 +64,13 @@ Feedfinder.
 
 #### Initial Setup for Development
 
-Requirements:
+Development Requirements:
 
-- Python for pre-commit
+- Python (3.7+ required) for pre-commit
 - Docker for some pre-commit hooks
-- Node/npm for frontend checks
-- golangci-lint for backend checks: <https://golangci-lint.run/usage/install/>
+- Node/npm for frontend checks (16.0.0+ required)
+- Go (1.17+ required) for backend checks (make sure `GOPATH` environment variable is set)
+- golangci-lint for backend checks: <https://golangci-lint.run/usage/install/> (*known issue:* current version doesn't support Go 1.18 yet)
 
 After installing these requirements and cloning the repository do these steps to
 set up Git hooks:
