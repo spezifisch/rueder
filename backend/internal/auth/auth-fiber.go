@@ -19,7 +19,7 @@ func NewFiberAuthMiddleware(jwtSecretKey string) (authMiddleware fiber.Handler, 
 	}
 
 	config := jwtware.Config{
-		SigningKey: jwtSecretKey,
+		SigningKey: []byte(jwtSecretKey),
 
 		// Signing method, used to check token signing method.
 		// Optional. Default: "HS256".
@@ -38,7 +38,7 @@ func NewFiberAuthMiddleware(jwtSecretKey string) (authMiddleware fiber.Handler, 
 			}
 			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
 				"code":    fiber.StatusUnauthorized,
-				"message": "Invalid or expired JWT",
+				"message": "Invalid or expired JWT " + err.Error(),
 			})
 		},
 

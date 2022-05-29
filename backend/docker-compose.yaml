@@ -70,6 +70,23 @@ services:
         depends_on:
             - db
 
+    events:
+        build:
+            context: .
+            dockerfile: ./docker/events/Dockerfile.dev
+        image: rueder3-events-dev
+        env_file:
+            - ./rueder-dev.env
+        ports:
+            - "127.0.0.1:8083:8080"
+        volumes:
+            - type: bind
+              source: ./
+              target: /app/
+            - type: volume
+              source: rueder_dev_events_docs
+              target: /app/docs
+
     feedfinder:
         build:
             context: .
@@ -89,4 +106,5 @@ services:
 
 volumes:
     rueder_dev_db:
+    rueder_dev_events_docs:
     rueder_dev_feedfinder_docs:

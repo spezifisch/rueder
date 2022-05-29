@@ -12,7 +12,7 @@ RUN go mod download && \
 
 # compile
 COPY . .
-RUN swag init -g ./pkg/feedfinder/http/api.go --exclude ./pkg/api,./pkg/authbackend && \
+RUN swag init -g ./pkg/feedfinder/http/api.go --exclude ./pkg/api,./pkg/authbackend,./pkg/events && \
     go build -ldflags="-s -w" -o feedfinder ./cmd/feedfinder
 
 ## deploy stage

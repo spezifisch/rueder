@@ -50,7 +50,8 @@ The commands above spawn the following services, all listening on localhost:
 - rueder web frontend that can be accessed at <http://127.0.0.1:3000> (with
   vite hot-reload)
 - rueder backend processes (also with hot-reload): http feed api (:8080),
-  authbackend (:8082, auth claims provider for loginsrv), feedfinder (:8081)
+  authbackend (:8082, auth claims provider for loginsrv), events api (:8083),
+  feedfinder api (:8081)
 - additional required backend services: auth (:8082, loginsrv), postgres (:5432)
 - additional utility services: imgproxy (:8086)
 

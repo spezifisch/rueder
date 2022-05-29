@@ -8,7 +8,9 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 
+	"github.com/spezifisch/rueder3/backend/internal/auth"
 	"github.com/spezifisch/rueder3/backend/pkg/events/controller"
+	"github.com/spezifisch/rueder3/backend/pkg/helpers"
 )
 
 // Server is a http server
@@ -36,13 +38,26 @@ func NewServer(controller *controller.Controller, jwtSecretKey string, isDevelop
 }
 
 func (s *Server) init() {
+	appName := "rueder-events"
+	if s.isDevelopmentMode {
+		appName += "-dev"
+	}
+
 	s.app = fiber.New(fiber.Config{
-		// trust proxy headers in dev mode
+		AppName: appName,
+		// print routes in dev mode
+		EnablePrintRoutes: s.isDevelopmentMode,
+		// distrust proxy headers only in prod mode
 		EnableTrustedProxyCheck: !s.isDevelopmentMode,
 		TrustedProxies:          s.trustedProxies,
 		ProxyHeader:             fiber.HeaderXForwardedFor,
+		// enforce good behaviour by frontend
+		StrictRouting: true,
+		// why is this not true by default?
+		CaseSensitive: true,
 	})
 
+	// add some additional middlewares in dev mode
 	if s.isDevelopmentMode {
 		// log requests
 		s.app.Use(logger.New())
@@ -64,7 +79,25 @@ func (s *Server) init() {
 		}))
 	}
 
-	s.initAPIv1()
+	// add auth middleware, all following routes require auth
+	authMiddleware, err := auth.NewFiberAuthMiddleware(s.jwtSecretKey)
+	if err != nil {
+		log.WithError(err).Error("couldn't setup jwt auth middleware")
+		return
+	}
+	s.app.Use(authMiddleware)
+
+	// routes
+	s.app.Get("/", func(c *fiber.Ctx) error {
+		claims := helpers.GetFiberAuthClaims(c)
+		if claims == nil {
+			return c.SendStatus(fiber.StatusBadRequest)
+		}
+		return c.JSON(fiber.Map{
+			"msg":    "default route of " + appName,
+			"claims": claims,
+		})
+	})
 }
 
 // Run starts the server
