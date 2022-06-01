@@ -8,6 +8,7 @@
     import SimpleModal from "../ui/SimpleModal.svelte"
     import Button from "../ui/Button.svelte"
     import Spinner from "../ui/Spinner.svelte"
+    import OutlineSave from "../ui/heroicons/outline-save.svelte"
 
     import { OPML, Header, Body, Outline } from "../../helpers/opml"
     import { contextKey } from "../../helpers/constants"
@@ -63,21 +64,7 @@
             <div
                 class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-gray-100 sm:mx-0 sm:h-10 sm:w-10"
             >
-                <!-- heroicon: outline/save -->
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 text-gray-800"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
-                    />
-                </svg>
+                <OutlineSave size={6} addClass="text-gray-800" />
             </div>
             <div class="text-center sm:mt-0 sm:ml-4 sm:text-left">
                 <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">OPML Export</h3>
@@ -91,8 +78,7 @@
             <Spinner />
         {:then opmlOutput}
             <div class="overflow-auto" style="max-height: 40vh">
-                <pre
-                    class="bg-gray-200 text-xs whitespace-pre-wrap break-all p-1">
+                <pre class="bg-gray-200 text-xs whitespace-pre-wrap break-all p-1">
                     {opmlOutput}
                 </pre>
             </div>

@@ -226,7 +226,7 @@
             sidebarMenuOpen = false
             hotkeyPressed = event.key
         }
-        if (isDialogOpen || articleEditorIsFocused) {
+        if (isDialogOpen || sidebarMenuOpen || articleEditorIsFocused) {
             // don't intercept keyboard chars when we have input fields
             return
         }

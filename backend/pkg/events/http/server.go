@@ -10,7 +10,6 @@ import (
 
 	"github.com/spezifisch/rueder3/backend/internal/auth"
 	"github.com/spezifisch/rueder3/backend/pkg/events/controller"
-	"github.com/spezifisch/rueder3/backend/pkg/helpers"
 )
 
 // Server is a http server
@@ -26,6 +25,10 @@ type Server struct {
 
 // NewServer creates a default http backend
 func NewServer(controller *controller.Controller, jwtSecretKey string, isDevelopmentMode bool, trustedProxies []string) *Server {
+	if controller == nil {
+		panic("controller is nil")
+	}
+
 	s := &Server{
 		Bind:              ":8080",
 		controller:        controller,
@@ -88,22 +91,14 @@ func (s *Server) init() {
 	s.app.Use(authMiddleware)
 
 	// routes
-	s.app.Get("/", func(c *fiber.Ctx) error {
-		claims := helpers.GetFiberAuthClaims(c)
-		if claims == nil {
-			return c.SendStatus(fiber.StatusBadRequest)
-		}
-		return c.JSON(fiber.Map{
-			"msg":    "default route of " + appName,
-			"claims": claims,
-		})
-	})
+	s.app.Get("/", s.controller.DefaultRoute)
+	s.app.Get("/sse", s.controller.SSE)
 }
 
 // Run starts the server
 func (s *Server) Run() {
 	err := s.app.Listen(s.Bind)
 	if err != nil {
-		log.WithError(err).Error("http server failed")
+		log.WithError(err).Fatal("http server failed")
 	}
 }

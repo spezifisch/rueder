@@ -33,6 +33,14 @@
     >
         <slot />
     </button>
+{:else if mode == "error-dark"}
+    <button
+        on:click={(e) => dispatch("click", e)}
+        type="button"
+        class="border border-red-700 bg-red-900 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline {addClass}"
+    >
+        <slot />
+    </button>
 {:else if mode == "warning"}
     <button
         on:click={(e) => dispatch("click", e)}

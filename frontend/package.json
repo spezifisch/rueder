@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "docker-dev": "cp -R /node_modules/* /node_modules/.bin ./node_modules/ && vite --host",
+    "imageproxy-dev": "docker-compose up imgproxy",
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest",
@@ -38,6 +39,7 @@
     "tsc-files": "^1.1.3"
   },
   "dependencies": {
+    "@spezifisch/event-source-polyfill": "^1.0.31",
     "@spezifisch/imgproxyjs": "^1.7.1",
     "@spezifisch/svelte-color": "^1.0.3",
     "@spezifisch/svelte-dnd-action": "^0.9.19",
