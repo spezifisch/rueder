@@ -249,11 +249,12 @@ func (r *SchedulerPopRepository) addFeedListener(addedFeeds chan<- uuid.UUID, ne
 		if r.pgx == nil {
 			// db disconnected
 			if reconnectable := r.connectListener(); !reconnectable {
-				// db not supported, bye
+				log.Error("listener: db suddenly not supported")
 				return
 			}
 			if r.pgx == nil {
 				// still not connected
+				log.Error("listener: retrying in 10s")
 				time.Sleep(10 * time.Second)
 				continue
 			}

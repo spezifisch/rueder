@@ -31,7 +31,7 @@ services:
             - db
 
     db:
-        image: postgres:13
+        image: docker.io/library/postgres:13.6-alpine
         environment:
             POSTGRES_DB: rueder_development
             POSTGRES_USER: postgres
@@ -103,6 +103,11 @@ services:
             - type: volume
               source: rueder_dev_feedfinder_docs
               target: /app/docs
+
+    redis:
+        image: docker.io/library/redis:7.0.0-alpine3.16
+        ports:
+            - "127.0.0.1:6379:6379"
 
 volumes:
     rueder_dev_db:

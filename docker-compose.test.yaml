@@ -1,6 +1,6 @@
 services:
     nginx:
-        image: nginxinc/nginx-unprivileged:1.21.6-alpine
+        image: docker.io/nginxinc/nginx-unprivileged:1.21.6-alpine
         ports:
             - "5000:8080"
         hostname: rueder
@@ -71,7 +71,7 @@ services:
             - db
 
     auth:
-        image: tarent/loginsrv:1.3.0
+        image: docker.io/tarent/loginsrv:1.3.0
         env_file:
             - ./config/rueder-test.env
         depends_on:
@@ -94,7 +94,7 @@ services:
             - db
 
     imgproxy:
-        image: darthsim/imgproxy:v3.5.0
+        image: docker.io/darthsim/imgproxy:v3.5.1
         env_file:
             - ./config/imgproxy.env
         volumes:

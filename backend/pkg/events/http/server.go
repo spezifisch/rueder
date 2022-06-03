@@ -74,7 +74,7 @@ func (s *Server) init() {
 		// add CORS support because in dev mode we usually run on a different port than the frontend
 		s.app.Use(cors.New(cors.Config{
 			AllowOrigins:     "*",
-			AllowMethods:     "GET,POST",
+			AllowMethods:     "GET",
 			AllowHeaders:     "Origin, Content-Type, Authorization",
 			AllowCredentials: false, // no cookies
 			ExposeHeaders:    "Content-Length",

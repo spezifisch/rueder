@@ -16,7 +16,7 @@ services:
         restart: on-failure
 
     imgproxy:
-        image: darthsim/imgproxy:latest
+        image: docker.io/darthsim/imgproxy:v3.5.1
         environment:
             IMGPROXY_NETWORK: tcp4
             IMGPROXY_MAX_SRC_FILE_SIZE: 50000000

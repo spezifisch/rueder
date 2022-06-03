@@ -58,6 +58,7 @@ func (s *Scheduler) Run() {
 	// start listening for newly added feeds
 	err := s.repository.RunFeedChangeListener(s.feedAdded, s.feedRehash)
 	if err != nil {
+		log.WithError(err).Error("failed setting up feedchangelistener")
 		return
 	}
 

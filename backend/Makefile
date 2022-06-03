@@ -36,6 +36,6 @@ run_feedfinder:
 	docker-compose up $(dockerargs) feedfinder
 
 run_events:
-	docker-compose up $(dockerargs) events
+	docker-compose up $(dockerargs) events redis
 
 .PHONY: *

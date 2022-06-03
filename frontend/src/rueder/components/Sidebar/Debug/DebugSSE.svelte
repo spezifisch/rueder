@@ -15,7 +15,10 @@
 
     // SSE connection
     const sse = new SSEStore()
-    onDestroy(() => sse.close())
+    onDestroy(() => {
+        console.log("closing sse")
+        sse.close()
+    })
     sse.connect()
 
     // our SSE store always only contains the latest message,
@@ -59,7 +62,7 @@
         scrollToBottom({
             container: scrollContainer,
             offset: 200, // need to add an offset or it stops a bit before the bottom
-            duration: 200,
+            duration: 100,
         })
     }
 </script>
