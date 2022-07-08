@@ -10,6 +10,7 @@ import (
 	eventsHTTP "github.com/spezifisch/rueder3/backend/pkg/events/http"
 	mockRepository "github.com/spezifisch/rueder3/backend/pkg/repository/mock"
 	apiPopRepository "github.com/spezifisch/rueder3/backend/pkg/repository/pop/api"
+	redisEventRepository "github.com/spezifisch/rueder3/backend/pkg/repository/redis"
 )
 
 func main() {
@@ -29,6 +30,14 @@ func main() {
 					panic("use a JWT secret with 32 or more characters!")
 				}
 			}
+			redisAddr := common.RequireString("redis-addr")
+			redisDB := viper.GetInt("redis-db")
+
+			// redis IPC repo
+			redisRepo := redisEventRepository.NewRedisRepository(redisAddr, redisDB)
+			if redisRepo == nil {
+				return
+			}
 
 			var c *controller.Controller
 			if db != "mock" {
@@ -37,11 +46,12 @@ func main() {
 					return
 				}
 
-				c = controller.NewController(r)
+				c = controller.NewController(r, redisRepo)
 			} else {
-				c = controller.NewController(mockRepository.NewMockRepository())
+				c = controller.NewController(mockRepository.NewMockRepository(), redisRepo)
 			}
 
+			// http server
 			s := eventsHTTP.NewServer(c, jwtSecretKey, isDevelopmentMode, trustedProxies)
 			s.Run()
 		},
@@ -64,6 +74,18 @@ func main() {
 
 	cmd.PersistentFlags().StringSliceVar(&trustedProxies, "trusted-proxy", []string{}, "set fiber's trusted proxy IP")
 	err = viper.BindPFlag("trusted-proxy", cmd.PersistentFlags().Lookup("trusted-proxy"))
+	if err != nil {
+		panic(err)
+	}
+
+	cmd.PersistentFlags().String("redis-addr", "redis:6379", "Redis database address")
+	err = viper.BindPFlag("redis-addr", cmd.PersistentFlags().Lookup("redis-addr"))
+	if err != nil {
+		panic(err)
+	}
+
+	cmd.PersistentFlags().Int("redis-db", 0, "Redis database ID")
+	err = viper.BindPFlag("redis-db", cmd.PersistentFlags().Lookup("redis-db"))
 	if err != nil {
 		panic(err)
 	}

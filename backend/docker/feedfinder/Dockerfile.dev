@@ -3,11 +3,15 @@ FROM golang:1.18.1-alpine3.15
 # set default timezone
 ARG TZ=Europe/Berlin
 ENV DEFAULT_TZ ${TZ}
+ENV CGO_ENABLED=1
 
 WORKDIR /app
 
 # add timezone for logs
-RUN apk add --no-cache tzdata=2022a-r0 && \
+RUN apk add --no-cache\
+    gcc=10.3.1_git20211027-r0 \
+    musl-dev=1.2.2-r7 \
+    tzdata=2022a-r0 && \
     ln -snf /usr/share/zoneinfo/${DEFAULT_TZ} /etc/localtime && \
     # Go Watch: https://github.com/mitranim/gow
     go install github.com/mitranim/gow@v0.0.0-20220125090630-5348a1592279 && \

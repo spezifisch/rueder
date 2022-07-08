@@ -23,9 +23,11 @@ func NewRedisRepository(addr string, db int) *RedisRepository {
 
 	_, err := rdb.Ping(ctx).Result()
 	if err != nil {
-		log.WithError(err).WithField("addr", addr).Error("couldn't connect with redis")
+		log.WithError(err).WithField("addr", addr).Error("couldn't connect to redis")
 		return nil
 	}
+
+	log.Info("connected to redis")
 
 	return &RedisRepository{
 		rdb: rdb,

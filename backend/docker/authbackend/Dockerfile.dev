@@ -3,12 +3,15 @@ FROM golang:1.18.1-alpine3.15
 # set default timezone
 ARG TZ=Europe/Berlin
 ENV DEFAULT_TZ ${TZ}
+ENV CGO_ENABLED=1
 
 WORKDIR /app
 
 # add pg_dump for db migrations
 RUN apk add --no-cache \
-    postgresql13-client=13.6-r0 \
+    gcc=10.3.1_git20211027-r0 \
+    musl-dev=1.2.2-r7 \
+    postgresql13-client=13.7-r0 \
     tzdata=2022a-r0 && \
     ln -snf /usr/share/zoneinfo/${DEFAULT_TZ} /etc/localtime && \
     # Go Watch: https://github.com/mitranim/gow
@@ -22,4 +25,4 @@ RUN go mod download
 
 VOLUME /app
 EXPOSE 8080
-CMD ["gow", "run", "./cmd/authbackend", "--dev", "--log", "debug"]
+CMD ["gow", "run", "-race", "./cmd/authbackend", "--dev", "--log", "debug"]
