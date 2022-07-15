@@ -58,7 +58,7 @@
     "postcss-nested": "^5.0.6",
     "sanitize-html": "^2.7.0",
     "sass": "^1.51.0",
-    "svelte": "^3.48.0",
+    "svelte": "^3.49.0",
     "svelte-check": "^2.7.0",
     "svelte-copy-to-clipboard": "^0.2.5",
     "svelte-file-dropzone": "0.0.15",
