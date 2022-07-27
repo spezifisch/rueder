@@ -1,6 +1,7 @@
 import { resolve } from "path"
 import { defineConfig, splitVendorChunkPlugin } from "vite"
 import { svelte } from "@sveltejs/vite-plugin-svelte"
+import legacy from "@vitejs/plugin-legacy"
 import transformPlugin from "vite-plugin-transform"
 
 // for transformPlugin
@@ -12,8 +13,12 @@ export default defineConfig({
     clearScreen: false,
     build: {
         chunkSizeWarningLimit: 1000,
+        minify: "terser",
     },
     plugins: [
+        legacy({
+            targets: ["defaults", "not IE 11"],
+        }),
         svelte(),
         splitVendorChunkPlugin(),
         transformPlugin({
@@ -21,4 +26,14 @@ export default defineConfig({
             exclude: ["node_modules"],
         }),
     ],
+    resolve: {
+        alias: {
+            fs: "browser-fs-access",
+            path: "path-browserify",
+            url: "url",
+        },
+    },
+    server: {
+        port: 3000,
+    },
 })
