@@ -1,7 +1,6 @@
 import { resolve } from "path"
 import { defineConfig, splitVendorChunkPlugin } from "vite"
 import { svelte } from "@sveltejs/vite-plugin-svelte"
-import legacy from "@vitejs/plugin-legacy"
 import transformPlugin from "vite-plugin-transform"
 
 // for transformPlugin
@@ -16,9 +15,6 @@ export default defineConfig({
         minify: "terser",
     },
     plugins: [
-        legacy({
-            targets: ["defaults", "not IE 11"],
-        }),
         svelte(),
         splitVendorChunkPlugin(),
         transformPlugin({
