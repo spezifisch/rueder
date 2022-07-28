@@ -27,6 +27,8 @@ export default defineConfig({
         }),
     ],
     resolve: {
+        // these polyfills are a workaround for https://github.com/vitejs/vite/issues/9200
+        // remove them when the issue gets resolved
         alias: {
             fs: "browser-fs-access",
             path: "path-browserify",
