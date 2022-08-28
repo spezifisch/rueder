@@ -11,6 +11,10 @@ jobs:
     lint:
         runs-on: ubuntu-latest
 
+        strategy:
+          matrix:
+            node-version: [16, 18]
+
         defaults:
             run:
                 working-directory: ./frontend
@@ -18,11 +22,21 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
+            - uses: pnpm/action-setup@v2.2.2
+              with:
+                  version: 7
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'pnpm'
+
             - name: Install modules
-              run: npm ci --no-audit
+              run: pnpm ci --no-audit
 
             - name: Run linters
-              run: npm run lint
+              run: pnpm lint
 
             - name: Run svelte-checks
-              run: npm run validate
+              run: pnpm validate
