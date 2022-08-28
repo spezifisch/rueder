@@ -30,7 +30,8 @@ jobs:
               uses: actions/setup-node@v2
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: 'pnpm'
+                  cache: "pnpm"
+                  cache-dependency-path: "**/pnpm-lock.json"
 
             - name: Install modules
               run: pnpm ci --no-audit

@@ -31,6 +31,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'pnpm'
+                  cache-dependency-path: "**/pnpm-lock.json"
 
             - name: Install modules
               run: pnpm ci --no-audit
