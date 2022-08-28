@@ -1,5 +1,5 @@
 import { ImgProxy } from "@spezifisch/imgproxyjs"
-import urljoin from "url-join"
+import { urljoin } from "./urljoin"
 
 export class ImageProxy {
     useProxy: boolean

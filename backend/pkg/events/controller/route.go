@@ -28,6 +28,7 @@ func (con *Controller) DefaultRoute(c *fiber.Ctx) error {
 		return c.SendStatus(fiber.StatusBadRequest)
 	}
 	return c.JSON(fiber.Map{
+		"ping":   "pong",
 		"msg":    "default route of " + c.App().Config().AppName,
 		"claims": claims,
 	})
@@ -49,6 +50,7 @@ func (con *Controller) SSE(c *fiber.Ctx) error {
 		return c.SendStatus(fiber.StatusBadRequest)
 	}
 	userID := claims.ID
+	startTime := time.Now().UnixNano()
 
 	// based on https://github.com/gofiber/recipes/blob/73e31998b30239a9823d6ef55c01e6eade8587cf/sse/main.go
 	c.Set("Content-Type", "text/event-stream")
@@ -58,22 +60,24 @@ func (con *Controller) SSE(c *fiber.Ctx) error {
 
 	c.Context().SetBodyStreamWriter(fasthttp.StreamWriter(func(w *bufio.Writer) {
 		// NOTE do not access anything from the fiber/fasthttp context in here (only copies like userID)
-		log.WithField("userID", userID).Info("connected")
+		logBase := log.WithField("userID", userID).WithField("startTime", startTime)
+		logBase.Info("connected")
 
 		var i int
 		for {
 			i++
 			msg := fmt.Sprintf("%d - the time is %v", i, time.Now())
 			fmt.Fprintf(w, "event: message\ndata: Message: %s\n\n", msg)
-			log.Infof("sending: %v", msg)
 
 			err := w.Flush()
 			if err != nil {
-				log.WithField("userID", userID).WithError(err).Info("disconnected")
+				logBase.WithError(err).Info("disconnected")
 				break
 			}
 			time.Sleep(2 * time.Second)
 		}
+
+		logBase.Info("cleaned up")
 	}))
 
 	return nil

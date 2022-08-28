@@ -22,7 +22,7 @@
     sse.connect()
 
     // our SSE store always only contains the latest message,
-    // create a derived store that concatenated the messages
+    // create a derived store that concatenates the messages
     let scrollContainer: HTMLDivElement
     const sseLogger: Readable<string> = derived(sse.store, ($store) => {
         if ($sseLogger) {
@@ -65,6 +65,15 @@
             duration: 100,
         })
     }
+
+    // see if the event server is online
+    let pingCounter = 0
+    async function handlePing() {
+        pingCounter++
+        const resp = await sse.ping()
+        console.log("events ping response", resp)
+        sse.store.update(() => `${pingCounter}: ${resp.ping}`)
+    }
 </script>
 
 <FullModal on:close>
@@ -105,6 +114,7 @@
             />
             <div class="flex-none">
                 <Button mode="dark" on:click={handleCommand}>Enter</Button>
+                <Button mode="dark" on:click={handlePing}>Ping</Button>
                 <Button mode="error-dark" on:click={() => dispatch("close")}>Close</Button>
             </div>
         </div>
