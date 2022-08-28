@@ -1,7 +1,7 @@
-FROM alpine:3.15.4 AS deploy
+FROM alpine:3.15.6 AS deploy
 
 ## build stage
-FROM golang:1.18.1-alpine3.15 as build
+FROM golang:1.18.5-alpine3.15 as build
 
 # cache go deps
 WORKDIR /build

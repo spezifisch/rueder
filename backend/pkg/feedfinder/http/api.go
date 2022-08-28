@@ -12,7 +12,7 @@ import (
 
 // @contact.name spezifisch
 // @contact.url https://github.com/spezifisch
-// @contact.email spezifisch-go@below.fr
+// @contact.email spezifisch23@proton.me
 
 // @license.name GPLv3
 // @license.url https://www.gnu.org/licenses/gpl-3.0.en.html

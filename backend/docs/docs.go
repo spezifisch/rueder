@@ -13,7 +13,7 @@ const docTemplate = `{
         "contact": {
             "name": "spezifisch",
             "url": "https://github.com/spezifisch",
-            "email": "spezifisch-go@below.fr"
+            "email": "spezifisch23@proton.me"
         },
         "license": {
             "name": "GPLv3",

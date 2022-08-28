@@ -12,7 +12,7 @@ import (
 
 // @contact.name spezifisch
 // @contact.url https://github.com/spezifisch
-// @contact.email spezifisch-go@below.fr
+// @contact.email spezifisch23@proton.me
 
 // @license.name AGPL-3.0-only
 // @license.url https://spdx.org/licenses/AGPL-3.0-only.html

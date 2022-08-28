@@ -5,6 +5,7 @@
         "esbenp.prettier-vscode",
         "csstools.postcss",
         "davidanson.vscode-markdownlint",
-        "mikestead.dotenv"
+        "mikestead.dotenv",
+        "timonwong.shellcheck"
     ]
 }

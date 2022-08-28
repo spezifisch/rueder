@@ -4,7 +4,8 @@
 
 ## Dependencies
 
-Docker or podman. Everything is contained in docker images.
+- Docker or podman. Everything is contained in docker images.
+- docker-compose (1.27+ required)
 
 ## Installation
 
@@ -31,11 +32,18 @@ sub-directories inside the backend and frontend directories.
 To start a local instance of `rueder3` with hot-reload on code changes, simply do:
 
 ```shell
+# works in backend dir only:
+make run
+
+# OR
+
+# works in backend and frontend dir:
 docker-compose up --force-recreate --build
 ```
 
 inside `backend/` directory in one terminal and inside `frontend/` directory in
-another terminal.
+another terminal. If you prefer to run the frontend without a docker container
+you can also use `pnpm dev` instead.
 
 **First run:** On the first run you need to initialize the database by running
 `./utils/reset_db.sh` from the `backend/` directory.
@@ -69,7 +77,7 @@ Development Requirements:
 
 - Python (3.7+ required) for pre-commit
 - Docker for some pre-commit hooks
-- Node/npm for frontend checks (16.0.0+ required)
+- Node/**p**npm for frontend checks (16.0.0+ required)
 - Go (1.17+ required) for backend checks (make sure `GOPATH` environment variable is set)
 - golangci-lint for backend checks: <https://golangci-lint.run/usage/install/> (*known issue:* current version doesn't support Go 1.18 yet)
 
@@ -83,7 +91,7 @@ pre-commit install
 
 # install husky (mainly for frontend stuff)
 cd frontend
-npm install
+pnpm install
 # DO NOT run husky install
 ```
 
@@ -105,8 +113,8 @@ pre-commit run --all-files
 For backend use `gofmt` for formatting and the linters configured in `golangci-lint`.
 Use `make lint` inside `./backend` directory to lint all files.
 
-For frontend use (inside `./frontend` directory) `npm run format` for formatting
-and as linters use `npm run lint` and `npm run validate`.
+For frontend use (inside `./frontend` directory) `pnpm format` for formatting
+and as linters use `pnpm lint` and `pnpm validate`.
 
 ### Testing
 
@@ -123,12 +131,12 @@ need to be committed, too.
 
 #### Frontend
 
-Use `npm run test` to run tests with Jest using the included `.test.ts` files.
+Use `pnpm test` to run tests with Jest using the included `.test.ts` files.
 
 ### Production Test
 
 Before deploying to production you can test the production build of the
-frontend with `npm run preview` with the development version of the backend.
+frontend with `pnpm preview` with the development version of the backend.
 
 You can also test production backend and frontend with:
 
