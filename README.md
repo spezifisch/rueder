@@ -10,10 +10,8 @@
 ## Installation
 
 1. copy `rueder.example.env` to `rueder-prod.env` and
-    - change `LOGINSRV_JWT_SECRET` and `RUEDER_JWT` to something secure (eg.
-      the output of `pwgen -s 128 1`)
-    - change `LOGINSRV_SIMPLE` to something else, however you want to
-      authenticate your users
+   1.1 change `LOGINSRV_JWT_SECRET` and `RUEDER_JWT` to something secure (eg. the output of `pwgen -s 128 1`)
+   1.2 change `LOGINSRV_SIMPLE` to something else, however you want to authenticate your users
 2. change `docker-compose.yaml` to match your setup's imgproxy URL
 3. build docker production images: `docker-compose build`
 4. start db only: `docker-compose up -d db`
@@ -87,6 +85,7 @@ set up Git hooks:
 ```shell
 # install pre-commit (mainly for backend stuff)
 pip install pre-commit
+# note that something like ~/.local/bin needs to be in your PATH
 pre-commit install
 
 # install husky (mainly for frontend stuff)
