@@ -27,7 +27,7 @@ run:
 	docker-compose up $(dockerargs)
 
 run_noworker:
-	docker-compose up $(dockerargs) auth authbackend db dev
+	docker-compose up $(dockerargs) auth authbackend db dev rabbitmq
 
 run_worker:
 	docker-compose up $(dockerargs) worker
@@ -36,6 +36,6 @@ run_feedfinder:
 	docker-compose up $(dockerargs) feedfinder
 
 run_events:
-	docker-compose up $(dockerargs) events redis
+	docker-compose up $(dockerargs) events
 
 .PHONY: *

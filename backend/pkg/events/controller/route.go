@@ -63,20 +63,46 @@ func (con *Controller) SSE(c *fiber.Ctx) error {
 		logBase := log.WithField("userID", userID).WithField("startTime", startTime)
 		logBase.Info("connected")
 
-		var i int
-		for {
-			i++
-			msg := fmt.Sprintf("%d - the time is %v", i, time.Now())
-			fmt.Fprintf(w, "event: message\ndata: Message: %s\n\n", msg)
-
-			err := w.Flush()
-			if err != nil {
-				logBase.WithError(err).Info("disconnected")
-				break
-			}
-			time.Sleep(2 * time.Second)
+		eventUserState, err := con.eventRepo.ConnectUser(userID)
+		if err != nil {
+			logBase.WithError(err).Error("couldn't connect to message queue")
+			return
 		}
 
+		ticker := time.NewTicker(5 * time.Second)
+		var i int
+		for {
+			quit := false
+
+			select {
+			case <-ticker.C:
+				i++
+				payload := fmt.Sprintf("%d - the time is %v", i, time.Now())
+				fmt.Fprintf(w, "event: message\ndata: Message: %s\n\n", payload)
+
+				err := w.Flush()
+				if err != nil {
+					logBase.WithError(err).Info("disconnected")
+					quit = true
+				}
+			case eventMsg := <-eventUserState.Channel:
+				payload := fmt.Sprintf("got message %v", eventMsg.Message)
+				fmt.Fprintf(w, "event: message\ndata: Message: %s\n\n", payload)
+
+				err := w.Flush()
+				if err != nil {
+					logBase.WithError(err).Info("disconnected")
+					quit = true
+				}
+			}
+
+			if quit {
+				break
+			}
+		}
+
+		logBase.Info("cleaning up")
+		eventUserState.Close <- struct{}{}
 		logBase.Info("cleaned up")
 	}))
 

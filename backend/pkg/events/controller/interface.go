@@ -4,6 +4,7 @@ import "github.com/gofrs/uuid"
 
 // EventRepository is for IPC notifications from the api package
 type EventRepository interface {
+	ConnectUser(uuid uuid.UUID) (state EventUserState, err error)
 }
 
 // RuederRepository is the interface to the persistent database

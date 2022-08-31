@@ -104,12 +104,19 @@ services:
               source: rueder_dev_feedfinder_docs
               target: /app/docs
 
-    redis:
-        image: docker.io/library/redis:7.0.4-alpine3.16
+    rabbitmq:
+        image: rabbitmq:3.10.7-management
+        container_name: "rabbitmq"
         ports:
-            - "127.0.0.1:6379:6379"
+            - "127.0.0.1:5672:5672"
+            - "127.0.0.1:15672:15672"
+        volumes:
+            - type: volume
+              source: rueder_dev_rabbitmq_data
+              target: /var/lib/rabbitmq
 
 volumes:
     rueder_dev_db:
     rueder_dev_events_docs:
     rueder_dev_feedfinder_docs:
+    rueder_dev_rabbitmq_data:
