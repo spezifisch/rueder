@@ -8,8 +8,8 @@
 8=RowsNext	11:[]	7:"EOF"
 9=RowsNext	11:[2:"",2:"",8:2022-01-31T00:00:00+00:00,10:bnVsbA,10:NmZmMGI4OTgtZTc5YS00OGY4LWJjMTQtNGJiNDgwMTgzNjBm,8:2022-01-31T00:00:00+00:00]	1:nil
 10=ConnExec	2:"UPDATE \"users\" AS users SET \"folders\" = $1 WHERE users.id = $2"	1:nil
-11=ConnQuery	2:"SELECT user_feeds.feed_id, user_feeds.user_id FROM user_feeds AS user_feeds WHERE user_id = $1"	1:nil
-12=RowsColumns	9:["feed_id","user_id"]
+11=ConnQuery	2:"SELECT user_feeds.feed_id, user_feeds.id, user_feeds.user_id FROM user_feeds AS user_feeds WHERE user_id = $1"	1:nil
+12=RowsColumns	9:["feed_id","id","user_id"]
 
 "TestAPIUser_Folders"=1,2,3,3,4,5,6,7,7,8,6,7,7,9
 "TestAPIUser_ChangeFolders"=1,2,3,3,4,5,6,7,7,8,6,7,7,9,10,11,12,12,8
