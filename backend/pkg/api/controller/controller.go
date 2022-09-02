@@ -2,14 +2,16 @@ package controller
 
 // Controller for API v1
 type Controller struct {
-	repository      Repository
-	articlesPerPage int
+	repository          Repository
+	userEventRepository UserEventRepository
+	articlesPerPage     int
 }
 
 // NewController for API v1
-func NewController(repository Repository) *Controller {
+func NewController(repository Repository, userEventRepository UserEventRepository) *Controller {
 	return &Controller{
-		repository:      repository,
-		articlesPerPage: 40,
+		repository:          repository,
+		userEventRepository: userEventRepository,
+		articlesPerPage:     40,
 	}
 }

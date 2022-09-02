@@ -171,7 +171,7 @@ func (r *APIPopRepository) ChangeFolders(claims *helpers.AuthClaims, folders []c
 	user.Folders = foldersJSON
 	err = r.pop.UpdateColumns(&user, "folders")
 	if err != nil {
-		return
+		return fmt.Errorf("UpdateColumns failed: %s", err)
 	}
 
 	// update list of subscribed feeds to detect unsubscribed feeds (in the feed worker)
@@ -190,7 +190,7 @@ func (r APIPopRepository) updateUserFeeds(user *models.User, feedIDs *mapset.Set
 	userFeeds := []models.UserFeed{}
 	err = r.pop.Where("user_id = ?", user.ID).All(&userFeeds)
 	if err != nil {
-		return
+		return fmt.Errorf("updateUserFeeds failed#1: %s", err)
 	}
 
 	// put current feed ids into a set
@@ -202,20 +202,21 @@ func (r APIPopRepository) updateUserFeeds(user *models.User, feedIDs *mapset.Set
 	// which feed entries need to be deleted?
 	deleteUserFeeds := existingUserFeeds.Difference(*feedIDs)
 	if deleteUserFeeds.Cardinality() > 0 {
-		log.WithField("delete", deleteUserFeeds).WithField("count", deleteUserFeeds.Cardinality()).Info("deleting user_feeds")
+		log.WithField("delete", deleteUserFeeds).WithField("count", deleteUserFeeds.Cardinality()).Debug("deleting user_feeds")
 		err = r.pop.RawQuery("DELETE FROM user_feeds WHERE user_id = ? AND feed_id in (?)", user.ID.String(), deleteUserFeeds.ToSlice()).Exec()
 		if err != nil {
-			return
+			return fmt.Errorf("updateUserFeeds failed#2: %s", err)
 		}
 	}
 
 	// which feed entries need to be added?
 	addUserFeeds := (*feedIDs).Difference(existingUserFeeds)
 	if addUserFeeds.Cardinality() > 0 {
-		log.WithField("add", addUserFeeds).WithField("count", addUserFeeds.Cardinality()).Info("adding user_feeds")
-		err = r.pop.Create(toUserFeeds(user.ID, &addUserFeeds))
+		log.WithField("add", addUserFeeds).WithField("count", addUserFeeds.Cardinality()).Debug("adding user_feeds")
+		addingUserFeed := toUserFeeds(user.ID, &addUserFeeds)
+		err = r.pop.Create(addingUserFeed)
 		if err != nil {
-			return
+			return fmt.Errorf("updateUserFeeds failed#3: %s", err)
 		}
 	}
 

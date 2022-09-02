@@ -1,95 +1,117 @@
 package rabbitmq
 
 import (
-	"os"
-	"strings"
+	"context"
 
 	"github.com/apex/log"
 	amqp "github.com/rabbitmq/amqp091-go"
+	"github.com/spezifisch/rueder3/backend/pkg/api/controller"
 )
 
 // EventPublisherRepository internal state
 type EventPublisherRepository struct {
-	conn *amqp.Connection
+	connection *amqp.Connection
+	channel    *amqp.Channel
+	context    context.Context
+
+	eventInput          <-chan controller.UserEventEnvelope
+	eventClose          chan struct{}
+	eventHandlerRunning bool
+
+	producer controller.UserEventPublisher
 }
 
 // NewEventPublisherRepository connects to RabbitMQ and configures an event publisher
 func NewEventPublisherRepository(addr string) *EventPublisherRepository {
-	repo := EventPublisherRepository{}
-	log.Info("connecting to rabbitmq")
-
-	conn, err := amqp.Dial(addr)
+	ctx := context.Background()
+	r, err := rabbitMQConnect(addr)
 	if err != nil {
-		log.WithError(err).WithField("addr", addr).Error("couldn't connect to rabbitmq")
-		return nil
-	}
-	repo.conn = conn
-	log.Info("connected to rabbitmq")
-
-	ch, err := conn.Channel()
-	if err != nil {
-		log.WithError(err).WithField("addr", addr).Error("couldn't open channel")
-		return nil
-	}
-	defer ch.Close()
-
-	err = ch.ExchangeDeclare(
-		"logs_topic", // name
-		"topic",      // type
-		true,         // durable
-		false,        // auto-deleted
-		false,        // internal
-		false,        // no-wait
-		nil,          // arguments
-	)
-	if err != nil {
-		log.WithError(err).WithField("addr", addr).Error("couldn't declare exchange")
 		return nil
 	}
 
-	body := bodyFrom(os.Args)
-	err = ch.Publish(
-		"logs_topic",          // exchange
-		severityFrom(os.Args), // routing key
-		false,                 // mandatory
-		false,                 // immediate
+	err = r.declareUserEventsExchange()
+	if err != nil {
+		return nil
+	}
+
+	ownChannel := make(chan controller.UserEventEnvelope)
+	closeChannel := make(chan struct{})
+	return &EventPublisherRepository{
+		// channels for external use by backend api
+		producer: controller.UserEventPublisher{
+			Channel: ownChannel,
+		},
+
+		// internal endpoints of channels
+		eventInput:          ownChannel,
+		eventClose:          closeChannel,
+		eventHandlerRunning: false,
+
+		connection: r.connection,
+		channel:    r.channel,
+		context:    ctx,
+	}
+}
+
+func (r *EventPublisherRepository) Publisher() *controller.UserEventPublisher {
+	return &r.producer
+}
+
+// HandleEvents should be run as a goroutine to handle passing messages to rabbitmq
+func (r *EventPublisherRepository) HandleEvents() {
+	if r.eventHandlerRunning {
+		panic("don't run multiple instances of this function")
+	}
+
+	r.eventHandlerRunning = true
+	for {
+		select {
+		case envelope := <-r.eventInput:
+			// we receive an event from backend api, send it to rabbitmq
+			err := r.publishUserEvent(envelope)
+			if err != nil {
+				log.WithError(err).WithField("userID", envelope.UserID).Error("couldn't publish message")
+			}
+		case <-r.eventClose:
+			r.eventHandlerRunning = false
+			return
+		}
+	}
+}
+
+func (r *EventPublisherRepository) publishUserEvent(envelope controller.UserEventEnvelope) (err error) {
+	// use userid as routing key so all connected clients (if any) of this user receive the same event
+	routingKey := envelope.UserID.String()
+	// TODO define a data type for this, needs to be the same as in the frontend
+	messageBody := envelope.Message
+
+	err = r.channel.PublishWithContext(
+		r.context,
+		"user_events", // exchange
+		routingKey,    // routing key
+		false,         // mandatory
+		false,         // immediate
 		amqp.Publishing{
 			ContentType: "text/plain",
-			Body:        []byte(body),
+			Body:        messageBody,
 		})
-	if err != nil {
-		log.WithError(err).WithField("addr", addr).Error("couldn't publish message")
-		return nil
-	}
-
-	log.Infof("sent %s", body)
-
-	return &repo
+	return
 }
 
-func bodyFrom(args []string) string {
-	var s string
-	if (len(args) < 3) || os.Args[2] == "" {
-		s = "hello"
-	} else {
-		s = strings.Join(args[2:], " ")
-	}
-	return s
-}
-
-func severityFrom(args []string) string {
-	var s string
-	if (len(args) < 2) || os.Args[1] == "" {
-		s = "anonymous.info"
-	} else {
-		s = os.Args[1]
-	}
-	return s
-}
-
+// Close connection to rabbitmq
 func (r *EventPublisherRepository) Close() {
-	if r.conn != nil {
-		r.conn.Close()
-		r.conn = nil
+	// terminate HandleEvents loop
+	if r.eventHandlerRunning {
+		r.eventClose <- struct{}{}
+	}
+
+	if r.channel != nil {
+		r.channel.Close()
+		r.channel = nil
+	}
+
+	if r.connection != nil {
+		r.connection.Close()
+		r.connection = nil
 	}
 }

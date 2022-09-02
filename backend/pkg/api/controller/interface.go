@@ -19,3 +19,11 @@ type Repository interface {
 	Folders(*helpers.AuthClaims) ([]Folder, error)
 	ChangeFolders(*helpers.AuthClaims, []Folder) error
 }
+
+// UserEventRepository can send live events to users
+type UserEventRepository interface {
+	Publisher() *UserEventPublisher
+
+	HandleEvents()
+	Close()
+}

@@ -10,6 +10,7 @@ import (
 	ruederHTTP "github.com/spezifisch/rueder3/backend/pkg/api/http"
 	mockRepository "github.com/spezifisch/rueder3/backend/pkg/repository/mock"
 	apiPopRepository "github.com/spezifisch/rueder3/backend/pkg/repository/pop/api"
+	rabbitMQRepository "github.com/spezifisch/rueder3/backend/pkg/repository/rabbitmq"
 )
 
 func main() {
@@ -29,6 +30,14 @@ func main() {
 					panic("use a JWT secret with 32 or more characters!")
 				}
 			}
+			mqAddr := common.RequireString("rabbitmq-addr")
+
+			// rabbitmq event sink
+			mqRepo := rabbitMQRepository.NewEventPublisherRepository(mqAddr)
+			if mqRepo == nil {
+				return
+			}
+			go mqRepo.HandleEvents()
 
 			var c *controller.Controller
 			if db != "mock" {
@@ -37,13 +46,15 @@ func main() {
 					return
 				}
 
-				c = controller.NewController(r)
+				c = controller.NewController(r, mqRepo)
 			} else {
-				c = controller.NewController(mockRepository.NewMockRepository())
+				c = controller.NewController(mockRepository.NewMockRepository(), mqRepo)
 			}
 
 			s := ruederHTTP.NewServer(c, jwtSecretKey, isDevelopmentMode, trustedProxies)
 			s.Run()
+
+			mqRepo.Close()
 		},
 	}
 
@@ -64,6 +75,12 @@ func main() {
 
 	cmd.PersistentFlags().StringSliceVar(&trustedProxies, "trusted-proxy", []string{}, "set gin's trusted proxy IP")
 	err = viper.BindPFlag("trusted-proxy", cmd.PersistentFlags().Lookup("trusted-proxy"))
+	if err != nil {
+		panic(err)
+	}
+
+	cmd.PersistentFlags().String("rabbitmq-addr", "amqp://guest:guest@rabbitmq:5672/", "RabbitMQ address")
+	err = viper.BindPFlag("rabbitmq-addr", cmd.PersistentFlags().Lookup("rabbitmq-addr"))
 	if err != nil {
 		panic(err)
 	}

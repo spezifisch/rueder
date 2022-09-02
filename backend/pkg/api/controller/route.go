@@ -234,6 +234,12 @@ func (c *Controller) ChangeFolders(ctx *gin.Context) {
 		return
 	}
 
+	// send event
+	c.userEventRepository.Publisher().Channel <- UserEventEnvelope{
+		UserID:  claims.ID,
+		Message: []byte("folder_update"),
+	}
+
 	ctx.JSON(http.StatusOK, httputil.HTTPStatus{
 		Status: "ok",
 	})

@@ -10,10 +10,12 @@ import (
 
 // UserFeed is used by pop to map your user_feeds database table to your go code.
 type UserFeed struct {
-	UserID uuid.UUID `json:"-" db:"user_id"`
+	ID int `json:"-" db:"id"`
+
+	UserID uuid.UUID `json:"user_id" db:"user_id"`
 	User   *User     `json:"user" belongs_to:"user"`
 
-	FeedID uuid.UUID `json:"-" db:"feed_id"`
+	FeedID uuid.UUID `json:"feed_id" db:"feed_id"`
 	Feed   *Feed     `json:"feed" belongs_to:"feed"`
 }
 

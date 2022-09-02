@@ -16,42 +16,23 @@ type EventConsumerRepository struct {
 
 // NewEventConsumerRepository returns a RedisRepository that wraps a redis DB
 func NewEventConsumerRepository(addr string) *EventConsumerRepository {
-	repo := EventConsumerRepository{}
-	log.Info("connecting to rabbitmq")
-
-	conn, err := amqp.Dial(addr)
+	r, err := rabbitMQConnect(addr)
 	if err != nil {
-		log.WithError(err).WithField("addr", addr).Error("couldn't connect to rabbitmq")
-		return nil
-	}
-	repo.connection = conn
-	log.Info("connected to rabbitmq")
-
-	ch, err := conn.Channel()
-	if err != nil {
-		log.WithError(err).WithField("addr", addr).Error("couldn't open channel")
-		return nil
-	}
-	repo.channel = ch
-
-	err = ch.ExchangeDeclare(
-		"user_events", // name
-		"fanout",      // type
-		false,         // durable
-		false,         // auto-deleted
-		false,         // internal
-		false,         // no-wait
-		nil,           // arguments
-	)
-	if err != nil {
-		log.WithError(err).WithField("addr", addr).Error("couldn't declare exchange")
 		return nil
 	}
 
-	return &repo
+	err = r.declareUserEventsExchange()
+	if err != nil {
+		return nil
+	}
+
+	return &EventConsumerRepository{
+		connection: r.connection,
+		channel:    r.channel,
+	}
 }
 
-func (r *EventConsumerRepository) ConnectUser(uuid uuid.UUID) (state controller.EventUserState, err error) {
+func (r *EventConsumerRepository) ConnectUser(uuid uuid.UUID) (ret controller.UserEventConsumer, err error) {
 	q, err := r.channel.QueueDeclare(
 		"",    // name
 		false, // durable
@@ -66,7 +47,7 @@ func (r *EventConsumerRepository) ConnectUser(uuid uuid.UUID) (state controller.
 
 	err = r.channel.QueueBind(
 		q.Name,        // queue name
-		uuid.String(), // routing key
+		uuid.String(), // routing key: this way we only receive data meant for this user
 		"user_events", // exchange
 		false,
 		nil,
@@ -89,13 +70,13 @@ func (r *EventConsumerRepository) ConnectUser(uuid uuid.UUID) (state controller.
 	}
 
 	// wrap messages in our own data type
-	ownChannel := make(chan controller.EventMessage)
+	ownChannel := make(chan controller.UserEventMessage)
 	closeChannel := make(chan struct{}, 1)
 	go func(queueName, userID string) {
 		for {
 			select {
 			case d := <-msgs:
-				ownChannel <- controller.EventMessage{
+				ownChannel <- controller.UserEventMessage{
 					Message: d.Body, // TODO does this need a deepcopy?
 				}
 			case <-closeChannel:
@@ -108,7 +89,7 @@ func (r *EventConsumerRepository) ConnectUser(uuid uuid.UUID) (state controller.
 		}
 	}(q.Name, uuid.String())
 
-	state = controller.EventUserState{
+	ret = controller.UserEventConsumer{
 		Channel: ownChannel,
 		Close:   closeChannel,
 	}
