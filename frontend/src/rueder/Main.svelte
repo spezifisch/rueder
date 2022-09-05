@@ -45,6 +45,7 @@
 
     // context
     setContext(contextKey.feedAPI, feedAPI)
+    setContext(contextKey.sseEvents, sseEvents)
     setContext(contextKey.imageProxy, imageProxy)
 
     // stores!

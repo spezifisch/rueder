@@ -11,20 +11,15 @@
 
     import { SSEEvent, SSEStore } from "../../../stores/SSE"
 
-    const dispatch = createEventDispatcher()
-
     // SSE connection
-    const sse = new SSEStore()
-    onDestroy(() => {
-        console.log("closing sse")
-        sse.close()
-    })
-    sse.connect()
+    export let sseStore: SSEStore
+
+    const dispatch = createEventDispatcher()
 
     // our SSE store always only contains the latest message,
     // create a derived store that concatenates the messages
     let scrollContainer: HTMLDivElement
-    const sseLogger: Readable<string> = derived(sse.store, ($store) => {
+    const sseLogger: Readable<string> = derived(sseStore.store, ($store) => {
         const sseData = $store
         if (sseData === undefined) {
             return ""
@@ -87,7 +82,7 @@
     let pingCounter = 0
     async function handlePing() {
         pingCounter++
-        const resp = await sse.ping()
+        const resp = await sseStore.ping()
         console.log("events ping response", resp)
         const storeData = new SSEEvent()
         storeData.message_type = "ping"
@@ -95,7 +90,7 @@
             counter: `${pingCounter}`,
             response: resp.ping,
         }
-        sse.store.update(() => storeData)
+        sseStore.store.update(() => storeData)
     }
 </script>
 
@@ -122,7 +117,7 @@
     >
         <p class="text-left p-2 text-white">
             {#if !$sseLogger}
-                Connecting to {sse.endpoint}
+                Connecting to {sseStore.endpoint}
             {:else}
                 <pre>{$sseLogger}</pre>
             {/if}

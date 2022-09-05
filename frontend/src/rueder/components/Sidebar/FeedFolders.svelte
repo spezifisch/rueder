@@ -21,6 +21,7 @@
 
     import { Feed, Folder } from "../../api/types"
     import type { FeedAPI } from "../../api/feed"
+    import type { SSEStore } from "../../stores/SSE"
 
     import EditFolderTitle from "./Folders/EditFolderTitle.svelte"
     import { contextKey } from "../../helpers/constants"
@@ -35,6 +36,7 @@
     export let addNewFeeds: Writable<string[]>
 
     const feedAPI: FeedAPI = getContext(contextKey.feedAPI)
+    const sseEvents: SSEStore = getContext(contextKey.sseEvents)
     let imageProxy: ImageProxy = getContext(contextKey.imageProxy)
 
     const dispatch = createEventDispatcher()
@@ -402,6 +404,18 @@
     })
     onDestroy(unsubscribe)
 
+    // SSE event handler
+    const sseUnsubscribe = sseEvents.store.subscribe((sseEvent) => {
+        if (!sseEvent) {
+            return
+        }
+        if (sseEvent.message_type == "folder_update") {
+            console.log("triggering folder reload via sse")
+            loadFolders()
+        }
+    })
+    onDestroy(sseUnsubscribe)
+
     // true when folder names are changed which are not yet committed
     let dirty = false
 
@@ -473,12 +487,20 @@
                                 <SolidFolder />
                             {/if}
                         </div>
-                        <h4 class="flex-auto px-1 cursor-default text-center md:text-left md:text-sm md:font-bold">
+                        <h4
+                            class="flex-auto px-1 cursor-default text-center md:text-left md:text-sm md:font-bold"
+                        >
                             {folder.title ? folder.title : "Unnamed Folder"}
                         </h4>
-                        <div title="Reload Feed" class="text-gray-200 ml-1 flex-none object-contain h-5 w-5">
+                        <div
+                            title="Reload Feed"
+                            class="text-gray-200 ml-1 flex-none object-contain h-5 w-5"
+                        >
                             <!-- always show wrapping div with same width as the folder icon so that the title is centered -->
-                            <div class:animate-spin={animateRefreshButton} class:hidden={hideRefreshButton}>
+                            <div
+                                class:animate-spin={animateRefreshButton}
+                                class:hidden={hideRefreshButton}
+                            >
                                 <RefreshButton size={5} />
                             </div>
                         </div>
@@ -508,7 +530,8 @@
                             class:bg-gray-900={editMode || selectedFeed != feed.id}
                             class:bg-gray-600={!editMode && selectedFeed == feed.id}
                             on:click={() => {
-                                if (!editMode && selectedFeed != feed.id) dispatch("feedClick", feed.id)
+                                if (!editMode && selectedFeed != feed.id)
+                                    dispatch("feedClick", feed.id)
                             }}
                         >
                             <!-- feed icon (and drag handle in edit mode) -->
@@ -518,7 +541,9 @@
                                     <div
                                         class="text-white h-8 w-8 p-1"
                                         tabindex={draggingFeedByHandle ? -1 : 0}
-                                        style={draggingFeedByHandle ? "cursor: grabbing" : "cursor: grab"}
+                                        style={draggingFeedByHandle
+                                            ? "cursor: grabbing"
+                                            : "cursor: grab"}
                                         on:mousedown={(e) => handleDragStart(DragType.Feed, e)}
                                         on:touchstart={(e) => handleDragStart(DragType.Feed, e)}
                                         on:keydown={(e) => handleDragKeyDown(DragType.Feed, e)}
@@ -549,7 +574,10 @@
                             </div>
                             {#if feed.title}
                                 <!-- title -->
-                                <h5 class="ml-2 mr-2 flex-auto text-gray-100 truncate" title={feed.title}>
+                                <h5
+                                    class="ml-2 mr-2 flex-auto text-gray-100 truncate"
+                                    title={feed.title}
+                                >
                                     {feed.title}
                                 </h5>
                             {:else}
