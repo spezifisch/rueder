@@ -22,7 +22,7 @@ type Repository interface {
 
 // UserEventRepository can send live events to users
 type UserEventRepository interface {
-	Publisher() *UserEventPublisher
+	Publish(*UserEventEnvelope)
 
 	HandleEvents()
 	Close()

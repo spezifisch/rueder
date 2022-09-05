@@ -1,5 +1,7 @@
 package controller
 
+import "github.com/spezifisch/rueder3/backend/internal/common"
+
 type UserEventConsumer struct {
 	Channel <-chan UserEventMessage
 	Close   chan<- struct{}
@@ -7,5 +9,5 @@ type UserEventConsumer struct {
 
 // UserEventMessage contains a message coming from backend API
 type UserEventMessage struct {
-	Message []byte
+	Payload common.UserEventMessage
 }

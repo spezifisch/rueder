@@ -2,6 +2,7 @@ package rabbitmq
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/apex/log"
 	amqp "github.com/rabbitmq/amqp091-go"
@@ -14,11 +15,9 @@ type EventPublisherRepository struct {
 	channel    *amqp.Channel
 	context    context.Context
 
-	eventInput          <-chan controller.UserEventEnvelope
+	eventInput          chan controller.UserEventEnvelope
 	eventClose          chan struct{}
 	eventHandlerRunning bool
-
-	producer controller.UserEventPublisher
 }
 
 // NewEventPublisherRepository connects to RabbitMQ and configures an event publisher
@@ -37,11 +36,6 @@ func NewEventPublisherRepository(addr string) *EventPublisherRepository {
 	ownChannel := make(chan controller.UserEventEnvelope)
 	closeChannel := make(chan struct{})
 	return &EventPublisherRepository{
-		// channels for external use by backend api
-		producer: controller.UserEventPublisher{
-			Channel: ownChannel,
-		},
-
 		// internal endpoints of channels
 		eventInput:          ownChannel,
 		eventClose:          closeChannel,
@@ -53,8 +47,9 @@ func NewEventPublisherRepository(addr string) *EventPublisherRepository {
 	}
 }
 
-func (r *EventPublisherRepository) Publisher() *controller.UserEventPublisher {
-	return &r.producer
+// Publish puts the envelope in the event queue to be sent to rabbitmq
+func (r *EventPublisherRepository) Publish(envelope *controller.UserEventEnvelope) {
+	r.eventInput <- *envelope
 }
 
 // HandleEvents should be run as a goroutine to handle passing messages to rabbitmq
@@ -82,17 +77,20 @@ func (r *EventPublisherRepository) HandleEvents() {
 func (r *EventPublisherRepository) publishUserEvent(envelope controller.UserEventEnvelope) (err error) {
 	// use userid as routing key so all connected clients (if any) of this user receive the same event
 	routingKey := envelope.UserID.String()
-	// TODO define a data type for this, needs to be the same as in the frontend
-	messageBody := envelope.Message
+	// serialize payload
+	messageBody, err := json.Marshal(envelope.Payload)
+	if err != nil {
+		return
+	}
 
 	err = r.channel.PublishWithContext(
 		r.context,
 		"user_events", // exchange
-		routingKey,    // routing key
+		routingKey,    // routing key (user id)
 		false,         // mandatory
 		false,         // immediate
 		amqp.Publishing{
-			ContentType: "text/plain",
+			ContentType: "application/json", // doesn't matter because rabbitmq ignores it
 			Body:        messageBody,
 		})
 	return

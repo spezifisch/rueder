@@ -2,6 +2,8 @@ package controller
 
 import (
 	"bufio"
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"time"
 
@@ -76,6 +78,7 @@ func (con *Controller) SSE(c *fiber.Ctx) error {
 
 			select {
 			case <-ticker.C:
+				// we need to send something every 30s or the browser closes the connection
 				i++
 				payload := fmt.Sprintf("%d - the time is %v", i, time.Now())
 				fmt.Fprintf(w, "event: message\ndata: Message: %s\n\n", payload)
@@ -86,13 +89,20 @@ func (con *Controller) SSE(c *fiber.Ctx) error {
 					quit = true
 				}
 			case eventMsg := <-eventUserState.Channel:
-				payload := fmt.Sprintf("got message %v", eventMsg.Message)
-				fmt.Fprintf(w, "event: message\ndata: Message: %s\n\n", payload)
-
-				err := w.Flush()
+				// send user events
+				payload, err := json.Marshal(eventMsg.Payload)
 				if err != nil {
-					logBase.WithError(err).Info("disconnected")
-					quit = true
+					logBase.WithError(err).Info("failed re-serializing message")
+				} else {
+					// make sure there are no double newlines in payload so SSE doesn't break
+					nlPayload := bytes.Replace(payload, []byte("\n\n"), []byte(" "), -1)
+					fmt.Fprintf(w, "event: message\ndata: %s\n\n", nlPayload)
+
+					err := w.Flush()
+					if err != nil {
+						logBase.WithError(err).Info("disconnected")
+						quit = true
+					}
 				}
 			}
 

@@ -1,10 +1,13 @@
 package rabbitmq
 
 import (
+	"encoding/json"
+
 	"github.com/apex/log"
 	"github.com/gofrs/uuid"
 	amqp "github.com/rabbitmq/amqp091-go"
 
+	"github.com/spezifisch/rueder3/backend/internal/common"
 	"github.com/spezifisch/rueder3/backend/pkg/events/controller"
 )
 
@@ -75,9 +78,15 @@ func (r *EventConsumerRepository) ConnectUser(uuid uuid.UUID) (ret controller.Us
 	go func(queueName, userID string) {
 		for {
 			select {
-			case d := <-msgs:
-				ownChannel <- controller.UserEventMessage{
-					Message: d.Body, // TODO does this need a deepcopy?
+			case msg := <-msgs:
+				payload := common.UserEventMessage{}
+				err := json.Unmarshal(msg.Body, &payload)
+				if err != nil {
+					log.WithError(err).WithField("user", userID).Error("failed deserializing message")
+				} else {
+					ownChannel <- controller.UserEventMessage{
+						Payload: payload,
+					}
 				}
 			case <-closeChannel:
 				_, err := r.channel.QueueDelete(queueName, false, false, false)

@@ -9,7 +9,7 @@
     import Button from "../../ui/Button.svelte"
     import OutlineChip from "../../ui/heroicons/outline-chip.svelte"
 
-    import { SSEStore } from "../../../stores/SSE"
+    import { SSEEvent, SSEStore } from "../../../stores/SSE"
 
     const dispatch = createEventDispatcher()
 
@@ -25,10 +25,27 @@
     // create a derived store that concatenates the messages
     let scrollContainer: HTMLDivElement
     const sseLogger: Readable<string> = derived(sse.store, ($store) => {
-        if ($sseLogger) {
-            return $sseLogger + "\n" + $store
+        const sseData = $store
+        if (sseData === undefined) {
+            return ""
         }
-        return $store
+
+        let data = ""
+        if (sseData.message_type == "raw") {
+            // a string was returned instead of json
+            data = sseData.message_data.data
+        } else if (sseData.message_data === undefined) {
+            // some message types don't have any data
+            data = "()"
+        } else {
+            data = JSON.stringify(sseData.message_data)
+        }
+        const appendStr = `#${sseData.id}(${sseData.message_type}) ${data}`
+
+        if ($sseLogger) {
+            return $sseLogger + "\n" + appendStr
+        }
+        return appendStr
     })
     // scroll down after the store has been updated
     sseLogger.subscribe(async () => {
@@ -72,7 +89,13 @@
         pingCounter++
         const resp = await sse.ping()
         console.log("events ping response", resp)
-        sse.store.update(() => `${pingCounter}: ${resp.ping}`)
+        const storeData = new SSEEvent()
+        storeData.message_type = "ping"
+        storeData.message_data = {
+            counter: `${pingCounter}`,
+            response: resp.ping,
+        }
+        sse.store.update(() => storeData)
     }
 </script>
 
@@ -85,12 +108,18 @@
                 <OutlineChip size={6} addClass="text-green-600" />
             </div>
             <div class="text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h3 class="text-lg leading-6 font-medium text-green-600" id="modal-title">Debug Server-Sent Events</h3>
+                <h3 class="text-lg leading-6 font-medium text-green-600" id="modal-title">
+                    Debug Server-Sent Events
+                </h3>
             </div>
         </div>
     </span>
 
-    <div slot="scrolling" class="flex-auto overflow-auto rueder-scrollbar" bind:this={scrollContainer}>
+    <div
+        slot="scrolling"
+        class="flex-auto overflow-auto rueder-scrollbar"
+        bind:this={scrollContainer}
+    >
         <p class="text-left p-2 text-white">
             {#if !$sseLogger}
                 Connecting to {sse.endpoint}

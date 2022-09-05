@@ -11,6 +11,8 @@
     const loginBaseURL = import.meta.env.VITE_RUEDER_BASE_URL_LOGIN ?? "http://127.0.0.1:8082/"
     // apiBaseURL points to the rueder backend API (where /folders, /feed, etc. are appended)
     const apiBaseURL = import.meta.env.VITE_RUEDER_BASE_URL_API ?? "http://127.0.0.1:8080/api/v1/"
+    // sseBaseURL points to the rueder SSE API (where /sse is appended)
+    const sseBaseURL = import.meta.env.VITE_RUEDER_SSE_URL_API ?? "http://127.0.0.1:8083/"
 
     // base path to imgproxy instance (https://github.com/imgproxy/imgproxy) to proxy favicons, thumbnails
     // and article content images. use empty string disable proxying.
@@ -31,7 +33,7 @@
 </svelte:head>
 
 {#if $sessionStore.loggedIn}
-    <Main baseURL={apiBaseURL} {imageProxyBaseURL} {imageProxyUseTypePrefixes} {imageProxyKey} {imageProxySalt} />
+    <Main baseURL={apiBaseURL} {sseBaseURL} {imageProxyBaseURL} {imageProxyUseTypePrefixes} {imageProxyKey} {imageProxySalt} />
 {:else}
     <Login page="rueder" baseURL={loginBaseURL} />
 {/if}

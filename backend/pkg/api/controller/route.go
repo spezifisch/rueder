@@ -9,6 +9,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/gofrs/uuid"
+	"github.com/spezifisch/rueder3/backend/internal/common"
 	"github.com/spezifisch/rueder3/backend/pkg/helpers"
 	"github.com/spezifisch/rueder3/backend/pkg/httputil"
 )
@@ -235,10 +236,13 @@ func (c *Controller) ChangeFolders(ctx *gin.Context) {
 	}
 
 	// send event
-	c.userEventRepository.Publisher().Channel <- UserEventEnvelope{
-		UserID:  claims.ID,
-		Message: []byte("folder_update"),
-	}
+	c.userEventRepository.Publish(&UserEventEnvelope{
+		UserID: claims.ID,
+		Payload: common.UserEventMessage{
+			Type: "folder_update",
+			Data: nil,
+		},
+	})
 
 	ctx.JSON(http.StatusOK, httputil.HTTPStatus{
 		Status: "ok",

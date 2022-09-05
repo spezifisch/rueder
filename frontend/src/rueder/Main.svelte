@@ -20,6 +20,7 @@
     import { labelStore } from "./stores/labels"
     import { contextKey } from "./helpers/constants"
     import { ImageProxy } from "./helpers/ImageProxy"
+    import { createSSEStore } from "./stores/SSE"
 
     export let imageProxyBaseURL: string
     export let imageProxyUseTypePrefixes: boolean
@@ -30,8 +31,17 @@
     export let baseURL: string
     let feedAPI = new FeedAPI(baseURL)
 
+    // sse communication
+    export let sseBaseURL: string
+    let sseEvents = createSSEStore(sseBaseURL)
+
     // imageproxy wrapper
-    let imageProxy = new ImageProxy(imageProxyBaseURL, imageProxyUseTypePrefixes, imageProxyKey, imageProxySalt)
+    let imageProxy = new ImageProxy(
+        imageProxyBaseURL,
+        imageProxyUseTypePrefixes,
+        imageProxyKey,
+        imageProxySalt
+    )
 
     // context
     setContext(contextKey.feedAPI, feedAPI)
@@ -288,7 +298,9 @@
         <!-- top bar -->
         <div class="flex-none flex flex-row items-center bg-gray-800 border-b-4 border-gray-500">
             <Hamburger bind:open={sidebarMenuOpen} />
-            <h1 class="flex-auto px-2 text-right text-md font-light">{username}:rueder</h1>
+            <h1 class="flex-auto px-2 text-right text-md font-light">
+                {username}:rueder
+            </h1>
         </div>
         <!-- menu -->
         <SidebarMenu bind:show={sidebarMenuOpen} />
@@ -334,12 +346,20 @@
             class="flex-none w-screen md:block bg-gray-700 md:w-2/5 h-full"
             class:hidden={!forceShowLabelList && article_content}
         >
-            <LabelArticles {selectedLabel} on:articleClick={(e) => loadArticle(e.detail)} on:close={closeLabel} />
+            <LabelArticles
+                {selectedLabel}
+                on:articleClick={(e) => loadArticle(e.detail)}
+                on:close={closeLabel}
+            />
         </div>
     {/if}
 
     <!-- article content -->
     {#if article_content}
-        <ArticleContent {article_content} on:close={closeArticle} bind:isFocused={articleEditorIsFocused} />
+        <ArticleContent
+            {article_content}
+            on:close={closeArticle}
+            bind:isFocused={articleEditorIsFocused}
+        />
     {/if}
 </main>

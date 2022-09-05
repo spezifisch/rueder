@@ -128,7 +128,12 @@
         />
     {:else if mode == Mode.Label}
         <!-- labels -->
-        <LabelList {selectedLabel} editMode={mode == Mode.Label && enableEditMode} on:labelClick on:closeLabel />
+        <LabelList
+            {selectedLabel}
+            editMode={mode == Mode.Label && enableEditMode}
+            on:labelClick
+            on:closeLabel
+        />
     {/if}
 </div>
 <!-- feedlist bottom bar -->
