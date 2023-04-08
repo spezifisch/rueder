@@ -11,7 +11,8 @@ module.exports = {
     },
     plugins: ["@typescript-eslint"],
     rules: {
-        "no-unused-vars": [
+        "no-unused-vars": "off", // disabled because it clashes with ts enums
+        "@typescript-eslint/no-unused-vars": [
             // https://stackoverflow.com/a/69006568
             "error",
             {
@@ -19,13 +20,11 @@ module.exports = {
                 argsIgnorePattern: "^_",
             },
         ],
-        "@typescript-eslint/no-unused-vars": [
-            // as above
-            "error",
-            {
-                varsIgnorePattern: "^_",
-                argsIgnorePattern: "^_",
-            },
-        ],
+        indent: "off",
+        "@typescript-eslint/no-redeclare": "error",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error",
+        quotes: "off",
+        "@typescript-eslint/quotes": "error",
     },
 }

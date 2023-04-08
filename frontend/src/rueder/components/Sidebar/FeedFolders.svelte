@@ -22,6 +22,7 @@
     import { Feed, Folder } from "../../api/types"
     import type { FeedAPI } from "../../api/feed"
     import type { SSEStore } from "../../stores/SSE"
+    import { SSEMessageType } from "../../api/sse"
 
     import EditFolderTitle from "./Folders/EditFolderTitle.svelte"
     import { contextKey } from "../../helpers/constants"
@@ -405,13 +406,16 @@
     onDestroy(unsubscribe)
 
     // SSE event handler
-    const sseUnsubscribe = sseEvents.store.subscribe((sseEvent) => {
+    const sseUnsubscribe = sseEvents.store.subscribe(async (sseEvent) => {
         if (!sseEvent) {
             return
         }
-        if (sseEvent.message_type == "folder_update") {
-            console.log("triggering folder reload via sse")
-            loadFolders()
+        if (sseEvent.message_type == SSEMessageType.FolderUpdate) {
+            // HACKY just assume that only one client can be in edit mode
+            if (!editMode) {
+                console.log("triggering folder reload via sse")
+                await loadFolders()
+            }
         }
     })
     onDestroy(sseUnsubscribe)

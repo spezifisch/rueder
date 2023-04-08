@@ -5,12 +5,13 @@ import type { AddFeedResponse, ChangeFoldersResponse } from "./types"
 import { Article, ArticlePreview, Feed, Folder, Label } from "./types"
 import { apiGet } from "./feed_get"
 import { apiAddFeed, apiChangeFolders } from "./feed_change"
+import { stripTrailingSlash } from "../helpers/url"
 
 export class FeedAPI {
     baseURL = "/api/v1"
 
     constructor(baseURL: string) {
-        this.baseURL = baseURL.replace(/\/$/, "") // strip trailing slash, so we're consistent
+        this.baseURL = stripTrailingSlash(baseURL)
     }
 
     getBaseURL(): string {

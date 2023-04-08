@@ -239,7 +239,7 @@ func (c *Controller) ChangeFolders(ctx *gin.Context) {
 	c.userEventRepository.Publish(&UserEventEnvelope{
 		UserID: claims.ID,
 		Payload: common.UserEventMessage{
-			Type: "folder_update",
+			Type: common.MessageTypeFolderUpdate,
 			Data: nil,
 		},
 	})

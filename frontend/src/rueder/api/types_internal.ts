@@ -1,4 +1,4 @@
-import type { Folder } from './types'
+import type { Folder } from "./types"
 
 export class apiResponse {
     ok: boolean

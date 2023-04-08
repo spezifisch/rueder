@@ -23,7 +23,7 @@ class apiChange<ApiRequestType, ApiResponseType> {
         return `${this.baseURL}/${this.apiPath}${suffix}`
     }
 
-    async postData(data: ApiRequestType): Promise<ApiResponseType> {
+    async postData(requestData: ApiRequestType): Promise<ApiResponseType> {
         // eslint-disable-next-line no-async-promise-executor
         return new Promise<ApiResponseType>(async (resolve, reject) => {
             // build api url
@@ -36,18 +36,18 @@ class apiChange<ApiRequestType, ApiResponseType> {
                         Accept: "application/json",
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(data),
+                    body: JSON.stringify(requestData),
                 }
                 const res = await authFetch(url, settings)
                 if (res.status == 200) {
                     // parse result
-                    const data: ApiResponseType = await res.json()
-                    resolve(data)
+                    const responseData: ApiResponseType = await res.json()
+                    resolve(responseData)
                 } else {
                     // parse error message
-                    const data: apiErrorResponse = await res.json()
-                    console.log(`got error from ${url}:`, res.status, data.message)
-                    reject(data)
+                    const responseData: apiErrorResponse = await res.json()
+                    console.log(`got error from ${url}:`, res.status, responseData.message)
+                    reject(responseData)
                 }
             } catch (error) {
                 // invalid json returned

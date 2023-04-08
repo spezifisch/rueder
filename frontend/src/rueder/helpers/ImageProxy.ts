@@ -7,7 +7,12 @@ export class ImageProxy {
     baseURL: string
     imgproxy: ImgProxy
 
-    constructor(baseURL?: string, useTypePrefixes?: boolean, imageProxyKey?: string, imageProxySalt?: string) {
+    constructor(
+        baseURL?: string,
+        useTypePrefixes?: boolean,
+        imageProxyKey?: string,
+        imageProxySalt?: string
+    ) {
         this.useProxy = !!baseURL
         this.baseURL = baseURL
         this.useTypePrefixes = !!useTypePrefixes
@@ -37,9 +42,7 @@ export class ImageProxy {
 }
 
 export enum ImageProxyType {
-    /* eslint-disable no-unused-vars */
     Icon = "icon", // 256-512px
     Thumbnail = "thumbnail",
     Content = "image", // full
-    /* eslint-enable no-unused-vars */
 }

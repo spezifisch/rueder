@@ -27,9 +27,11 @@ export class SyncedStore<T> implements Writable<T> {
 
     requestData(): T {
         const objectMapper = new ObjectMapper()
+        const storedLocal = localStorage.getItem(this.name)
 
         // TODO request from server
-        const stored = localStorage.getItem(this.name)
+
+        const stored = storedLocal
 
         // parse
         return objectMapper.parse<T>(stored, {

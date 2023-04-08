@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { createEventDispatcher, onDestroy, tick } from "svelte"
+    import { createEventDispatcher, getContext, onDestroy, tick } from "svelte"
     import { derived } from "svelte/store"
     import type { Readable } from "svelte/store"
 
@@ -9,10 +9,11 @@
     import Button from "../../ui/Button.svelte"
     import OutlineChip from "../../ui/heroicons/outline-chip.svelte"
 
+    import { contextKey } from "../../../helpers/constants"
     import { SSEEvent, SSEStore } from "../../../stores/SSE"
+    import { SSEMessageType } from "../../../api/sse"
 
-    // SSE connection
-    export let sseStore: SSEStore
+    const sseStore: SSEStore = getContext(contextKey.sseEvents)
 
     const dispatch = createEventDispatcher()
 
@@ -26,7 +27,7 @@
         }
 
         let data = ""
-        if (sseData.message_type == "raw") {
+        if (sseData.message_type == SSEMessageType.Raw) {
             // a string was returned instead of json
             data = sseData.message_data.data
         } else if (sseData.message_data === undefined) {
@@ -43,9 +44,10 @@
         return appendStr
     })
     // scroll down after the store has been updated
-    sseLogger.subscribe(async () => {
+    const unsubscribeLogAppend = sseLogger.subscribe(async () => {
         await handleLogAppend()
     })
+    onDestroy(unsubscribeLogAppend)
 
     // command box
     let commandInput: HTMLInputElement
@@ -126,12 +128,10 @@
 
     <span slot="buttons">
         <div class="flex flex-row">
-            <!-- svelte-ignore a11y-autofocus -->
             <input
                 type="text"
                 class="flex-auto m-2 bg-gray-800 text-green-600 focus:ring-green-700 focus:border-none"
                 placeholder="Enter command"
-                autofocus
                 bind:value={enteredCommand}
                 bind:this={commandInput}
                 on:keypress={handleKeypress}

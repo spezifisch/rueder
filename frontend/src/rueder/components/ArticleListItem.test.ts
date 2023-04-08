@@ -115,7 +115,7 @@ it("hides article date and shows only time when it's today", () => {
 it("strips html from article title", () => {
     const article = mockArticlePreview()
     article.feed_icon = undefined
-    article.title = '<a href="foo">bar<b>baz</b></a>'
+    article.title = "<a href=\"foo\">bar<b>baz</b></a>"
     const { getByRole } = render(ArticleListItem, {
         article,
     })
@@ -143,7 +143,7 @@ it("shows 'untitled' if article title is empty", () => {
 it("strips html from teaser", () => {
     const article = mockArticlePreview()
     article.feed_icon = undefined
-    article.teaser = '<p><a href="foo">bar<b>baz</b></a></p>'
+    article.teaser = "<p><a href=\"foo\">bar<b>baz</b></a></p>"
     const { getByTestId } = render(ArticleListItem, {
         article,
     })

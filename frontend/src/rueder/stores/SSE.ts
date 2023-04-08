@@ -4,6 +4,7 @@ import type { Writable } from "svelte/store"
 import { EventSourcePolyfill } from "@spezifisch/event-source-polyfill"
 
 import { sessionStore } from "../stores/session"
+import { SSEMessageType } from "../api/sse"
 
 declare type SSEPayload = Record<string, string>
 export class SSEEvent {
@@ -71,7 +72,7 @@ export class SSEStore {
                 }
             } catch (err) {
                 // not really needed anymore but some experiments returned non-json
-                storeData.message_type = "raw"
+                storeData.message_type = SSEMessageType.Raw
                 storeData.message_data = {
                     data: evt.data,
                 }

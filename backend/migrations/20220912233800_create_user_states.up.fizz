@@ -1,0 +1,8 @@
+create_table("user_states") {
+	t.Column("id", "uuid")
+	t.Timestamps()
+	t.Column("user_id", "uuid", {})
+	t.Column("feed_states", "jsonb", {})
+
+    t.PrimaryKey("id", "user_id")
+}

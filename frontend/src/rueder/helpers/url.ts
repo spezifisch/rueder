@@ -146,3 +146,8 @@ export function fixupRelativeURL(url: string, base: string, anchorBase: string):
     }
     return url
 }
+
+// removes all '/' characters from end of string
+export function stripTrailingSlash(url: string): string {
+    return url.replace(/\/$/, "")
+}

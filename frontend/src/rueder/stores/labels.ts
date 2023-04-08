@@ -1,7 +1,7 @@
 import { JsonProperty, JsonClassType, JsonIgnore } from "jackson-js"
 
 import { ArticlePreview } from "../api/types"
-import { SyncedStore } from "./syncedstore"
+import { SyncedStore } from "./SyncedStore"
 
 export class LabelStore extends SyncedStore<labelData> {
     constructor() {
