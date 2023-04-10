@@ -1,5 +1,5 @@
 ## BASE
-FROM node:16.15.0-alpine3.15 AS base
+FROM node:16.20.0-alpine3.16 AS base
 
 # disable npm update check, it's annoying
 ENV NPM_CONFIG_UPDATE_NOTIFIER=false
