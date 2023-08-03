@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@spezifisch/event-source-polyfill':
     specifier: ^1.0.31
@@ -24,7 +28,7 @@ dependencies:
     version: 1.3.2(postcss@8.4.21)
   '@sveltejs/vite-plugin-svelte':
     specifier: ^1.4.0
-    version: 1.4.0(svelte@3.58.0)(vite@3.2.5)
+    version: 1.4.0(svelte@3.58.0)(vite@3.2.7)
   '@tailwindcss/forms':
     specifier: ^0.5.3
     version: 0.5.3(tailwindcss@3.3.1)
@@ -110,8 +114,8 @@ dependencies:
     specifier: ^8.3.2
     version: 8.3.2
   vite:
-    specifier: ^3.2.5
-    version: 3.2.5(@types/node@18.15.11)(sass@1.61.0)(terser@5.16.8)
+    specifier: ^3.2.7
+    version: 3.2.7(@types/node@18.15.11)(sass@1.61.0)(terser@5.16.8)
   vite-plugin-transform:
     specifier: ^1.2.1
     version: 1.2.1
@@ -914,7 +918,7 @@ packages:
       - ts-node
     dev: false
 
-  /@sveltejs/vite-plugin-svelte@1.4.0(svelte@3.58.0)(vite@3.2.5):
+  /@sveltejs/vite-plugin-svelte@1.4.0(svelte@3.58.0)(vite@3.2.7):
     resolution: {integrity: sha512-6QupI/jemMfK+yI2pMtJcu5iO2gtgTfcBdGwMZZt+lgbFELhszbDl6Qjh000HgAV8+XUA+8EY8DusOFk8WhOIg==}
     engines: {node: ^14.18.0 || >= 16}
     peerDependencies:
@@ -927,8 +931,8 @@ packages:
       magic-string: 0.26.7
       svelte: 3.58.0
       svelte-hmr: 0.15.1(svelte@3.58.0)
-      vite: 3.2.5(@types/node@18.15.11)(sass@1.61.0)(terser@5.16.8)
-      vitefu: 0.2.4(vite@3.2.5)
+      vite: 3.2.7(@types/node@18.15.11)(sass@1.61.0)(terser@5.16.8)
+      vitefu: 0.2.4(vite@3.2.7)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -4479,8 +4483,8 @@ packages:
     resolution: {integrity: sha512-ic8EOyCV93TSa/23/CUZBpcPHf0/vMLS0k9L/r9nJ7yAr5tskulRGilvNqZE6ZSr+K2c+kbDrKVXBK+vnWjkvA==}
     dev: false
 
-  /vite@3.2.5(@types/node@18.15.11)(sass@1.61.0)(terser@5.16.8):
-    resolution: {integrity: sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==}
+  /vite@3.2.7(@types/node@18.15.11)(sass@1.61.0)(terser@5.16.8):
+    resolution: {integrity: sha512-29pdXjk49xAP0QBr0xXqu2s5jiQIXNvE/xwd0vUizYT2Hzqe4BksNNoWllFVXJf4eLZ+UlVQmXfB4lWrc+t18g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -4515,7 +4519,7 @@ packages:
       fsevents: 2.3.2
     dev: false
 
-  /vitefu@0.2.4(vite@3.2.5):
+  /vitefu@0.2.4(vite@3.2.7):
     resolution: {integrity: sha512-fanAXjSaf9xXtOOeno8wZXIhgia+CZury481LsDaV++lSvcU2R9Ch2bPh3PYFyoHW+w9LqAeYRISVQjUIew14g==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0
@@ -4523,7 +4527,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 3.2.5(@types/node@18.15.11)(sass@1.61.0)(terser@5.16.8)
+      vite: 3.2.7(@types/node@18.15.11)(sass@1.61.0)(terser@5.16.8)
     dev: false
 
   /w3c-hr-time@1.0.2:
