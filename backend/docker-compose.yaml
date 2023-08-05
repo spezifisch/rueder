@@ -105,12 +105,15 @@ services:
               target: /app/docs
 
     rabbitmq:
-        image: rabbitmq:3.10.7-management
+        image: rabbitmq:3.12.2-management
         container_name: "rabbitmq"
         ports:
             - "127.0.0.1:5672:5672"
             - "127.0.0.1:15672:15672"
         volumes:
+            - type: bind
+              source: ./config/rabbitmq-logging-dev.conf
+              target: /etc/rabbitmq/conf.d/20-logging.conf
             - type: volume
               source: rueder_dev_rabbitmq_data
               target: /var/lib/rabbitmq

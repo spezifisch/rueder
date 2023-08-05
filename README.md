@@ -44,7 +44,7 @@ another terminal. If you prefer to run the frontend without a docker container
 you can also use `pnpm dev` instead.
 
 **First run:** On the first run you need to initialize the database by running
-`./utils/reset_db.sh` from the `backend/` directory.
+`./utils/reset_db.sh` from the `backend/` directory. Restart all containers after this.
 
 **Note:** Please use the provided Git hooks to make sure your changes pass
 linting and testing.
@@ -75,8 +75,8 @@ Development Requirements:
 
 - Python (3.7+ required) for pre-commit, pipx
 - Docker for some pre-commit hooks
-- Node/**p**npm for frontend checks (16.0.0+ required)
-- Go (1.17+ required) for backend checks (make sure `GOPATH` environment variable is set)
+- Node/**p**npm for frontend checks (16+ required, 18+ recommended)
+- Go (1.17+ required, 1.19 recommended) for backend checks (make sure `GOPATH` environment variable is set)
 - golangci-lint for backend checks: <https://golangci-lint.run/usage/install/>
 
 After installing these requirements and cloning the repository do these steps to
