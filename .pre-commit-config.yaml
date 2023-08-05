@@ -39,3 +39,8 @@ repos:
             language: system
             entry: bash -c 'cd frontend && exec .husky/pre-commit'
             files: ^frontend/
+    # whole repo
+    - repo: https://github.com/gitleaks/gitleaks
+      rev: v8.16.1
+      hooks:
+        - id: gitleaks-docker
