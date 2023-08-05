@@ -73,18 +73,18 @@ Feedfinder.
 
 Development Requirements:
 
-- Python (3.7+ required) for pre-commit
+- Python (3.7+ required) for pre-commit, pipx
 - Docker for some pre-commit hooks
 - Node/**p**npm for frontend checks (16.0.0+ required)
 - Go (1.17+ required) for backend checks (make sure `GOPATH` environment variable is set)
-- golangci-lint for backend checks: <https://golangci-lint.run/usage/install/> (*known issue:* current version doesn't support Go 1.18 yet)
+- golangci-lint for backend checks: <https://golangci-lint.run/usage/install/>
 
 After installing these requirements and cloning the repository do these steps to
 set up Git hooks:
 
 ```shell
 # install pre-commit (mainly for backend stuff)
-pip install pre-commit
+pipx install pre-commit
 # note that something like ~/.local/bin needs to be in your PATH
 pre-commit install
 
