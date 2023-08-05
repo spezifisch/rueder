@@ -1,4 +1,4 @@
-FROM golang:1.18.5-alpine3.15
+FROM golang:1.19.12-alpine3.18
 
 # set default timezone
 ARG TZ=Europe/Berlin
@@ -7,17 +7,18 @@ ENV CGO_ENABLED=1
 
 WORKDIR /app
 
-# add pg_dump for db migrations
 RUN apk add --no-cache \
-    gcc=10.3.1_git20211027-r0 \
-    musl-dev=1.2.2-r7 \
-    postgresql13-client=13.8-r0 \
-    tzdata=2022c-r0 && \
+    gcc=12.2.1_git20220924-r10 \
+    musl-dev=1.2.4-r1 \
+    postgresql13-client=13.11-r0 \
+    tzdata=2023c-r1 && \
     ln -snf /usr/share/zoneinfo/${DEFAULT_TZ} /etc/localtime && \
     # Go Watch: https://github.com/mitranim/gow
-    go install github.com/mitranim/gow@v0.0.0-20220125090630-5348a1592279 && \
+    go install github.com/mitranim/gow@v0.0.0-20230418123246-87df6e48eec6 && \
     # Soda CLI: https://gobuffalo.io/en/docs/db/toolbox/
-    go install github.com/gobuffalo/pop/v6/soda@v6.0.3
+    go install github.com/gobuffalo/pop/v6/soda@v6.0.8 && \
+    # install swag
+    go install github.com/swaggo/swag/cmd/swag@v1.8.12
 
 # cache go deps
 COPY go.mod go.sum ./
