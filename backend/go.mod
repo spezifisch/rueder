@@ -24,7 +24,7 @@ require (
 	github.com/stretchr/testify v1.8.3
 	github.com/swaggo/files v1.0.1
 	github.com/swaggo/gin-swagger v1.6.0
-	github.com/swaggo/swag v1.8.12
+	github.com/swaggo/swag v1.16.1
 	github.com/sym01/htmlsanitizer v1.0.1
 	github.com/valyala/fasthttp v1.48.0
 )
