@@ -8,7 +8,8 @@
         "resolveJsonModule": true,
         "target": "es2021",
         "isolatedModules": true,
-        "allowJs": true
+        "allowJs": true,
+        "ignoreDeprecations": "5.0"
     },
 
     "include": ["src/**/*", "global.d.ts"],
