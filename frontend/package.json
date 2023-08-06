@@ -35,7 +35,7 @@
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
     "jest-localstorage-mock": "^2.4.26",
-    "svelte-jester": "^2.3.2",
+    "svelte-jester": "^3.0.0",
     "terser": "^5.16.8",
     "ts-jest": "^28.0.8",
     "tsc-files": "^1.1.3"
