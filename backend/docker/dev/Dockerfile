@@ -32,7 +32,7 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 # s6 daemon configs
-COPY ./s6-rc.d /etc/s6-overlay/s6-rc.d
+COPY ./docker/dev/s6-rc.d /etc/s6-overlay/s6-rc.d
 
 # we use a separate volume for the docs so they don't clash with api's docs
 # which are in the docs dir on the host

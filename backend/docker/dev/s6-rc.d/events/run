@@ -1,2 +1,3 @@
 #!/command/execlineb -P
+cd /app
 gow run -race ./cmd/events --dev --log debug

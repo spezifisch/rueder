@@ -2,31 +2,17 @@ services:
     dev:
         build:
             context: .
-            dockerfile: ./docker/api/Dockerfile.dev
-        image: rueder3-api-dev
+            dockerfile: ./docker/dev/Dockerfile
+        image: rueder3-dev
         env_file:
             - ./rueder-dev.env
-        volumes:
-            - type: bind
-              source: ./
-              target: /app/
         ports:
-            - "127.0.0.1:8080:8080"
-        depends_on:
-            - db
-            - auth
-
-    worker:
-        build:
-            context: .
-            dockerfile: ./docker/worker/Dockerfile.dev
-        image: rueder3-worker-dev
-        env_file:
-            - ./rueder-dev.env
+            - "127.0.0.1:8080:8080" # api
+            - "127.0.0.1:8081:8080" # ff
+            - "127.0.0.1:8083:8080" # events
         volumes:
-            - type: bind
-              source: ./
-              target: /app/
+            - ./:/app/
+            - rueder_dev_docs:/app/docs
         depends_on:
             - db
 
@@ -39,9 +25,7 @@ services:
         ports:
             - "127.0.0.1:5432:5432"
         volumes:
-            - type: volume
-              source: rueder_dev_db
-              target: /var/lib/postgresql/data
+            - rueder_dev_db:/var/lib/postgresql/data
 
     auth:
         # use the official image if you don't need CORS in your dev environment
@@ -54,55 +38,7 @@ services:
         ports:
             - "127.0.0.1:8082:8080"
         depends_on:
-            - authbackend
-
-    authbackend:
-        build:
-            context: .
-            dockerfile: ./docker/authbackend/Dockerfile.dev
-        image: rueder3-authbackend-dev
-        env_file:
-            - ./rueder-dev.env
-        volumes:
-            - type: bind
-              source: ./
-              target: /app/
-        depends_on:
-            - db
-
-    events:
-        build:
-            context: .
-            dockerfile: ./docker/events/Dockerfile.dev
-        image: rueder3-events-dev
-        env_file:
-            - ./rueder-dev.env
-        ports:
-            - "127.0.0.1:8083:8080"
-        volumes:
-            - type: bind
-              source: ./
-              target: /app/
-            - type: volume
-              source: rueder_dev_events_docs
-              target: /app/docs
-
-    feedfinder:
-        build:
-            context: .
-            dockerfile: ./docker/feedfinder/Dockerfile.dev
-        image: rueder3-feedfinder-dev
-        env_file:
-            - ./rueder-dev.env
-        ports:
-            - "127.0.0.1:8081:8080"
-        volumes:
-            - type: bind
-              source: ./
-              target: /app/
-            - type: volume
-              source: rueder_dev_feedfinder_docs
-              target: /app/docs
+          - dev
 
     rabbitmq:
         image: rabbitmq:3.12.2-management
@@ -111,15 +47,10 @@ services:
             - "127.0.0.1:5672:5672"
             - "127.0.0.1:15672:15672"
         volumes:
-            - type: bind
-              source: ./config/rabbitmq-logging-dev.conf
-              target: /etc/rabbitmq/conf.d/20-logging.conf
-            - type: volume
-              source: rueder_dev_rabbitmq_data
-              target: /var/lib/rabbitmq
+            - ./config/rabbitmq-logging-dev.conf:/etc/rabbitmq/conf.d/20-logging.conf
+            - rueder_dev_rabbitmq_data:/var/lib/rabbitmq
 
 volumes:
     rueder_dev_db:
-    rueder_dev_events_docs:
-    rueder_dev_feedfinder_docs:
+    rueder_dev_docs:
     rueder_dev_rabbitmq_data:
