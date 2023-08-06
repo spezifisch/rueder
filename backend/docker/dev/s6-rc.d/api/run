@@ -1,0 +1,2 @@
+#!/command/execlineb -P
+gow run -race ./cmd/api --dev --log debug

@@ -1,4 +1,5 @@
 FROM golang:1.19.12-alpine3.18
+ARG S6_OVERLAY_VERSION=3.1.5.0
 
 # set default timezone
 ARG TZ=Europe/Berlin
@@ -6,6 +7,12 @@ ENV DEFAULT_TZ ${TZ}
 ENV CGO_ENABLED=1
 
 WORKDIR /app
+
+ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz /tmp
+RUN tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz
+ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-x86_64.tar.xz /tmp
+RUN tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz
+ENTRYPOINT ["/init"]
 
 RUN apk add --no-cache \
     gcc=12.2.1_git20220924-r10 \
@@ -24,6 +31,12 @@ RUN apk add --no-cache \
 COPY go.mod go.sum ./
 RUN go mod download
 
+# s6 daemon configs
+COPY ./s6-rc.d /etc/s6-overlay/s6-rc.d
+
+# we use a separate volume for the docs so they don't clash with api's docs
+# which are in the docs dir on the host
+VOLUME /app/docs
+
 VOLUME /app
 EXPOSE 8080
-CMD ["gow", "run", "-race", "./cmd/events", "--dev", "--log", "debug"]
