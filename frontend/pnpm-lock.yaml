@@ -39,8 +39,8 @@ dependencies:
     specifier: ^10.4.14
     version: 10.4.14(postcss@8.4.21)
   browser-fs-access:
-    specifier: ^0.33.0
-    version: 0.33.0
+    specifier: ^0.34.1
+    version: 0.34.1
   class-transformer:
     specifier: ^0.5.1
     version: 0.5.1
@@ -1518,8 +1518,8 @@ packages:
     dependencies:
       fill-range: 7.0.1
 
-  /browser-fs-access@0.33.0:
-    resolution: {integrity: sha512-OIroFiFdNcITJnLCJUoJBRWLf6lu/e7h24Ik0khWg7Ozn+sR+asYiSeiPpXmV32OgogSNiOqCoaI1/7vrl1T+Q==}
+  /browser-fs-access@0.34.1:
+    resolution: {integrity: sha512-HPaRf2yimp8kWSuWJXc8Mi78dPbDzfduA+Gyq14H4jlMvd6XNfIRm36Y2yRLaa4x0gwcGuepj4zf14oiTlxrxQ==}
     dev: false
 
   /browser-process-hrtime@1.0.0:
