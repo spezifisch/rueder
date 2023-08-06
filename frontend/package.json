@@ -61,7 +61,7 @@
     "path-browserify": "^1.0.1",
     "postcss": "^8.4.21",
     "postcss-nested": "^5.0.6",
-    "sanitize-html": "^2.10.0",
+    "sanitize-html": "^2.11.0",
     "sass": "^1.61.0",
     "svelte": "^3.58.0",
     "svelte-check": "^2.10.3",
