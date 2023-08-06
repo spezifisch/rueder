@@ -66,8 +66,8 @@ dependencies:
     specifier: ^5.0.6
     version: 5.0.6(postcss@8.4.21)
   sanitize-html:
-    specifier: ^2.10.0
-    version: 2.10.0
+    specifier: ^2.11.0
+    version: 2.11.0
   sass:
     specifier: ^1.61.0
     version: 1.61.0
@@ -3918,8 +3918,8 @@ packages:
       rimraf: 2.7.1
     dev: false
 
-  /sanitize-html@2.10.0:
-    resolution: {integrity: sha512-JqdovUd81dG4k87vZt6uA6YhDfWkUGruUu/aPmXLxXi45gZExnt9Bnw/qeQU8oGf82vPyaE0vO4aH0PbobB9JQ==}
+  /sanitize-html@2.11.0:
+    resolution: {integrity: sha512-BG68EDHRaGKqlsNjJ2xUB7gpInPA8gVx/mvjO743hZaeMCZ2DwzW7xvsqZ+KNU4QKwj86HJ3uu2liISf2qBBUA==}
     dependencies:
       deepmerge: 4.2.2
       escape-string-regexp: 4.0.0
