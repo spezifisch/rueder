@@ -33,8 +33,8 @@ dependencies:
     specifier: ^0.5.4
     version: 0.5.4(tailwindcss@3.3.3)
   '@tsconfig/svelte':
-    specifier: ^3.0.0
-    version: 3.0.0
+    specifier: ^5.0.0
+    version: 5.0.0
   autoprefixer:
     specifier: ^10.4.14
     version: 10.4.14(postcss@8.4.27)
@@ -1060,8 +1060,8 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
-  /@tsconfig/svelte@3.0.0:
-    resolution: {integrity: sha512-pYrtLtOwku/7r1i9AMONsJMVYAtk3hzOfiGNekhtq5tYBGA7unMve8RvUclKLMT3PrihvJqUmzsRGh0RP84hKg==}
+  /@tsconfig/svelte@5.0.0:
+    resolution: {integrity: sha512-iu5BqFjU0+OcLTNQp7fHe6Bf6zdNeJ9IZjLZMqWLuGzVFm/xx+lm//Tf6koPyRmxo55/Snm6RRQ990n89cRKFw==}
     dev: false
 
   /@types/aria-query@5.0.1:
