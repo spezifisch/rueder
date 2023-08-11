@@ -4,7 +4,10 @@ ARG S6_OVERLAY_VERSION=3.1.5.0
 # set default timezone
 ARG TZ=Europe/Berlin
 ENV DEFAULT_TZ ${TZ}
+# go config
 ENV CGO_ENABLED=1
+# s6-overlay config
+ENV S6_KEEP_ENV=1
 
 WORKDIR /app
 
@@ -33,10 +36,6 @@ RUN go mod download
 
 # s6 daemon configs
 COPY ./docker/dev/s6-rc.d /etc/s6-overlay/s6-rc.d
-
-# we use a separate volume for the docs so they don't clash with api's docs
-# which are in the docs dir on the host
-VOLUME /app/docs
 
 VOLUME /app
 EXPOSE 8080

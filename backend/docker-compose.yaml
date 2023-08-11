@@ -12,7 +12,6 @@ services:
             - "127.0.0.1:8083:8080" # events
         volumes:
             - ./:/app/
-            - rueder_dev_docs:/app/docs
         depends_on:
             - db
 
@@ -52,5 +51,4 @@ services:
 
 volumes:
     rueder_dev_db:
-    rueder_dev_docs:
     rueder_dev_rabbitmq_data:
