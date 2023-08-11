@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/apex/log"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -20,10 +22,26 @@ func main() {
 		Short: "HTTP API",
 		Long:  `Rueder HTTP API.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			db := common.RequireString("db")
-			log.Infof("using pop db \"%s\"", db)
-
 			isDevelopmentMode := viper.GetBool("dev")
+
+			// s6 readiness notification in dev mode
+			// see: https://skarnet.org/software/s6/notifywhenup.html
+			if isDevelopmentMode {
+				file := os.NewFile(3, "s6ready") // hardcoded fd 3, arbitrary name
+				_, err := file.Write([]byte("\n"))
+				if err != nil {
+					log.WithError(err).Info("s6ready not writable (ok on reloads)")
+				} else {
+					err = file.Close()
+					if err != nil {
+						log.WithError(err).Info("s6ready not closable")
+					}
+				}
+			}
+
+			db := common.RequireString("db")
+			log.Infof("api: using pop db \"%s\"", db)
+
 			jwtSecretKey := common.RequireString("jwt")
 			if !isDevelopmentMode {
 				if jwtSecretKey == "secret" || len(jwtSecretKey) < 32 {

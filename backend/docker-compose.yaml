@@ -12,6 +12,7 @@ services:
             - "127.0.0.1:8083:8080" # events
         volumes:
             - ./:/app/
+            - rueder_dev_cache:/cache
         depends_on:
             - db
 
@@ -52,3 +53,4 @@ services:
 volumes:
     rueder_dev_db:
     rueder_dev_rabbitmq_data:
+    rueder_dev_cache:

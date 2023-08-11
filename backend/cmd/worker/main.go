@@ -47,6 +47,12 @@ func main() {
 		panic(err)
 	}
 
+	cmd.PersistentFlags().Bool("dev", false, "development mode")
+	err = viper.BindPFlag("dev", cmd.PersistentFlags().Lookup("dev"))
+	if err != nil {
+		panic(err)
+	}
+
 	err = cmd.Execute()
 	if err != nil {
 		log.WithError(err).Error("command failed")

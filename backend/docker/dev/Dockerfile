@@ -1,4 +1,4 @@
-FROM golang:1.19.12-alpine3.18
+FROM golang:1.21.0-alpine3.18
 ARG S6_OVERLAY_VERSION=3.1.5.0
 
 # set default timezone
@@ -6,8 +6,12 @@ ARG TZ=Europe/Berlin
 ENV DEFAULT_TZ ${TZ}
 # go config
 ENV CGO_ENABLED=1
-# s6-overlay config
+ENV GOMODCACHE=/cache
+## s6-overlay config
+# GOPATH etc must be kept
 ENV S6_KEEP_ENV=1
+# api cmd reports its own readiness
+ENV S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0
 
 WORKDIR /app
 
@@ -37,5 +41,9 @@ RUN go mod download
 # s6 daemon configs
 COPY ./docker/dev/s6-rc.d /etc/s6-overlay/s6-rc.d
 
+# gomodcache
+VOLUME /cache
+
+# app code
 VOLUME /app
 EXPOSE 8080
