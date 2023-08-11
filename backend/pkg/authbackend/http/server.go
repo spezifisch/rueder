@@ -14,13 +14,13 @@ type Server struct {
 }
 
 // NewServer creates a default http backend
-func NewServer(controller Controller, isDevelopmentMode bool) *Server {
+func NewServer(controller Controller, bind string, isDevelopmentMode bool) *Server {
 	if !isDevelopmentMode {
 		gin.SetMode("release")
 	}
 
 	s := &Server{
-		Bind:       ":8080",
+		Bind:       bind,
 		engine:     gin.Default(),
 		controller: controller,
 	}

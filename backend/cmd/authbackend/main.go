@@ -26,9 +26,11 @@ func main() {
 			if r == nil {
 				return
 			}
+			bind := common.RequireString("bind")
+			log.Infof("authbackend: binding to %s", bind)
 
 			c := controller.NewController(r)
-			s := authBackendHTTP.NewServer(c, isDevelopmentMode)
+			s := authBackendHTTP.NewServer(c, bind, isDevelopmentMode)
 			s.Run()
 		},
 	}
@@ -41,6 +43,13 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	cmd.PersistentFlags().StringP("bind", "b", "", "bind to ip:port")
+	err = viper.BindPFlag("bind", cmd.PersistentFlags().Lookup("bind"))
+	if err != nil {
+		panic("BindPFlag bind failed")
+	}
+	viper.SetDefault("bind", ":8080")
 
 	err = cmd.Execute()
 	if err != nil {
