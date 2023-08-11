@@ -8,8 +8,8 @@ services:
             - ./rueder-dev.env
         ports:
             - "127.0.0.1:8080:8080" # api
-            - "127.0.0.1:8081:8080" # ff
-            - "127.0.0.1:8083:8080" # events
+            - "127.0.0.1:8081:8081" # feedfinder
+            - "127.0.0.1:8083:8083" # events
         volumes:
             - ./:/app/
             - rueder_dev_cache:/cache

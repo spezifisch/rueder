@@ -21,7 +21,7 @@ func main() {
 		Long:  `Rueder HTTP Events API.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			db := common.RequireString("db")
-			log.Infof("using pop db \"%s\"", db)
+			log.Infof("events: using pop db \"%s\"", db)
 
 			// get options
 			isDevelopmentMode := viper.GetBool("dev")
@@ -36,14 +36,16 @@ func main() {
 			// rabbitmq event source
 			mqRepo := rabbitMQRepository.NewEventConsumerRepository(mqAddr)
 			if mqRepo == nil {
-				return
+				panic("can't connect to rmq")
 			}
+			bind := common.RequireString("bind")
+			log.Infof("events: binding to %s", bind)
 
 			var c *controller.Controller
 			if db != "mock" {
 				r := apiPopRepository.NewAPIPopRepository(db)
 				if r == nil {
-					return
+					panic("can't connect to pop repo")
 				}
 
 				c = controller.NewController(r, mqRepo)
@@ -52,7 +54,7 @@ func main() {
 			}
 
 			// http server
-			s := eventsHTTP.NewServer(c, jwtSecretKey, isDevelopmentMode, trustedProxies)
+			s := eventsHTTP.NewServer(c, bind, jwtSecretKey, isDevelopmentMode, trustedProxies)
 			s.Run()
 		},
 	}
@@ -71,6 +73,13 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	cmd.PersistentFlags().StringP("bind", "b", "", "bind to ip:port")
+	err = viper.BindPFlag("bind", cmd.PersistentFlags().Lookup("bind"))
+	if err != nil {
+		panic("BindPFlag bind failed")
+	}
+	viper.SetDefault("bind", ":8080")
 
 	cmd.PersistentFlags().StringSliceVar(&trustedProxies, "trusted-proxy", []string{}, "set fiber's trusted proxy IP")
 	err = viper.BindPFlag("trusted-proxy", cmd.PersistentFlags().Lookup("trusted-proxy"))

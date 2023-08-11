@@ -24,9 +24,11 @@ func main() {
 					panic("use a JWT secret with 32 or more characters!")
 				}
 			}
+			bind := common.RequireString("bind")
+			log.Infof("feedfinder: binding to %s", bind)
 
 			c := controller.NewController()
-			s := feedfinderHTTP.NewServer(c, jwtSecretKey, isDevelopmentMode, trustedProxies)
+			s := feedfinderHTTP.NewServer(c, bind, jwtSecretKey, isDevelopmentMode, trustedProxies)
 			s.Run()
 		},
 	}
@@ -40,6 +42,14 @@ func main() {
 		panic(err)
 	}
 
+	cmd.PersistentFlags().StringP("bind", "b", "", "bind to ip:port")
+	err = viper.BindPFlag("bind", cmd.PersistentFlags().Lookup("bind"))
+	if err != nil {
+		panic("BindPFlag bind failed")
+	}
+	viper.SetDefault("bind", ":8080")
+
+	// log
 	cmd.PersistentFlags().StringSliceVar(&trustedProxies, "trusted-proxy", []string{}, "set gin's trusted proxy IP")
 	err = viper.BindPFlag("trusted-proxy", cmd.PersistentFlags().Lookup("trusted-proxy"))
 	if err != nil {

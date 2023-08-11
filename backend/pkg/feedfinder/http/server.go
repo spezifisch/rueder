@@ -24,9 +24,9 @@ type Server struct {
 }
 
 // NewServer creates a default http backend
-func NewServer(controller *controller.Controller, jwtSecretKey string, isDevelopmentMode bool, trustedProxies []string) *Server {
+func NewServer(controller *controller.Controller, bind string, jwtSecretKey string, isDevelopmentMode bool, trustedProxies []string) *Server {
 	s := &Server{
-		Bind:              ":8080",
+		Bind:              bind,
 		controller:        controller,
 		jwtSecretKey:      jwtSecretKey,
 		isDevelopmentMode: isDevelopmentMode,
