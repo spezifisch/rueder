@@ -12,8 +12,8 @@ require (
 	github.com/gobuffalo/nulls v0.4.2
 	github.com/gobuffalo/pop/v6 v6.1.1
 	github.com/gobuffalo/validate v2.0.4+incompatible
-	github.com/gofiber/fiber/v2 v2.43.0
-	github.com/gofiber/jwt/v3 v3.3.7
+	github.com/gofiber/fiber/v2 v2.45.0
+	github.com/gofiber/jwt/v3 v3.3.10
 	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/jackc/pgx/v4 v4.18.1
