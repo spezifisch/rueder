@@ -81,8 +81,8 @@ dependencies:
     specifier: ^0.2.5
     version: 0.2.5
   svelte-file-dropzone:
-    specifier: 0.0.15
-    version: 0.0.15
+    specifier: 2.0.2
+    version: 2.0.2(svelte@3.59.2)
   svelte-infinite-scroll:
     specifier: ^2.0.1
     version: 2.0.1
@@ -4374,10 +4374,13 @@ packages:
     resolution: {integrity: sha512-EAULxib4pRa59nyz25dDKITgSAVkrNVojRZVCSO8MIFd5GJljghJaCTIe/7R+O3GxKYIwJ3XHDNoY1hfjJeyEg==}
     dev: false
 
-  /svelte-file-dropzone@0.0.15:
-    resolution: {integrity: sha512-detN5snkt/UkcSQWvfMUHY0LpwZBwsrhpNqXzpkR+8wNmmhJhqcjVfuRnvTB+STNJhS6wDP6IAJXOaGPVONwmw==}
+  /svelte-file-dropzone@2.0.2(svelte@3.59.2):
+    resolution: {integrity: sha512-+0gSO21Jp3zDvpzq0AQTz/afInQGjkjv0CSr8+dXvLg+JjIQxQ9mJRa5+Taqx4/NTKExqB5zr8XoTfCdk30FTQ==}
+    peerDependencies:
+      svelte: ^3.54.0 || ^4.0.0
     dependencies:
       file-selector: 0.2.4
+      svelte: 3.59.2
     dev: false
 
   /svelte-hmr@0.15.3(svelte@3.59.2):
