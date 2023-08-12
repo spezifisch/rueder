@@ -1,5 +1,6 @@
 ## BASE
-FROM node:16.20.0-alpine3.16 AS base
+FROM node:18.17.1-alpine3.18 AS base
+# TODO migrate to pnpm
 
 # disable npm update check, it's annoying
 ENV NPM_CONFIG_UPDATE_NOTIFIER=false
