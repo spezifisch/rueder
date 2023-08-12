@@ -69,7 +69,7 @@
                         in:fade
                     >
                         <p class="flex-auto">{errorMsg}</p>
-                        <div
+                        <button
                             class="flex-none hover:text-red-300"
                             title="Close message"
                             on:click={() => (doShowError = false)}
@@ -87,7 +87,7 @@
                                     clip-rule="evenodd"
                                 />
                             </svg>
-                        </div>
+                        </button>
                     </div>
                 {/if}
                 <form

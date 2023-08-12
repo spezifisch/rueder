@@ -143,7 +143,7 @@
     class:label-active-border={mode == Mode.Label && !enableEditMode}
     class:edit-active-border={enableEditMode}
 >
-    <div
+    <button
         class="button button-leftish relative"
         class:disabled-button={disableLabelButton}
         class:text-yellow-500={mode == Mode.Label}
@@ -156,16 +156,16 @@
             </div>
         {/if}
         <OutlineTag />
-    </div>
-    <div
+    </button>
+    <button
         class="button button-leftish"
         class:disabled-button={disableAddFeedButton}
         title="Add Feed"
         on:click={handleAddFeedButton}
     >
         <OutlinePlusCircle />
-    </div>
-    <div
+    </button>
+    <button
         class="button relative"
         class:disabled-button={disableEditButton}
         class:text-green-500={enableEditMode}
@@ -178,7 +178,7 @@
             </div>
         {/if}
         <OutlinePencilAlt />
-    </div>
+    </button>
 </div>
 
 <style lang="postcss">

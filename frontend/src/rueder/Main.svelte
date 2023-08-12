@@ -276,7 +276,7 @@
 <main class="flex flex-row h-screen text-gray-50 bg-black">
     <!-- show error toast -->
     {#if doShowErrorToast}
-        <div
+        <button
             on:click={() => {
                 doShowErrorToast = false
             }}
@@ -288,12 +288,12 @@
             >
                 <ToastError message={errorToastMessage} />
             </ModalWrapper>
-        </div>
+        </button>
     {/if}
 
     <!-- sidebar -->
     <div
-        class="flex-none w-screen h-screen flex flex-col bg-gray-900 md:w-64 xl:flex"
+        class="flex-none w-screen h-screen flex flex-col bg-gray-900 md:w-64 lg:flex"
         class:hidden={!forceShowSidebar && (selectedFeed || selectedLabel || article_content)}
     >
         <!-- top bar -->
