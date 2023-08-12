@@ -98,14 +98,14 @@
                     class="flex flex-row py-2 px-2 md:p-0 md:pl-2 hover:bg-gray-700 cursor-pointer items-center md:text-sm"
                     class:bg-gray-600={!editMode && selectedLabel == labelNames[i]}
                     on:click={() => !editMode && dispatch("labelClick", label.name)}
-                >
+                    >
                     {#if i == openPickerIndex}
                         <div class="block z-10">
                             <LabelColorPicker
                                 bind:color={editColor}
                                 startColor={label.color}
                                 on:applyClick={() => onTagApply(i)}
-                            />
+                                />
                         </div>
                     {/if}
                     <div class="h-6 w-6" style="color: {label.color}" on:click={(e) => onTagClick(e, i)}>
@@ -122,36 +122,36 @@
                             type="text"
                             bind:value={label.name}
                             on:input={() => {
-                                const nameChanged = label.name != labelNames[i]
-                                const alreadyExists = nameChanged && labelNames.includes(label.name)
-                                const isBadEdit = alreadyExists || label.name == ""
-                                badEdits[i] = isBadEdit
-                            }}
-                            title={badEdits[i]
-                                ? label.name == ""
-                                    ? "Label name cannot be empty"
-                                    : "A label with the same name already exists"
-                                : ""}
-                            placeholder="Unnamed Label"
+                                         const nameChanged = label.name != labelNames[i]
+                                         const alreadyExists = nameChanged && labelNames.includes(label.name)
+                                         const isBadEdit = alreadyExists || label.name == ""
+                                         badEdits[i] = isBadEdit
+                                         }}
+                        title={badEdits[i]
+                                  ? label.name == ""
+                                  ? "Label name cannot be empty"
+                                  : "A label with the same name already exists"
+                                  : ""}
+                        placeholder="Unnamed Label"
                         />
                     {/if}
 
                     <!-- article count bubble -->
                     {#if label.articleIDs.size}
                         <span class="flex-none bg-gray-800 text-gray-200 text-xs rounded-full py-1 md:py-0 px-2 mx-1"
-                            >{label.articleIDs.size}</span
-                        >
+                        >{label.articleIDs.size}</span
+                                                >
                     {/if}
 
                     {#if editMode}
                         <!-- trash icon (in edit mode) -->
-                        <div
+                        <button
                             class="flex-none mr-1 text-red-900 hover:text-red-600 cursor-pointer"
                             title="Delete Label"
                             on:click|stopPropagation={(_e) => onRemoveClick(label.name)}
-                        >
+                            >
                             <SolidTrash />
-                        </div>
+                        </button>
                     {/if}
                 </li>
             {:else}
@@ -175,7 +175,7 @@
                     e.key == "Enter" && addLabel()
                 }}
             />
-            <div
+            <button
                 class="flex-none p-2 cursor-pointer"
                 class:cursor-not-allowed={!validLabelName}
                 class:text-gray-500={!validLabelName}
@@ -184,7 +184,7 @@
                 on:click={() => addLabel()}
             >
                 <SolidPlusCircle />
-            </div>
+            </button>
         </div>
     </div>
 {/if}

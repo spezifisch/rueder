@@ -63,8 +63,10 @@
 </script>
 
 {#each selectedValue as value, i}
-    <div
-        class="multiSelectItem {activeSelectedValue === i ? 'active' : ''} {isDisabled ? 'disabled' : ''}"
+    <button
+        class="multiSelectItem {activeSelectedValue === i ? 'active' : ''} {isDisabled
+            ? 'disabled'
+            : ''}"
         on:click={(event) => (multiFullItemClearable ? handleClear(i, event) : {})}
     >
         {#if i == openPickerIndex}
@@ -76,28 +78,34 @@
         {/if}
         <div class="multiSelectItem_label">
             <div class="flex flex-row space-x-1">
-                <div
+                <button
                     class="flex-none"
                     style="color: {getLabelColor(value)}"
                     on:click|stopPropagation={() => onLabelClick(i)}
                 >
                     <SolidTag size={5} addClass="inline" />
-                </div>
+                </button>
                 <div>
                     {@html getSelectionLabel(value)}
                 </div>
             </div>
         </div>
         {#if !isDisabled && !multiFullItemClearable}
-            <div class="multiSelectItem_clear" on:click={(event) => handleClear(i, event)}>
-                <svg width="100%" height="100%" viewBox="-2 -2 50 50" focusable="false" role="presentation">
+            <button class="multiSelectItem_clear" on:click={(event) => handleClear(i, event)}>
+                <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="-2 -2 50 50"
+                    focusable="false"
+                    role="presentation"
+                >
                     <path
                         d="M34.923,37.251L24,26.328L13.077,37.251L9.436,33.61l10.923-10.923L9.436,11.765l3.641-3.641L24,19.047L34.923,8.124 l3.641,3.641L27.641,22.688L38.564,33.61L34.923,37.251z"
                     />
                 </svg>
-            </div>
+            </button>
         {/if}
-    </div>
+    </button>
 {/each}
 
 <style>
