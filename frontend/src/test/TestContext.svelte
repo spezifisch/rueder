@@ -2,7 +2,7 @@
     // based on: https://svelte-recipes.netlify.app/testing/
     import { setContext, SvelteComponent } from "svelte"
 
-    export let Component: SvelteComponent
+    export let Component: typeof SvelteComponent<any>
     export let context_key: string
     export let context_value: any
 
