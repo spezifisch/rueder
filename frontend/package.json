@@ -19,7 +19,7 @@
     "favicons": "./utils/favicons.sh"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/svelte": "^3.2.2",
     "@types/javascript-time-ago": "^2.0.3",
     "@types/jest": "^29.5.3",
