@@ -37,6 +37,6 @@ RUN echo Base URLs: base=$VITE_BASE_URL login=$VITE_RUEDER_BASE_URL_LOGIN api=$V
 
 ## FINAL STAGE
 # serve with nginx on :8080
-FROM nginxinc/nginx-unprivileged:1.25.1-alpine AS final
+FROM nginxinc/nginx-unprivileged:1.25.2-alpine AS final
 
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html/
