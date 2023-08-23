@@ -49,7 +49,7 @@
     "@spezifisch/svelte-select": "^3.17.3",
     "@spezifisch/tailwind-scrollbar": "^1.3.2",
     "@sveltejs/vite-plugin-svelte": "^1.4.0",
-    "@tailwindcss/forms": "^0.5.4",
+    "@tailwindcss/forms": "^0.5.5",
     "@tsconfig/svelte": "^3.0.0",
     "autoprefixer": "^10.4.15",
     "browser-fs-access": "^0.34.1",
