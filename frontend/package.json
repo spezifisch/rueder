@@ -59,7 +59,7 @@
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
     "path-browserify": "^1.0.1",
-    "postcss": "^8.4.27",
+    "postcss": "^8.4.28",
     "postcss-nested": "^6.0.1",
     "sanitize-html": "^2.11.0",
     "sass": "^1.66.1",
