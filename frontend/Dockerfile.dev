@@ -1,13 +1,14 @@
 FROM node:18.17.1-alpine3.18
-# TODO migrate to pnpm
 
-ENV NPM_CONFIG_UPDATE_NOTIFIER=false
-
-RUN apk add --no-cache su-exec=0.2-r1
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable && \
+    pnpm config set auto-install-peers true && \
+    apk add --no-cache su-exec=0.2-r3
 
 WORKDIR /usr/src/app
 
-COPY --chown=node:node package*.json ./
+COPY --chown=node:node package.json pnpm-lock.yaml ./
 
 RUN chown -R node:node /usr/src/app && \
     # clear volume and drop privileges on start
@@ -15,7 +16,7 @@ RUN chown -R node:node /usr/src/app && \
     # install node_modules and move them to /. `npm run docker-dev` will copy
     # them into the working directory on startup
     # (see https://stackoverflow.com/a/43350779)
-    su node -c 'npm ci --unsafe-perm --no-audit' && mv ./node_modules /
+    su node -c 'pnpm install --frozen-lockfile' && mv ./node_modules /
 
 # dev http
 EXPOSE 3000

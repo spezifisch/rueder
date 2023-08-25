@@ -30,12 +30,12 @@ sub-directories inside the backend and frontend directories.
 To start a local instance of `rueder3` with hot-reload on code changes, simply do:
 
 ```shell
-# works in backend dir only:
+# both work in backend and frontend dir:
+
 make run
 
 # OR
 
-# works in backend and frontend dir:
 docker-compose up --force-recreate --build
 ```
 
