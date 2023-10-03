@@ -1,6 +1,20 @@
-.vscode/*.log
+# OS files
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+ehthumbs.db
+Thumbs.db
+
+# temp/cache
 __pycache__
+.*.swp
+
+# secrets
 config/rueder.env
 config/rueder-prod.env
 config/rueder-test.env
 config/imgproxy.env
+
+.vscode/*.log
