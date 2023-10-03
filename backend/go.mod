@@ -104,7 +104,7 @@ require (
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/rabbitmq/amqp091-go v1.8.1
+	github.com/rabbitmq/amqp091-go v1.9.0
 	github.com/rogpeppe/go-internal v1.10.0 // indirect
 	github.com/serenize/snaker v0.0.0-20201027110005-a7ad2135616e // indirect
 	github.com/sergi/go-diff v1.3.1 // indirect
