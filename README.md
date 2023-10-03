@@ -73,10 +73,10 @@ Feedfinder.
 
 Development Requirements:
 
-- Python (3.7+ required) for pre-commit, pipx
+- Python (3.7+ required, 3.11 recommended) for pre-commit, pipx
 - Docker for some pre-commit hooks
 - Node/**p**npm for frontend checks (16+ required, 18+ recommended)
-- Go (1.17+ required, 1.19 recommended) for backend checks (make sure `GOPATH` environment variable is set)
+- Go (1.17+ required, 1.21 recommended) for backend checks (make sure `GOPATH` environment variable is set)
 - golangci-lint for backend checks: <https://golangci-lint.run/usage/install/>
 
 After installing these requirements and cloning the repository do these steps to

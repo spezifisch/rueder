@@ -5,7 +5,7 @@ download:
 
 # run unit tests without database connection
 test:
-	go test ./... -parallel=8 -count=1
+	go test ./... -parallel=4 -count=1
 
 # run unit tests and let copyist record
 test_record:
