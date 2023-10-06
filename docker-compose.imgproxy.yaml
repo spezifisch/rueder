@@ -1,6 +1,6 @@
 services:
     imgproxy:
-        image: docker.io/darthsim/imgproxy:v3.5.1
+        image: docker.io/darthsim/imgproxy:v3.19.0
         env_file:
             - ./config/imgproxy.env
         volumes:
