@@ -49,7 +49,7 @@ func (s *Server) init() {
 	s.app = fiber.New(fiber.Config{
 		AppName: appName,
 		// print routes in dev mode
-		EnablePrintRoutes: s.isDevelopmentMode,
+		EnablePrintRoutes: false,
 		// distrust proxy headers only in prod mode
 		EnableTrustedProxyCheck: !s.isDevelopmentMode,
 		TrustedProxies:          s.trustedProxies,

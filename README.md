@@ -30,8 +30,6 @@ sub-directories inside the backend and frontend directories.
 To start a local instance of `rueder3` with hot-reload on code changes, simply do:
 
 ```shell
-# both work in backend and frontend dir:
-
 make run
 
 # OR

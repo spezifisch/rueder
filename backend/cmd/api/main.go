@@ -31,7 +31,7 @@ func main() {
 				file := os.NewFile(3, "s6ready") // hardcoded fd 3, arbitrary name
 				_, err := file.Write([]byte("\n"))
 				if err != nil {
-					log.WithError(err).Info("s6ready not writable (ok on reloads)")
+					log.WithError(err).Info("s6ready not writable (this is ok on reloads)")
 				} else {
 					err = file.Close()
 					if err != nil {
@@ -54,7 +54,7 @@ func main() {
 			// rabbitmq event sink
 			mqRepo := rabbitMQRepository.NewEventPublisherRepository(mqAddr)
 			if mqRepo == nil {
-				return
+				panic("can't connect to mq")
 			}
 			go mqRepo.HandleEvents()
 			defer mqRepo.Close()
@@ -69,7 +69,7 @@ func main() {
 			} else {
 				r := apiPopRepository.NewAPIPopRepository(db)
 				if r == nil {
-					return
+					panic("can't connect to pop repo")
 				}
 
 				c = controller.NewController(r, mqRepo)
@@ -79,6 +79,10 @@ func main() {
 			s := ruederHTTP.NewServer(c, jwtSecretKey, isDevelopmentMode, trustedProxies)
 			log.Info("🚀 api ready!")
 			s.Run()
+
+			if isDevelopmentMode {
+				log.Info("❌ api quit!")
+			}
 		},
 	}
 

@@ -29,7 +29,12 @@ func main() {
 
 			c := controller.NewController()
 			s := feedfinderHTTP.NewServer(c, bind, jwtSecretKey, isDevelopmentMode, trustedProxies)
+			log.Info("🚀 feedfinder ready!")
 			s.Run()
+
+			if isDevelopmentMode {
+				log.Info("❌ feedfinder quit!")
+			}
 		},
 	}
 

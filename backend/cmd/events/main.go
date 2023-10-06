@@ -36,26 +36,31 @@ func main() {
 			// rabbitmq event source
 			mqRepo := rabbitMQRepository.NewEventConsumerRepository(mqAddr)
 			if mqRepo == nil {
-				panic("can't connect to rmq")
+				panic("can't connect to mq")
 			}
 			bind := common.RequireString("bind")
 			log.Infof("events: binding to %s", bind)
 
 			var c *controller.Controller
-			if db != "mock" {
+			if isDevelopmentMode && db == "mock" {
+				c = controller.NewController(mockRepository.NewMockRepository(), mqRepo)
+			} else {
 				r := apiPopRepository.NewAPIPopRepository(db)
 				if r == nil {
 					panic("can't connect to pop repo")
 				}
 
 				c = controller.NewController(r, mqRepo)
-			} else {
-				c = controller.NewController(mockRepository.NewMockRepository(), mqRepo)
 			}
 
 			// http server
 			s := eventsHTTP.NewServer(c, bind, jwtSecretKey, isDevelopmentMode, trustedProxies)
+			log.Info("🚀 events ready!")
 			s.Run()
+
+			if isDevelopmentMode {
+				log.Info("❌ events quit!")
+			}
 		},
 	}
 

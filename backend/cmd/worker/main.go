@@ -17,6 +17,9 @@ func main() {
 		Short: "Feed Worker",
 		Long:  `Rueder Feed Fetcher Worker.`,
 		Run: func(cmd *cobra.Command, args []string) {
+			// get options
+			isDevelopmentMode := viper.GetBool("dev")
+
 			db := common.RequireString("db")
 			log.Infof("using pop db \"%s\"", db)
 
@@ -34,7 +37,12 @@ func main() {
 
 			workerPool := worker.NewFeedWorkerPool(repository)
 			scheduler := scheduler.NewScheduler(repository, workerPool, workerCount)
+			log.Info("🚀 worker scheduler ready!")
 			scheduler.Run()
+
+			if isDevelopmentMode {
+				log.Info("❌ worker scheduler quit! Did you initialize the db? (See /README.md)")
+			}
 		},
 	}
 

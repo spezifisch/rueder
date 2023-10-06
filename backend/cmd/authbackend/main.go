@@ -31,7 +31,12 @@ func main() {
 
 			c := controller.NewController(r)
 			s := authBackendHTTP.NewServer(c, bind, isDevelopmentMode)
+			log.Info("🚀 authbackend ready!")
 			s.Run()
+
+			if isDevelopmentMode {
+				log.Info("❌ authbackend quit!")
+			}
 		},
 	}
 
