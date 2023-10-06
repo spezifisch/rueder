@@ -7,7 +7,7 @@
 - Docker or podman. Everything is contained in docker images.
 - docker-compose (1.27+ required)
 
-## Installation
+## Installation (Production Build)
 
 1. copy `rueder.example.env` to `rueder-prod.env` and
    1.1 change `LOGINSRV_JWT_SECRET` and `RUEDER_JWT` to something secure (eg. the output of `pwgen -s 128 1`)

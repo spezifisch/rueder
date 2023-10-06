@@ -22,6 +22,7 @@ func main() {
 		Short: "HTTP API",
 		Long:  `Rueder HTTP API.`,
 		Run: func(cmd *cobra.Command, args []string) {
+			// first some special things for dev mode
 			isDevelopmentMode := viper.GetBool("dev")
 
 			// s6 readiness notification in dev mode
@@ -39,15 +40,15 @@ func main() {
 				}
 			}
 
-			db := common.RequireString("db")
-			log.Infof("api: using pop db \"%s\"", db)
-
+			// check JWT
 			jwtSecretKey := common.RequireString("jwt")
 			if !isDevelopmentMode {
 				if jwtSecretKey == "secret" || len(jwtSecretKey) < 32 {
 					panic("use a JWT secret with 32 or more characters!")
 				}
 			}
+
+			// setup mq
 			mqAddr := common.RequireString("rabbitmq-addr")
 
 			// rabbitmq event sink
@@ -56,23 +57,28 @@ func main() {
 				return
 			}
 			go mqRepo.HandleEvents()
+			defer mqRepo.Close()
+
+			// setup SQL db
+			db := common.RequireString("db")
+			log.Infof("api: using pop db \"%s\"", db)
 
 			var c *controller.Controller
-			if db != "mock" {
+			if isDevelopmentMode && db == "mock" { // allow mock sqldb only in dev mode
+				c = controller.NewController(mockRepository.NewMockRepository(), mqRepo)
+			} else {
 				r := apiPopRepository.NewAPIPopRepository(db)
 				if r == nil {
 					return
 				}
 
 				c = controller.NewController(r, mqRepo)
-			} else {
-				c = controller.NewController(mockRepository.NewMockRepository(), mqRepo)
 			}
 
+			// start http server
 			s := ruederHTTP.NewServer(c, jwtSecretKey, isDevelopmentMode, trustedProxies)
+			log.Info("🚀 api ready!")
 			s.Run()
-
-			mqRepo.Close()
 		},
 	}
 

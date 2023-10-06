@@ -23,8 +23,8 @@ ENTRYPOINT ["/init"]
 
 RUN apk add --no-cache \
     gcc=12.2.1_git20220924-r10 \
-    musl-dev=1.2.4-r1 \
-    postgresql13-client=13.11-r0 \
+    musl-dev=1.2.4-r2 \
+    postgresql13-client=13.12-r0 \
     tzdata=2023c-r1 && \
     ln -snf /usr/share/zoneinfo/${DEFAULT_TZ} /etc/localtime && \
     # Go Watch: https://github.com/mitranim/gow
