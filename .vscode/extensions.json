@@ -6,6 +6,7 @@
         "csstools.postcss",
         "davidanson.vscode-markdownlint",
         "mikestead.dotenv",
-        "timonwong.shellcheck"
+        "timonwong.shellcheck",
+        "golang.go"
     ]
 }
