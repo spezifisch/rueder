@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2022 spezifisch <spezifisch23@proton.me>
+// SPDX-License-Identifier: AGPL-3.0-only
+
 package controller
 
 import (
@@ -27,7 +30,7 @@ import (
 func (c *Controller) DefaultRoute(ctx *fiber.Ctx) error {
 	claims := helpers.GetFiberAuthClaims(ctx)
 	if claims == nil {
-		return ctx.SendStatus(fiber.StatusBadRequest)
+		return fiber.ErrBadRequest
 	}
 	return ctx.JSON(fiber.Map{
 		"ping":   "pong",
@@ -49,7 +52,7 @@ func (c *Controller) DefaultRoute(ctx *fiber.Ctx) error {
 func (c *Controller) SSE(ctx *fiber.Ctx) error {
 	claims := helpers.GetFiberAuthClaims(ctx)
 	if claims == nil {
-		return ctx.SendStatus(fiber.StatusBadRequest)
+		return fiber.ErrBadRequest
 	}
 	userID := claims.ID
 	startTime := time.Now().UnixNano()

@@ -1,11 +1,5 @@
 package http
 
-import (
-	"github.com/apex/log"
-
-	"github.com/spezifisch/rueder3/backend/internal/auth"
-)
-
 // @title rueder3 API
 // @version 1.0
 // @description Feed Reader API
@@ -24,22 +18,16 @@ import (
 // @in header
 // @name Authorization
 func (s *Server) initAPIv1() {
-	authMiddleware, err := auth.NewAuthMiddleware(s.jwtSecretKey)
-	if err != nil {
-		log.WithError(err).Error("couldn't setup jwt auth middleware")
-		return
-	}
-
-	v1 := s.engine.Group("/api/v1", authMiddleware.MiddlewareFunc()) /* <- this is the important part with the auth */
+	v1 := s.app.Group("/api/v1")
 	{
 		// not tied so the user:
-		v1.GET("/article/:id", s.controller.Article)
-		v1.GET("/articles/:feed_id", s.controller.Articles)
-		v1.GET("/feeds", s.controller.Feeds)
-		v1.GET("/feed/:feed_id", s.controller.GetFeed)
-		v1.POST("/feed", s.controller.AddFeed)
+		v1.Get("/article/:id", s.controller.Article)
+		v1.Get("/articles/:feed_id", s.controller.Articles)
+		v1.Get("/feeds", s.controller.Feeds)
+		v1.Get("/feed/:feed_id", s.controller.GetFeed)
+		v1.Post("/feed", s.controller.AddFeed)
 		// tied to the user:
-		v1.GET("/folders", s.controller.Folders)
-		v1.POST("/folders", s.controller.ChangeFolders)
+		v1.Get("/folders", s.controller.Folders)
+		v1.Post("/folders", s.controller.ChangeFolders)
 	}
 }

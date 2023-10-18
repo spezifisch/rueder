@@ -1,14 +1,15 @@
-// based on swag example (MIT License): https://github.com/swaggo/swag
+// SPDX-FileCopyrightText: 2022 spezifisch <spezifisch23@proton.me>
+// SPDX-License-Identifier: AGPL-3.0-only
+// based on swag example (MIT licensed): https://github.com/swaggo/swag
 
 package controller
 
 import (
-	"errors"
-	"net/http"
 	"strconv"
 
-	"github.com/gin-gonic/gin"
+	"github.com/gofiber/fiber/v2"
 	"github.com/gofrs/uuid"
+
 	"github.com/spezifisch/rueder3/backend/internal/common"
 	"github.com/spezifisch/rueder3/backend/pkg/helpers"
 	"github.com/spezifisch/rueder3/backend/pkg/httputil"
@@ -27,19 +28,18 @@ import (
 // @Failure 404 {object} httputil.HTTPError
 // @Security ApiKeyAuth
 // @Router /article/{id} [get]
-func (c *Controller) Article(ctx *gin.Context) {
-	id, err := uuid.FromString(ctx.Param("id"))
+func (c *Controller) Article(ctx *fiber.Ctx) error {
+	id, err := uuid.FromString(ctx.Params("id"))
 	if err != nil {
-		httputil.NewError(ctx, http.StatusBadRequest, errors.New("invalid id"))
-		return
+		return fiber.NewError(fiber.StatusBadRequest, "invalid id")
 	}
 
 	article, err := c.repository.GetArticle(id)
 	if err != nil {
-		httputil.NewError(ctx, http.StatusNotFound, errors.New("article not found"))
-		return
+		return fiber.NewError(fiber.StatusNotFound, "article not found")
 	}
-	ctx.JSON(http.StatusOK, article)
+
+	return ctx.JSON(article)
 }
 
 // Articles godoc
@@ -56,11 +56,10 @@ func (c *Controller) Article(ctx *gin.Context) {
 // @Failure 404 {object} httputil.HTTPError
 // @Security ApiKeyAuth
 // @Router /articles/{feed_id} [get]
-func (c *Controller) Articles(ctx *gin.Context) {
-	feedID, err := uuid.FromString(ctx.Param("feed_id"))
+func (c *Controller) Articles(ctx *fiber.Ctx) error {
+	feedID, err := uuid.FromString(ctx.Params("feed_id"))
 	if err != nil {
-		httputil.NewError(ctx, http.StatusBadRequest, errors.New("invalid feed_id"))
-		return
+		return fiber.NewError(fiber.StatusBadRequest, "invalid feed_id")
 	}
 
 	limit := c.articlesPerPage
@@ -71,10 +70,10 @@ func (c *Controller) Articles(ctx *gin.Context) {
 
 	articles, err := c.repository.GetArticles(feedID, limit, offset)
 	if err != nil {
-		httputil.NewError(ctx, http.StatusNotFound, errors.New("articles not found"))
-		return
+		return fiber.NewError(fiber.StatusNotFound, "articles not found")
 	}
-	ctx.JSON(http.StatusOK, articles)
+
+	return ctx.JSON(articles)
 }
 
 // Folders godoc
@@ -88,14 +87,14 @@ func (c *Controller) Articles(ctx *gin.Context) {
 // @Failure 403 {object} httputil.HTTPError
 // @Security ApiKeyAuth
 // @Router /folders [get]
-func (c *Controller) Folders(ctx *gin.Context) {
-	claims := helpers.GetAuthClaims(ctx)
+func (c *Controller) Folders(ctx *fiber.Ctx) error {
+	claims := helpers.GetFiberAuthClaims(ctx)
 	folders, err := c.repository.Folders(claims)
 	if err != nil {
-		httputil.NewError(ctx, http.StatusNotFound, errors.New("folders not found"))
-		return
+		return fiber.NewError(fiber.StatusNotFound, "folders not found")
 	}
-	ctx.JSON(http.StatusOK, folders)
+
+	return ctx.JSON(folders)
 }
 
 // GetFeed godoc
@@ -110,19 +109,18 @@ func (c *Controller) Folders(ctx *gin.Context) {
 // @Failure 403 {object} httputil.HTTPError
 // @Security ApiKeyAuth
 // @Router /feed/{feed_id} [get]
-func (c *Controller) GetFeed(ctx *gin.Context) {
-	feedID, err := uuid.FromString(ctx.Param("feed_id"))
+func (c *Controller) GetFeed(ctx *fiber.Ctx) error {
+	feedID, err := uuid.FromString(ctx.Params("feed_id"))
 	if err != nil {
-		httputil.NewError(ctx, http.StatusBadRequest, errors.New("invalid feed_id"))
-		return
+		return fiber.NewError(fiber.StatusBadRequest, "invalid feed_id")
 	}
 
 	feed, err := c.repository.GetFeed(feedID)
 	if err != nil {
-		httputil.NewError(ctx, http.StatusNotFound, errors.New("feed not found"))
-		return
+		return fiber.NewError(fiber.StatusNotFound, "feed not found")
 	}
-	ctx.JSON(http.StatusOK, feed)
+
+	return ctx.JSON(feed)
 }
 
 // Feeds godoc
@@ -136,13 +134,12 @@ func (c *Controller) GetFeed(ctx *gin.Context) {
 // @Failure 403 {object} httputil.HTTPError
 // @Security ApiKeyAuth
 // @Router /feeds [get]
-func (c *Controller) Feeds(ctx *gin.Context) {
+func (c *Controller) Feeds(ctx *fiber.Ctx) error {
 	feeds, err := c.repository.Feeds()
 	if err != nil {
-		httputil.NewError(ctx, http.StatusNotFound, errors.New("feeds not found"))
-		return
+		return fiber.NewError(fiber.StatusNotFound, "feeds not found")
 	}
-	ctx.JSON(http.StatusOK, feeds)
+	return ctx.JSON(feeds)
 }
 
 // AddFeed godoc
@@ -157,47 +154,42 @@ func (c *Controller) Feeds(ctx *gin.Context) {
 // @Failure 403 {object} httputil.HTTPError
 // @Security ApiKeyAuth
 // @Router /feed [post]
-func (c *Controller) AddFeed(ctx *gin.Context) {
+func (c *Controller) AddFeed(ctx *fiber.Ctx) error {
 	var json AddFeedRequest
-	if err := ctx.ShouldBindJSON(&json); err != nil {
-		httputil.NewError(ctx, http.StatusBadRequest, errors.New("malformed JSON body"))
-		return
+	if err := ctx.BodyParser(&json); err != nil {
+		return fiber.NewError(fiber.StatusBadRequest, "malformed JSON body")
 	}
 	if !helpers.IsURL(json.URL) {
-		httputil.NewError(ctx, http.StatusBadRequest, errors.New("not a valid URL"))
-		return
+		return fiber.NewError(fiber.StatusBadRequest, "not a valid URL")
 	}
 	if helpers.IsHTTPURL(json.URL) {
 		// it's a http URL, so first try looking up if there's a https version in the db
 		httpsURL := helpers.RewriteToHTTPS(json.URL)
 		if feed, err := c.repository.GetFeedByURL(httpsURL); err == nil {
 			// found https version
-			ctx.JSON(http.StatusOK, httputil.HTTPStatus{
+			return ctx.JSON(httputil.HTTPStatus{
 				Status: "ok",
 				FeedID: feed.ID,
 			})
-			return
 		}
 		// try the http version next
 	}
 	// look if a feed with this URL already exists
 	if feed, err := c.repository.GetFeedByURL(json.URL); err == nil {
 		// return the existing feed id
-		ctx.JSON(http.StatusOK, httputil.HTTPStatus{
+		return ctx.JSON(httputil.HTTPStatus{
 			Status: "ok",
 			FeedID: feed.ID,
 		})
-		return
 	}
 
 	// feed doesn't already exist. add it.
 	feedID, err := c.repository.AddFeed(json.URL)
 	if err != nil {
-		httputil.NewError(ctx, http.StatusBadRequest, err)
-		return
+		return fiber.NewError(fiber.StatusBadRequest, err.Error())
 	}
 
-	ctx.JSON(http.StatusOK, httputil.HTTPStatus{
+	return ctx.JSON(httputil.HTTPStatus{
 		Status: "ok",
 		FeedID: feedID,
 	})
@@ -220,19 +212,17 @@ type AddFeedRequest struct {
 // @Failure 403 {object} httputil.HTTPError
 // @Security ApiKeyAuth
 // @Router /folders [post]
-func (c *Controller) ChangeFolders(ctx *gin.Context) {
-	claims := helpers.GetAuthClaims(ctx)
+func (c *Controller) ChangeFolders(ctx *fiber.Ctx) error {
+	claims := helpers.GetFiberAuthClaims(ctx)
 
 	var json ChangeFoldersRequest
-	if err := ctx.ShouldBindJSON(&json); err != nil {
-		httputil.NewError(ctx, http.StatusBadRequest, errors.New("malformed JSON body"))
-		return
+	if err := ctx.BodyParser(&json); err != nil {
+		return fiber.NewError(fiber.StatusBadRequest, "malformed JSON body")
 	}
 
 	err := c.repository.ChangeFolders(claims, json.Folders)
 	if err != nil {
-		httputil.NewError(ctx, http.StatusBadRequest, err)
-		return
+		return fiber.NewError(fiber.StatusBadRequest, err.Error())
 	}
 
 	// send event
@@ -244,7 +234,7 @@ func (c *Controller) ChangeFolders(ctx *gin.Context) {
 		},
 	})
 
-	ctx.JSON(http.StatusOK, httputil.HTTPStatus{
+	return ctx.JSON(httputil.HTTPStatus{
 		Status: "ok",
 	})
 }

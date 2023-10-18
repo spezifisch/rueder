@@ -8,8 +8,8 @@ package http
 // @contact.url https://github.com/spezifisch
 // @contact.email spezifisch23@proton.me
 
-// @license.name GPLv3
-// @license.url https://www.gnu.org/licenses/gpl-3.0.en.html
+// @license.name AGPLv3
+// @license.url https://www.gnu.org/licenses/agpl-3.0.en.html
 
 // @BasePath /
 // @query.collection.format multi
