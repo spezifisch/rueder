@@ -55,7 +55,6 @@ func (s *Server) init() {
 		ProxyHeader:             fiber.HeaderXForwardedFor,
 		// enforce good behaviour by frontend
 		StrictRouting: true,
-		// why is this not true by default?
 		CaseSensitive: true,
 	})
 
