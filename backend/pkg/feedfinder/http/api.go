@@ -1,11 +1,5 @@
 package http
 
-import (
-	"github.com/apex/log"
-
-	"github.com/spezifisch/rueder3/backend/internal/auth"
-)
-
 // @title feedfinder API
 // @version 1.0
 // @description Feed Finder API
@@ -24,14 +18,5 @@ import (
 // @in header
 // @name Authorization
 func (s *Server) initAPI() {
-	authMiddleware, err := auth.NewAuthMiddleware(s.jwtSecretKey)
-	if err != nil {
-		log.WithError(err).Error("couldn't setup jwt auth middleware")
-		return
-	}
-
-	v1 := s.engine.Group("/", authMiddleware.MiddlewareFunc()) /* <- this is the important part with the auth */
-	{
-		v1.GET("/feedfinder", s.controller.Feedfinder)
-	}
+	s.app.Get("/feedfinder", s.controller.Feedfinder)
 }

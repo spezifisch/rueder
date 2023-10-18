@@ -4,11 +4,9 @@ package controller
 
 import (
 	"errors"
-	"net/http"
 
-	"github.com/gin-gonic/gin"
+	"github.com/gofiber/fiber/v2"
 	"github.com/spezifisch/rueder3/backend/pkg/helpers"
-	"github.com/spezifisch/rueder3/backend/pkg/httputil"
 )
 
 // Feedfinder godoc
@@ -23,15 +21,22 @@ import (
 // @Failure 404 {object} httputil.HTTPError
 // @Security ApiKeyAuth
 // @Router /feedfinder [get]
-func (c *Controller) Feedfinder(ctx *gin.Context) {
+func (c *Controller) Feedfinder(ctx *fiber.Ctx) error {
+	claims := helpers.GetFiberAuthClaims(ctx)
+	if claims == nil {
+		return ctx.SendStatus(fiber.StatusBadRequest)
+	}
+
 	var json FeedFinderRequest
-	if err := ctx.ShouldBindJSON(&json); err != nil {
-		httputil.NewError(ctx, http.StatusBadRequest, errors.New("malformed JSON body"))
-		return
+	if err := ctx.BodyParser(&json); err != nil {
+		err := errors.New("malformed JSON body")
+		ctx.Context().SetBodyString(err.Error())
+		return ctx.SendStatus(fiber.StatusBadRequest)
 	}
 	if !helpers.IsURL(json.URL) {
-		httputil.NewError(ctx, http.StatusBadRequest, errors.New("not a valid URL"))
-		return
+		err := errors.New("not a valid URL")
+		ctx.Context().SetBodyString(err.Error())
+		return ctx.SendStatus(fiber.StatusBadRequest)
 	}
 	siteURL := json.URL
 
@@ -41,5 +46,5 @@ func (c *Controller) Feedfinder(ctx *gin.Context) {
 		OK:  true,
 		URL: siteURL,
 	}
-	ctx.JSON(http.StatusOK, result)
+	return ctx.JSON(result)
 }

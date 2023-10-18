@@ -2,10 +2,8 @@ package controller
 
 import (
 	"errors"
-	"net/http"
 
-	"github.com/gin-gonic/gin"
-	"github.com/spezifisch/rueder3/backend/pkg/httputil"
+	"github.com/gofiber/fiber/v2"
 )
 
 // Claims godoc
@@ -24,18 +22,19 @@ import (
 // @Failure 400 {object} httputil.HTTPError
 // @Failure 500 {object} httputil.HTTPError
 // @Router /claims [get]
-func (c *Controller) Claims(ctx *gin.Context) {
+func (c *Controller) Claims(ctx *fiber.Ctx) error {
 	authOrigin := ctx.Query("origin")
 	authSubject := ctx.Query("sub")
 	if authOrigin == "" || authSubject == "" {
-		httputil.NewError(ctx, http.StatusBadRequest, errors.New("required query param missing"))
-		return
+		err := errors.New("required query param missing")
+		ctx.Context().SetBodyString(err.Error())
+		return ctx.SendStatus(fiber.StatusBadRequest)
 	}
 
 	user, err := c.repository.GetOrCreateUser(authOrigin, authSubject)
 	if err != nil {
-		httputil.NewError(ctx, http.StatusInternalServerError, err)
-		return
+		ctx.Context().SetBodyString(err.Error())
+		return ctx.SendStatus(fiber.StatusInternalServerError)
 	}
 
 	resp := ClaimsResponse{
@@ -43,7 +42,7 @@ func (c *Controller) Claims(ctx *gin.Context) {
 		Origin:  user.AuthOrigin,
 		UserID:  user.ID.String(),
 	}
-	ctx.JSON(http.StatusOK, resp)
+	return ctx.JSON(resp)
 }
 
 // ClaimsResponse is the returned data for loginsrv's claims endpoint,

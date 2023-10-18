@@ -24,14 +24,14 @@ import (
 // @Failure 401 {object} httputil.HTTPError
 // @Security ApiKeyAuth
 // @Router / [get]
-func (con *Controller) DefaultRoute(c *fiber.Ctx) error {
-	claims := helpers.GetFiberAuthClaims(c)
+func (c *Controller) DefaultRoute(ctx *fiber.Ctx) error {
+	claims := helpers.GetFiberAuthClaims(ctx)
 	if claims == nil {
-		return c.SendStatus(fiber.StatusBadRequest)
+		return ctx.SendStatus(fiber.StatusBadRequest)
 	}
-	return c.JSON(fiber.Map{
+	return ctx.JSON(fiber.Map{
 		"ping":   "pong",
-		"msg":    "default route of " + c.App().Config().AppName,
+		"msg":    "default route of " + ctx.App().Config().AppName,
 		"claims": claims,
 	})
 }
@@ -46,26 +46,26 @@ func (con *Controller) DefaultRoute(c *fiber.Ctx) error {
 // @Failure 401 {object} httputil.HTTPError
 // @Security ApiKeyAuth
 // @Router /sse [get]
-func (con *Controller) SSE(c *fiber.Ctx) error {
-	claims := helpers.GetFiberAuthClaims(c)
+func (c *Controller) SSE(ctx *fiber.Ctx) error {
+	claims := helpers.GetFiberAuthClaims(ctx)
 	if claims == nil {
-		return c.SendStatus(fiber.StatusBadRequest)
+		return ctx.SendStatus(fiber.StatusBadRequest)
 	}
 	userID := claims.ID
 	startTime := time.Now().UnixNano()
 
 	// based on https://github.com/gofiber/recipes/blob/73e31998b30239a9823d6ef55c01e6eade8587cf/sse/main.go
-	c.Set("Content-Type", "text/event-stream")
-	c.Set("Cache-Control", "no-cache")
-	c.Set("Connection", "keep-alive")
-	c.Set("Transfer-Encoding", "chunked")
+	ctx.Set("Content-Type", "text/event-stream")
+	ctx.Set("Cache-Control", "no-cache")
+	ctx.Set("Connection", "keep-alive")
+	ctx.Set("Transfer-Encoding", "chunked")
 
-	c.Context().SetBodyStreamWriter(fasthttp.StreamWriter(func(w *bufio.Writer) {
+	ctx.Context().SetBodyStreamWriter(fasthttp.StreamWriter(func(w *bufio.Writer) {
 		// NOTE do not access anything from the fiber/fasthttp context in here (only copies like userID)
 		logBase := log.WithField("userID", userID).WithField("startTime", startTime)
 		logBase.Info("connected")
 
-		eventUserState, err := con.eventRepo.ConnectUser(userID)
+		eventUserState, err := c.eventRepo.ConnectUser(userID)
 		if err != nil {
 			logBase.WithError(err).Error("couldn't connect to message queue")
 			return

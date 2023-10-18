@@ -47,8 +47,7 @@ func (s *Server) init() {
 	}
 
 	s.app = fiber.New(fiber.Config{
-		AppName: appName,
-		// print routes in dev mode
+		AppName:           appName,
 		EnablePrintRoutes: false,
 		// distrust proxy headers only in prod mode
 		EnableTrustedProxyCheck: !s.isDevelopmentMode,
@@ -56,7 +55,6 @@ func (s *Server) init() {
 		ProxyHeader:             fiber.HeaderXForwardedFor,
 		// enforce good behaviour by frontend
 		StrictRouting: true,
-		// why is this not true by default?
 		CaseSensitive: true,
 	})
 
