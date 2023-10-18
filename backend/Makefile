@@ -27,7 +27,7 @@ run:
 	docker-compose up $(dockerargs)
 
 run_noworker:
-	docker-compose up $(dockerargs) auth authbackend db dev rabbitmq
+	docker-compose up $(dockerargs) auth db dev rabbitmq
 
 run_worker:
 	docker-compose up $(dockerargs) worker

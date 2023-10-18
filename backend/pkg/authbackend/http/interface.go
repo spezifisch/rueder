@@ -1,8 +1,8 @@
 package http
 
-import "github.com/gin-gonic/gin"
+import "github.com/gofiber/fiber/v2"
 
 // Controller is the URL handler
 type Controller interface {
-	Claims(ctx *gin.Context)
+	Claims(ctx *fiber.Ctx) error
 }
