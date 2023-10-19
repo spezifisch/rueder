@@ -2,7 +2,7 @@ package http
 
 // @title feedfinder API
 // @version 1.0
-// @description Feed Finder API
+// @description Feed Finder API is a service that searches websites for feed URLs
 
 // @contact.name spezifisch
 // @contact.url https://github.com/spezifisch
@@ -17,6 +17,6 @@ package http
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
 // @name Authorization
-func (s *Server) initAPI() {
+func (s *Server) addRoutesApiFeedfinderV1() {
 	s.app.Get("/feedfinder", s.controller.Feedfinder)
 }

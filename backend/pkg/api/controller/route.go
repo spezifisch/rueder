@@ -11,6 +11,7 @@ import (
 	"github.com/gofrs/uuid"
 
 	"github.com/spezifisch/rueder3/backend/internal/common"
+	"github.com/spezifisch/rueder3/backend/pkg/fibertools"
 	"github.com/spezifisch/rueder3/backend/pkg/helpers"
 	"github.com/spezifisch/rueder3/backend/pkg/httputil"
 )
@@ -88,7 +89,7 @@ func (c *Controller) Articles(ctx *fiber.Ctx) error {
 // @Security ApiKeyAuth
 // @Router /folders [get]
 func (c *Controller) Folders(ctx *fiber.Ctx) error {
-	claims := helpers.GetFiberAuthClaims(ctx)
+	claims := fibertools.GetFiberAuthClaims(ctx)
 	folders, err := c.repository.Folders(claims)
 	if err != nil {
 		return fiber.NewError(fiber.StatusNotFound, "folders not found")
@@ -213,7 +214,7 @@ type AddFeedRequest struct {
 // @Security ApiKeyAuth
 // @Router /folders [post]
 func (c *Controller) ChangeFolders(ctx *fiber.Ctx) error {
-	claims := helpers.GetFiberAuthClaims(ctx)
+	claims := fibertools.GetFiberAuthClaims(ctx)
 
 	var json ChangeFoldersRequest
 	if err := ctx.BodyParser(&json); err != nil {

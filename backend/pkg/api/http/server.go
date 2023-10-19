@@ -3,12 +3,9 @@ package http
 import (
 	"github.com/apex/log"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/cors"
-	"github.com/gofiber/fiber/v2/middleware/logger"
-	"github.com/gofiber/fiber/v2/middleware/recover"
 
-	"github.com/spezifisch/rueder3/backend/internal/auth"
 	"github.com/spezifisch/rueder3/backend/pkg/api/controller"
+	"github.com/spezifisch/rueder3/backend/pkg/fibertools"
 )
 
 // Server is a http server
@@ -40,54 +37,25 @@ func NewServer(controller *controller.Controller, jwtSecretKey string, isDevelop
 }
 
 func (s *Server) init() {
-	appName := "rueder-api"
+	appName := "rueder-reader"
 	if s.isDevelopmentMode {
 		appName += "-dev"
 	}
 
-	s.app = fiber.New(fiber.Config{
-		AppName:           appName,
-		EnablePrintRoutes: false,
-		// distrust proxy headers only in prod mode
-		EnableTrustedProxyCheck: !s.isDevelopmentMode,
-		TrustedProxies:          s.trustedProxies,
-		ProxyHeader:             fiber.HeaderXForwardedFor,
-		// enforce good behaviour by frontend
-		StrictRouting: true,
-		CaseSensitive: true,
-	})
-
-	// add some additional middlewares in dev mode
-	if s.isDevelopmentMode {
-		// log requests
-		s.app.Use(logger.New())
-
-		// recover from panics in dev mode
-		s.app.Use(recover.New(recover.Config{
-			EnableStackTrace:  true,
-			StackTraceHandler: recover.ConfigDefault.StackTraceHandler,
-		}))
-
-		// add CORS support because in dev mode we usually run on a different port than the frontend
-		s.app.Use(cors.New(cors.Config{
-			AllowOrigins:     "*",
-			AllowMethods:     "GET",
-			AllowHeaders:     "Origin, Content-Type, Authorization",
-			AllowCredentials: false, // no cookies
-			ExposeHeaders:    "Content-Length",
-			MaxAge:           120 * 60, // 2h, Chrome's limit
-		}))
-	}
+	// distrust proxy headers only in prod mode
+	enableTrustedProxyCheck := !s.isDevelopmentMode
+	s.app = fibertools.NewFiberRuederApp(appName, s.isDevelopmentMode, enableTrustedProxyCheck, nil)
 
 	// add auth middleware, all following routes require auth
-	authMiddleware, err := auth.NewFiberAuthMiddleware(s.jwtSecretKey)
+	authMiddleware, err := fibertools.NewFiberAuthMiddleware(s.jwtSecretKey)
 	if err != nil {
 		log.WithError(err).Error("couldn't setup jwt auth middleware")
 		return
 	}
 	s.app.Use(authMiddleware)
 
-	s.initAPIv1()
+	// add routes
+	s.addRoutesApiReaderV1()
 }
 
 // Run starts the server

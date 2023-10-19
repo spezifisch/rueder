@@ -1,4 +1,4 @@
-package helpers
+package fibertools
 
 import (
 	"fmt"
@@ -6,10 +6,12 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofrs/uuid"
 	"github.com/golang-jwt/jwt/v4"
+
+	"github.com/spezifisch/rueder3/backend/pkg/helpers"
 )
 
 // GetFiberAuthClaims parses the data from the JWT in Fiber Handlers
-func GetFiberAuthClaims(c *fiber.Ctx) *AuthClaims {
+func GetFiberAuthClaims(c *fiber.Ctx) *helpers.AuthClaims {
 	user := c.Locals("user").(*jwt.Token)
 	if user == nil {
 		return nil
@@ -27,7 +29,7 @@ func GetFiberAuthClaims(c *fiber.Ctx) *AuthClaims {
 	name := claims["sub"].(string)
 	originName := fmt.Sprintf("%s:%s", origin, name)
 
-	ret := &AuthClaims{
+	ret := &helpers.AuthClaims{
 		ID:         uid,
 		Origin:     origin,
 		Name:       name,
@@ -37,19 +39,4 @@ func GetFiberAuthClaims(c *fiber.Ctx) *AuthClaims {
 		return nil
 	}
 	return ret
-}
-
-// AuthClaims is the parsed data from the JWT
-type AuthClaims struct {
-	ID         uuid.UUID
-	Origin     string
-	Name       string
-	OriginName string
-}
-
-func (a AuthClaims) IsValid() bool {
-	if a.Origin == "" || a.Name == "" || a.OriginName == "" || a.OriginName == ":" {
-		return false
-	}
-	return true
 }

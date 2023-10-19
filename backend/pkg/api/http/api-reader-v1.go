@@ -11,14 +11,14 @@ package http
 // @license.name AGPL-3.0-only
 // @license.url https://spdx.org/licenses/AGPL-3.0-only.html
 
-// @BasePath /api/v1
+// @BasePath /api/reader/v1
 // @query.collection.format multi
 
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
 // @name Authorization
-func (s *Server) initAPIv1() {
-	v1 := s.app.Group("/api/v1")
+func (s *Server) addRoutesApiReaderV1() {
+	v1 := s.app.Group("/api/reader/v1")
 	{
 		// not tied so the user:
 		v1.Get("/article/:id", s.controller.Article)

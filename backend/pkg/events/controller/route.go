@@ -14,7 +14,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/valyala/fasthttp"
 
-	"github.com/spezifisch/rueder3/backend/pkg/helpers"
+	"github.com/spezifisch/rueder3/backend/pkg/fibertools"
 )
 
 // DefaultRoute godoc
@@ -28,7 +28,7 @@ import (
 // @Security ApiKeyAuth
 // @Router / [get]
 func (c *Controller) DefaultRoute(ctx *fiber.Ctx) error {
-	claims := helpers.GetFiberAuthClaims(ctx)
+	claims := fibertools.GetFiberAuthClaims(ctx)
 	if claims == nil {
 		return fiber.ErrBadRequest
 	}
@@ -50,7 +50,7 @@ func (c *Controller) DefaultRoute(ctx *fiber.Ctx) error {
 // @Security ApiKeyAuth
 // @Router /sse [get]
 func (c *Controller) SSE(ctx *fiber.Ctx) error {
-	claims := helpers.GetFiberAuthClaims(ctx)
+	claims := fibertools.GetFiberAuthClaims(ctx)
 	if claims == nil {
 		return fiber.ErrBadRequest
 	}

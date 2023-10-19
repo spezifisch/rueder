@@ -1,9 +1,13 @@
-// based on swag example (MIT License): https://github.com/swaggo/swag
+// SPDX-FileCopyrightText: 2022 spezifisch <spezifisch23@proton.me>
+// SPDX-License-Identifier: AGPL-3.0-only
+// based on swag example (MIT licensed): https://github.com/swaggo/swag
 
 package controller
 
 import (
 	"github.com/gofiber/fiber/v2"
+
+	"github.com/spezifisch/rueder3/backend/pkg/fibertools"
 	"github.com/spezifisch/rueder3/backend/pkg/helpers"
 )
 
@@ -20,7 +24,7 @@ import (
 // @Security ApiKeyAuth
 // @Router /feedfinder [get]
 func (c *Controller) Feedfinder(ctx *fiber.Ctx) error {
-	claims := helpers.GetFiberAuthClaims(ctx)
+	claims := fibertools.GetFiberAuthClaims(ctx)
 	if claims == nil {
 		return fiber.ErrBadRequest
 	}
