@@ -1,8 +1,6 @@
 package controller
 
 import (
-	"errors"
-
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -26,15 +24,12 @@ func (c *Controller) Claims(ctx *fiber.Ctx) error {
 	authOrigin := ctx.Query("origin")
 	authSubject := ctx.Query("sub")
 	if authOrigin == "" || authSubject == "" {
-		err := errors.New("required query param missing")
-		ctx.Context().SetBodyString(err.Error())
-		return ctx.SendStatus(fiber.StatusBadRequest)
+		return fiber.NewError(fiber.StatusBadRequest, "required query param missing")
 	}
 
 	user, err := c.repository.GetOrCreateUser(authOrigin, authSubject)
 	if err != nil {
-		ctx.Context().SetBodyString(err.Error())
-		return ctx.SendStatus(fiber.StatusInternalServerError)
+		return fiber.NewError(fiber.StatusInternalServerError, err.Error())
 	}
 
 	resp := ClaimsResponse{

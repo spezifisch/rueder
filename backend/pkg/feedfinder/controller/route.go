@@ -3,8 +3,6 @@
 package controller
 
 import (
-	"errors"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/spezifisch/rueder3/backend/pkg/helpers"
 )
@@ -24,19 +22,15 @@ import (
 func (c *Controller) Feedfinder(ctx *fiber.Ctx) error {
 	claims := helpers.GetFiberAuthClaims(ctx)
 	if claims == nil {
-		return ctx.SendStatus(fiber.StatusBadRequest)
+		return fiber.ErrBadRequest
 	}
 
 	var json FeedFinderRequest
 	if err := ctx.BodyParser(&json); err != nil {
-		err := errors.New("malformed JSON body")
-		ctx.Context().SetBodyString(err.Error())
-		return ctx.SendStatus(fiber.StatusBadRequest)
+		return fiber.NewError(fiber.StatusBadRequest, "malformed body")
 	}
 	if !helpers.IsURL(json.URL) {
-		err := errors.New("not a valid URL")
-		ctx.Context().SetBodyString(err.Error())
-		return ctx.SendStatus(fiber.StatusBadRequest)
+		return fiber.NewError(fiber.StatusBadRequest, "not a valid URL")
 	}
 	siteURL := json.URL
 
