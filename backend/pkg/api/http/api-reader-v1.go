@@ -18,7 +18,7 @@ package http
 // @in header
 // @name Authorization
 func (s *Server) addRoutesApiReaderV1() {
-	v1 := s.app.Group("/api/reader/v1")
+	v1 := s.app.Group("/api/v1")
 	{
 		// not tied so the user:
 		v1.Get("/article/:id", s.controller.Article)
