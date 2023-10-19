@@ -12,7 +12,8 @@ import (
 // NewFiberAuthMiddleware configures a middleware that ensures the user has a valid JWT
 func NewFiberAuthMiddleware(jwtSecretKey string) (authMiddleware fiber.Handler, err error) {
 	if jwtSecretKey == "secret" {
-		log.Warn("USING INSECURE JWT SECRET KEY. Do this for local development only!")
+		// (2x space after emoji looks better)
+		log.Warn("⚠️  USING INSECURE JWT SECRET KEY. Do this for local development only!")
 	} else if len(jwtSecretKey) < 16 {
 		err = errors.New("your JWT secret key is less than 16 characters long, we won't allow that")
 		return
