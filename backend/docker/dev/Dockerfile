@@ -1,4 +1,4 @@
-FROM golang:1.21.0-alpine3.18
+FROM docker.io/library/golang:1.21.0-alpine3.18
 ARG S6_OVERLAY_VERSION=3.1.5.0
 
 # set default timezone

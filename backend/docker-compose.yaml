@@ -29,11 +29,7 @@ services:
             - rueder_dev_db:/var/lib/postgresql/data
 
     auth:
-        # use the official image if you don't need CORS in your dev environment
-        # image: tarent/loginsrv
-        # use my branch of loginsrv if you need CORS: https://github.com/spezifisch/loginsrv/tree/cors
-        # (build and tag the docker image using `docker build -t custom-tarent-loginsrv .` in the loginsrv repository)
-        image: custom-tarent-loginsrv
+        image: ghcr.io/spezifisch/loginsrv:main
         env_file:
             - ./rueder-dev.env
         ports:
@@ -42,7 +38,7 @@ services:
           - dev
 
     rabbitmq:
-        image: rabbitmq:3.12.2-management
+        image: docker.io/library/rabbitmq:3.12.2-management
         container_name: "rabbitmq"
         ports:
             - "127.0.0.1:5672:5672"

@@ -1,3 +1,6 @@
+COMPOSE=podman-compose
+dockerargs = --force-recreate --build
+
 all: docs
 
 download:
@@ -20,22 +23,7 @@ ci: lint test
 docs:
 	swag init -g pkg/api/http/api-v1.go
 
-# some docker dev shortcuts
-dockerargs = --force-recreate --build
-
 run:
-	docker-compose up $(dockerargs)
-
-run_noworker:
-	docker-compose up $(dockerargs) auth db dev rabbitmq
-
-run_worker:
-	docker-compose up $(dockerargs) worker
-
-run_feedfinder:
-	docker-compose up $(dockerargs) feedfinder
-
-run_events:
-	docker-compose up $(dockerargs) events
+	$(COMPOSE) up $(dockerargs)
 
 .PHONY: *
