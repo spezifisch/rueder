@@ -140,8 +140,8 @@ devDependencies:
     specifier: ^20.8.2
     version: 20.8.2
   '@types/sanitize-html':
-    specifier: ^2.9.1
-    version: 2.9.1
+    specifier: ^2.9.3
+    version: 2.9.3
   '@types/uuid':
     specifier: ^9.0.4
     version: 9.0.4
@@ -1158,8 +1158,8 @@ packages:
     resolution: {integrity: sha512-SnHmG9wN1UVmagJOnyo/qkk0Z7gejYxOYYmaAwr5u2yFYfsupN3sg10kyzN8Hep/2zbHxCnsumxOoRIRMBwKCg==}
     dev: false
 
-  /@types/sanitize-html@2.9.1:
-    resolution: {integrity: sha512-XSLD0a9P8c+rKUM09KIi5Nd8mOHLHNgXb1G04rpXWa/GqQVpM+knrS9KR9ptj1CeC3gXWGZn75ApH3H6qNbhYA==}
+  /@types/sanitize-html@2.9.3:
+    resolution: {integrity: sha512-1rsSdEJLV7utAG+Fms2uP+nSmmYmOhUUSSZvUz4wF2wlA0M5/A/gVgnpWZ7EKaPWsrrxWiSuNJqSBW8dh2isBA==}
     dependencies:
       htmlparser2: 8.0.2
     dev: true
