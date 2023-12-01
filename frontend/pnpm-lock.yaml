@@ -128,8 +128,8 @@ devDependencies:
     specifier: ^3.2.2
     version: 3.2.2(svelte@3.59.2)
   '@types/javascript-time-ago':
-    specifier: ^2.0.4
-    version: 2.0.4
+    specifier: ^2.0.8
+    version: 2.0.8
   '@types/jest':
     specifier: ^29.5.5
     version: 29.5.5
@@ -1124,8 +1124,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/javascript-time-ago@2.0.4:
-    resolution: {integrity: sha512-0pMuEEgj8BuTdRqpWkdPj8XOwLanEYWYolnMwi5itZWS/0pGQcHwL88liab2ACfyOwng0V1pOuRD/wk7sHfyvg==}
+  /@types/javascript-time-ago@2.0.8:
+    resolution: {integrity: sha512-X77q3xUzWVn0qohgurKE1G5NiXZjee8VbLqaukW/HXVkz7bdCFJgOPQ3JVB4IkrDhMS4CviFTmpZuNVg0i2QFA==}
     dev: true
 
   /@types/jest@29.5.5:
