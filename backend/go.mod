@@ -16,7 +16,7 @@ require (
 	github.com/jackc/pgx/v4 v4.18.1
 	github.com/mailgun/holster/v3 v3.16.2
 	github.com/mmcdole/gofeed v1.2.1
-	github.com/spf13/cobra v1.7.0
+	github.com/spf13/cobra v1.8.0
 	github.com/spf13/viper v1.16.0
 	github.com/stretchr/testify v1.8.4
 	github.com/swaggo/swag v1.16.2
