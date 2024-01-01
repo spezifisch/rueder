@@ -20,7 +20,7 @@ require (
 	github.com/spf13/viper v1.16.0
 	github.com/stretchr/testify v1.8.4
 	github.com/swaggo/swag v1.16.2
-	github.com/sym01/htmlsanitizer v1.0.1
+	github.com/sym01/htmlsanitizer v1.1.0
 	github.com/valyala/fasthttp v1.50.0
 )
 
