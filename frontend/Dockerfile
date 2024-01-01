@@ -1,5 +1,5 @@
 ## BASE
-FROM node:18.18.0-alpine3.18 AS base
+FROM node:18.19.0-alpine3.18 AS base
 # TODO migrate to pnpm
 
 # disable npm update check, it's annoying
